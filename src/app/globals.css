@@ -3,6 +3,40 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Absolute Colors */
+  --color-white: #fff;
+  --color-black: #000;
+
+  /* Red Shades */
+  --red-45: #e60000;
+  --red-50: #ff0000;
+  --red-55: #ff1a1a;
+  --red-60: #ff3333;
+  --red-80: #ff6666;
+  --red-90: #ff9999;
+  --red-95: #ffc2c2;
+  --red-99: #fff1f1;
+
+  /* Black Shades */
+  --black-06: #0d0d0d;
+  --black-08: #1a1a1a;
+  --black-10: #262626;
+  --black-12: #f5f5f5;
+  --black-15: #1f1f1f;
+  --black-20: #2a2a2a;
+  --black-25: #333333;
+  --black-30: #404040;
+
+  /* Grey Shades */
+  --gray-60: #666666;
+  --gray-65: #5c5c5c;
+  --gray-70: #525252;
+  --gray-75: #f5f5f5;
+  --gray-80: #4a4a4a;
+  --gray-90: #1f1f1f;
+  --gray-95: #777878;
+  --gray-99: #f0f0f0;
+
 }
 
 @theme inline {
