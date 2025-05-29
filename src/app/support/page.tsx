@@ -1,10 +1,10 @@
 import { sampleMovies } from "@/config/mock";
-import { Header, HeroSlider, StreamVibeApp } from "../components/sections/AbouSection";
+import { StreamVibeApp } from "../components/sections/AbouSection";
+import { HeroSlider } from "../components/sliders/HeroSlider";
 
 export default function page() {
   return (
     <div className="">
-      <Header />
       <HeroSlider movies={sampleMovies} />
       <StreamVibeApp />
     </div>

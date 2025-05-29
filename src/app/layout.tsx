@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Toaster } from "@/app/components/ui/toaster";
 import { appMetaData, geistSans, geistMono } from "@/config/appConfig";
-import { AppHeader } from "./layouts/AppHeader";
-import Footer from "./layouts/partials/Footer";
+import AppHeader from "./layouts/AppHeader";
+import AppFooter from "./layouts/AppFooter";
 
 export const metadata = appMetaData;
 
@@ -16,7 +16,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}>
         <AppHeader />
         <main className="flex-grow">{children}</main>
-        <Footer />
+        <AppFooter />
         <Toaster />
       </body>
     </html>
