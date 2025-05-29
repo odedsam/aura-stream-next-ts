@@ -1,4 +1,4 @@
-export default function RatingBlock() {
+export default function HeroSection() {
   return (
       <div className=""></div>
   );
