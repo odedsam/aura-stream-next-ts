@@ -51,17 +51,17 @@ export const socialLinks = [
   {
     name: "Facebook",
     href: "https://facebook.com",
-    icon: "/icons/facebook-icon",
+    icon: "/icons/facebook-icon.svg",
   },
   {
     name: "Twitter",
     href: "https://twitter.com",
-    icon: "/icons/twitter-icon",
+    icon: "/icons/twitter-icon.svg",
   },
   {
     name: "LinkedIn",
     href: "https://linkedin.com",
-    icon: "/icons/linkedin-icon",
+    icon: "/icons/linkedin-icon.svg",
   },
 ];
 

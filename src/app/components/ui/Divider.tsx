@@ -16,7 +16,7 @@ interface DividerProps {
   className?: string;
 }
 
-const Divider: React.FC<DividerProps> = ({ color = "bg-red-500", thickness = 2, className = "" }) => {
+const Divider: React.FC<DividerProps> = ({ color = "bg-red-def/80", thickness = 2, className = "" }) => {
   return (
     <hr
       className={`

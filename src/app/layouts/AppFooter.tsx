@@ -1,10 +1,12 @@
 import React from "react";
 import CallToAction from "./CallToAction";
 import { footerData, socialLinks, legalLinks } from "@/config";
+import Link from "next/link";
+import Image from "next/image";
 
 const AppFooter = () => {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-primary text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Desktop & Laptop Layout (md and up) */}
@@ -16,9 +18,9 @@ const AppFooter = () => {
               <ul className="space-y-4">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                    <Link href={link.href} className="text-gray-400 hover:text-white transition-colors">
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -30,14 +32,14 @@ const AppFooter = () => {
             <h3 className="text-white font-semibold text-lg mb-6">Connect With Us</h3>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
-                <a
+                <Link
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors"
+                  className="w-10 h-10 bg-quaternary rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors border border-quinary"
                   aria-label={social.name}
                 >
-                  {social.icon}
-                </a>
+                  <Image src={social.icon} alt={'social-icon'} width={24} height={24} className="w-6 h-6" />
+                </Link>
               ))}
             </div>
           </div>
@@ -53,9 +55,9 @@ const AppFooter = () => {
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <a href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                      <Link href={link.href} className="text-gray-400 hover:text-white transition-colors">
                         {link.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -71,9 +73,9 @@ const AppFooter = () => {
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <a href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                      <Link href={link.href} className="text-gray-400 hover:text-white transition-colors">
                         {link.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -85,14 +87,14 @@ const AppFooter = () => {
               <h3 className="text-white font-semibold text-lg mb-4">Connect With Us</h3>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
-                  <a
+                  <Link
                     key={index}
                     href={social.href}
                     className="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-600 transition-colors"
                     aria-label={social.name}
                   >
-                    {social.icon}
-                  </a>
+                    <Image src={social.icon} alt={'social-icon'} width={20} height={20} className="w-5 h-5" />
+                  </Link>
                 ))}
               </div>
             </div>

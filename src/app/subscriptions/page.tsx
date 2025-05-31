@@ -1,0 +1,14 @@
+import { ThumbsUp, Volume2 } from 'lucide-react';
+import { Hero } from '../components/sections/HeroSection';
+
+export default function Page() {
+  return (
+    <main>
+      <Hero
+        title="Stranger Things"
+        description="When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl."
+        image="/assets/hero-movie-mobile.png"
+      />
+    </main>
+  );
+}

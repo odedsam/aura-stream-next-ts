@@ -101,12 +101,12 @@ const PricingSection: React.FC<PricingSectionProps> = ({
           </p>
 
           {/* Billing Toggle */}
-          <div className="inline-flex bg-gray-900 rounded-lg p-1 mb-12">
+          <div className="inline-flex bg-sec border-2 border-teriary border-bg-gray-900 rounded-lg p-1 mb-12">
             <button
               onClick={() => setBillingPeriod('monthly')}
               className={`px-6 py-2 rounded-md font-medium transition-colors duration-200 ${
                 billingPeriod === 'monthly'
-                  ? 'bg-gray-700 text-white'
+                  ? 'bg-teriary text-white'
                   : 'text-gray-400 hover:text-white'
               }`}
             >
@@ -116,7 +116,7 @@ const PricingSection: React.FC<PricingSectionProps> = ({
               onClick={() => setBillingPeriod('yearly')}
               className={`px-6 py-2 rounded-md font-medium transition-colors duration-200 ${
                 billingPeriod === 'yearly'
-                  ? 'bg-gray-700 text-white'
+                  ? 'bg-teriary text-white'
                   : 'text-gray-400 hover:text-white'
               }`}
             >

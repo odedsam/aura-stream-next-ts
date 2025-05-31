@@ -187,11 +187,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
   return (
     <div className="bg-black min-h-screen py-16 px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left Side - FAQ List */}
-          <div>
-            {/* Header */}
-            <div className="mb-12">
+          <div className="mb-12">
               <div className="flex items-start justify-between mb-6">
                 <h2 className="text-white text-4xl font-bold leading-tight">{title}</h2>
                 <button
@@ -203,6 +199,11 @@ const FAQSection: React.FC<FAQSectionProps> = ({
               </div>
               <p className="text-gray-400 text-lg leading-relaxed">{subtitle}</p>
             </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Left Side - FAQ List */}
+          <div>
+            {/* Header */}
+
 
             {/* FAQ Cards */}
             <div className="bg-gray-900/30 rounded-xl border border-gray-800">
@@ -221,9 +222,6 @@ const FAQSection: React.FC<FAQSectionProps> = ({
 
           {/* Right Side - Additional FAQs */}
           <div>
-            <div className="mb-12">
-              <h3 className="text-white text-2xl font-bold mb-6">More Questions</h3>
-            </div>
 
             <div className="bg-gray-900/30 rounded-xl border border-gray-800">
               {faqs.slice(4).map((faq, index) => (
