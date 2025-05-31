@@ -1,3 +1,4 @@
+import Image from "next/image";
 interface ContentCardProps {
   title: string;
   imageUrl: string;
@@ -21,7 +22,7 @@ function ContentCard({
 }: ContentCardProps) {
   return (
     <div className={`content-card ${layoutStyle}-layout`}>
-      <img src={imageUrl} alt={title} />
+      <Image src={imageUrl} alt={title} />
       <div className="card-info">
         <h3>{title}</h3>
         {layoutStyle === 'genre' && genreName && <p className="genre">{genreName}</p>}

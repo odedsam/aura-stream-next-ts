@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Play, Clock, ChevronDown, ChevronUp } from 'lucide-react';
-
+import Image from 'next/image'
 // Type Definitions
 interface Episode {
   id: string;
@@ -39,7 +39,7 @@ const EpisodeCard: React.FC<{
       <div className="flex flex-col sm:flex-row">
         {/* Thumbnail */}
         <div className="relative w-full sm:w-32 h-20 sm:h-24 flex-shrink-0">
-          <img
+          <Image
             src={episode.thumbnail}
             alt={episode.title}
             className="w-full h-full object-cover"

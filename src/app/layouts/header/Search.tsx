@@ -1,9 +1,14 @@
-// components/SearchComponent.tsx
 'use client';
 
 import { Search, X } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import { useSearchTerm, useSetSearchTerm, useIsSearchOpen, useToggleSearch } from '@/app/store/uiStore';
+import {
+  useSearchTerm,
+  useSetSearchTerm,
+  useIsSearchOpen,
+  useToggleSearch,
+} from '@/app/store/uiStore';
+import { useDebouncedValue } from '@/hooks/useDebounceValue';
 
 const SearchComponent: React.FC = () => {
   const searchTerm = useSearchTerm();
@@ -11,6 +16,8 @@ const SearchComponent: React.FC = () => {
   const isSearchOpen = useIsSearchOpen();
   const toggleSearch = useToggleSearch();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const debouncedSearchTerm = useDebouncedValue(searchTerm, 400);
 
   useEffect(() => {
     if (isSearchOpen && inputRef.current) {
@@ -29,11 +36,18 @@ const SearchComponent: React.FC = () => {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isSearchOpen, toggleSearch]);
 
+  // 🔍 Debounced search logic
+  useEffect(() => {
+    if (debouncedSearchTerm.trim()) {
+      console.log('Debounced search for:', debouncedSearchTerm);
+      // TODO: Trigger your API call or search filtering here
+    }
+  }, [debouncedSearchTerm]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      // Handle search logic here
-      console.log('Searching for:', searchTerm);
+      console.log('Immediate search on submit:', searchTerm);
       // You can add your search navigation logic here
     }
   };
@@ -101,10 +115,10 @@ const SearchComponent: React.FC = () => {
               </form>
 
               {/* Search Results Preview */}
-              {searchTerm && (
+              {debouncedSearchTerm && (
                 <div className="mt-4 bg-gray-900/90 border border-gray-700 rounded-lg p-4">
                   <div className="text-gray-400 text-sm mb-2">
-                    Press Enter to search for "{searchTerm}"
+                    Showing results for: "<span className="text-white">{debouncedSearchTerm}</span>"
                   </div>
                   {/* You can add search suggestions/results here */}
                 </div>
