@@ -1,12 +1,13 @@
-import { sampleMovies } from "@/config/mock";
-import { StreamVibeApp } from "../components/sections/AbouSection";
-import { HeroSlider } from "../components/sliders/HeroSlider";
+"use client";
+
+import StreamVibeFAQs from '../components/sections/FaqsSection';
+import SupportHero from '../components/sections/SupportHero';
 
 export default function page() {
   return (
     <div className="">
-      <HeroSlider movies={sampleMovies} />
-      <StreamVibeApp />
+      <SupportHero />
+      <StreamVibeFAQs />
     </div>
   );
 }

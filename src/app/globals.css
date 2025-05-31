@@ -100,9 +100,7 @@ body {
 }
 
 @layer components {
-  .layout {
-    @apply mx-4 laptop:mx-5 bg-primary;
-  }
+
 
   .cta-image {
     @apply bg-[url('/assets/cta-bg-mobile.png')] bg-no-repeat bg-cover bg-center
