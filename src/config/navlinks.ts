@@ -4,6 +4,8 @@ export const navLinks = [
   { label: "Movies & Shows ", href: "/browse" },
   { label: "Support ", href: "/support" },
   { label: "Subscriptions", href: "/subscriptions" },
+  { label: "test-show-details", href: "/test" },
+  { label: "test-movie-details", href: "/mvt-test" },
 ];
 
 export const footerData = [
