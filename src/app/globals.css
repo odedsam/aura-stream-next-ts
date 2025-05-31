@@ -1,22 +1,24 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @import 'tw-animate-css';
 
+@theme {
+  --breakpoint-laptop: 90rem;
+  --breakpoint-desktop: 120rem;
+}
+
 :root {
-  --background: #ffffff;
+  --background: #141414;
   --foreground: #171717;
+
+  --clr-base: #0f0f0f;
+  --clr-sec: #141414;
+  --clr-teriary: #1f1f1f;
+
   /* Absolute Colors */
   --color-white: #fff;
   --color-black: #000;
 
-  /* Red Shades */
-  --red-45: #e60000;
-  --red-50: #ff0000;
-  --red-55: #ff1a1a;
-  --red-60: #ff3333;
-  --red-80: #ff6666;
-  --red-90: #ff9999;
-  --red-95: #ffc2c2;
-  --red-99: #fff1f1;
+
 
   /* Black Shades */
   --black-06: #0d0d0d;
@@ -37,21 +39,42 @@
   --gray-90: #1f1f1f;
   --gray-95: #777878;
   --gray-99: #f0f0f0;
-
+    /* Red Shades */
+  --red-45: #e60000;
+  --red-50: #ff0000;
+  --red-55: #ff1a1a;
+  --red-60: #ff3333;
+  --red-80: #ff6666;
+  --red-90: #ff9999;
+  --red-95: #ffc2c2;
+  --red-99: #fff1f1;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-base: var(--clr-base);
+  --color-sec: var(--clr-sec);
+  --color-teriary: var(--clr-teriary);
+
+  --color-gray-60: var(--gray-60);
+  --color-gray-65: var(--gray-65);
+  --color-gray-70: var(--gray--70);
+  --color-gray-75: var(--gray--75);
+  --color-gray-80: var(--gray--80);
+  --color-gray-90: var(--gray--90);
+  --color-gray-95: var(--gray--95);
+  --color-gray-99: var(--gray--99);
+
+  --color-red-45: var(--red-45);
+  --color-red-50: var(--red-50);
+  --color-red-55: var(--red-55);
+  --color-red-60: var(--red-60);
+  --color-red-80: var(--red-80);
+  --color-red-90: var(--red-90);
+  --color-red-95: var(--red-95);
+  --color-red-99: var(--red-99);
 }
 
 body {

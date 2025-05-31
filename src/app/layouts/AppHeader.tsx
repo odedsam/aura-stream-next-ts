@@ -4,6 +4,7 @@ import { Movie } from "@/config/mock";
 import { Search, Bell, X, Menu } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { navLinks } from "@/config";
 
 interface HeaderProps {
   className?: string;
@@ -29,13 +30,6 @@ const AppHeader: React.FC<HeaderProps> = ({ className = "" }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Movies & Shows", href: "/movies-shows" },
-    { label: "Support", href: "/support" },
-    { label: "Subscriptions", href: "/subscriptions" },
-  ];
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -60,7 +54,7 @@ const AppHeader: React.FC<HeaderProps> = ({ className = "" }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
+            {navLinks.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
@@ -98,7 +92,7 @@ const AppHeader: React.FC<HeaderProps> = ({ className = "" }) => {
         {isMobileMenuOpen && (
           <div className="lg:hidden bg-black/95 backdrop-blur-md border-t border-gray-800">
             <nav className="py-4 space-y-2">
-              {navItems.map((item) => (
+              {navLinks.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
