@@ -1,9 +1,8 @@
+import type { PlanFeatures } from '@/types';
 import { featureRows, plans } from '@/config/mock';
-import type { PlanFeatures, Plan } from '@/types';
-import { Button } from '../../ui/Buttons';
+import { Button } from '@/app/components/ui/Buttons';
 
 const DesktopPricingTable: React.FC = () => {
-
   return (
     <div className="bg-primary text-white p-8">
       <div className="max-w-7xl mx-auto">
@@ -19,7 +18,7 @@ const DesktopPricingTable: React.FC = () => {
         {/* Desktop Table */}
         <div className="border border-quinary rounded-lg overflow-hidden bg-sec">
           {/* Header Row */}
-          <div className='grid grid-cols-4 bg-sec'>
+          <div className="grid grid-cols-4 bg-sec">
             <div className="p-6 font-semibold border-r border-quinary text-white">Features</div>
             {plans.map((plan, index) => (
               <div key={index} className="p-6 text-center border-r border-quinary last:border-r-0 relative text-white">

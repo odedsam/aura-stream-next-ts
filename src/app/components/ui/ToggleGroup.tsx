@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import { cn } from '@/lib/utils';
 
 interface ToggleButtonProps {
   value: string;
@@ -12,7 +12,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ value, label, isSelected, o
   <button
     onClick={() => onSelect(value)}
     className={`px-6 py-2 rounded-md font-medium transition-colors duration-200 ${
-      isSelected ? 'bg-teriary text-white' : 'text-gray-400 hover:text-white'
+      isSelected ? 'bg-teriary text-white' : 'text-gray-def hover:text-white'
     }`}>
     {label}
   </button>
@@ -27,7 +27,7 @@ interface ToggleGroupProps<T extends string> {
 
 const ToggleGroup = <T extends string = string>({ options, selectedValue, onValueChange, className }: ToggleGroupProps<T>) => {
   return (
-    <div className={`inline-flex bg-secondary border-2 border-teriary rounded-lg p-1 mb-12 ${className}`}>
+    <div className={cn('inline-flex bg-secondary border-2 border-teriary rounded-lg p-1', className)}>
       {options.map((option) => (
         <ToggleButton
           key={option.value as string}

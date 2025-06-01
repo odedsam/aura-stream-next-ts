@@ -2,7 +2,6 @@
 node_modules/
 
 # Ignore public folder (images, builds, assets)
-public/
 
 # Logs
 logs/
@@ -25,16 +24,9 @@ build/
 Thumbs.db
 
 # IDE files
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
 
-# Optional lock files
-package-lock.json
-yarn.lock
+
 pnpm-lock.yaml
-./vscode/
 /private
 *.env
 *.env*.
