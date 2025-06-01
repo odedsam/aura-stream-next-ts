@@ -88,9 +88,9 @@ export default ResponsiveOverlayImage
 // Ultra-fast usage for hero sections:
 /*
 <ResponsiveOverlayImage
-  mobileSrc="/assets/hero-home-mobile.svg"
-  tabletSrc="/assets/hero-home-laptop.svg"
-  desktopSrc="/assets/hero-home-desktop.svg"
+  mobileSrc="/assets/hero-home-mobile.webp"
+  tabletSrc="/assets/hero-home-laptop.webp"
+  desktopSrc="/assets/hero-home-desktop.webp"
   alt="Hero background"
   className="h-screen"
 >

@@ -10,7 +10,7 @@ export default function SupportHero() {
         </p>
         <div className="inline-flex justify-center items-center">
           <Image
-            src={'/assets/support-hero.png'}
+            src={'/assets/hero-support.webp'}
             alt={'hero-image'}
             width={350}
             height={360}
