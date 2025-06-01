@@ -1,6 +1,7 @@
 import { FAQCardProps, FaqHeaderProps } from '@/types';
 import { Plus, Minus } from 'lucide-react';
 import { BoxTag } from '@/app/components/ui/Tags';
+import { Divider } from '@/app/components/ui/Divider'; // adjust path as needed
 
 export const FaqHeader: React.FC<FaqHeaderProps> = ({ title, subtitle, onAskQuestion = () => console.log('Ask a question clicked') }) => {
   return (
@@ -20,7 +21,7 @@ export const FaqHeader: React.FC<FaqHeaderProps> = ({ title, subtitle, onAskQues
 
 export const FAQCard: React.FC<FAQCardProps> = ({ question, answer, isOpen, onToggle, number }) => {
   return (
-    <div className="border-b border-quinary">
+    <div>
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between py-6 text-left hover:bg-teriary transition-colors duration-200 px-4">
@@ -31,7 +32,9 @@ export const FAQCard: React.FC<FAQCardProps> = ({ question, answer, isOpen, onTo
 
           <h3 className="text-white text-lg font-medium">{question}</h3>
         </div>
-        <div className="text-gray-def flex-shrink-0 ml-4">{isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}</div>
+        <div className="text-gray-def flex-shrink-0 ml-4">
+          {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+        </div>
       </button>
 
       {isOpen && (
@@ -39,6 +42,9 @@ export const FAQCard: React.FC<FAQCardProps> = ({ question, answer, isOpen, onTo
           <p className="text-gray-def leading-relaxed">{answer}</p>
         </div>
       )}
+
+      {/* Show divider only when collapsed */}
+      {!isOpen && <Divider />}
     </div>
   );
 };

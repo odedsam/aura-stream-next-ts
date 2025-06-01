@@ -1,7 +1,7 @@
-import React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import React from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { GenreCard } from '../cards/GenreCard';
 
-// Types
 interface NavigationControlsProps {
   onPrevious: () => void;
   onNext: () => void;
@@ -14,7 +14,7 @@ interface ContentSectionProps {
   title: string;
   subtitle?: string;
   badge?: string;
-  badgeColor?: "red" | "blue" | "green" | "yellow";
+  badgeColor?: 'red' | 'blue' | 'green' | 'yellow';
   children: React.ReactNode;
   onPrevious?: () => void;
   onNext?: () => void;
@@ -32,7 +32,7 @@ interface SliderContainerProps {
 
 // Arrow Component (reusable)
 const ArrowButton: React.FC<{
-  direction: "left" | "right";
+  direction: 'left' | 'right';
   onClick: () => void;
   disabled?: boolean;
 }> = ({ direction, onClick, disabled = false }) => {
@@ -46,14 +46,9 @@ const ArrowButton: React.FC<{
         disabled:opacity-50 disabled:cursor-not-allowed
         flex items-center justify-center
         transition-all duration-200
-        ${disabled ? "hover:bg-gray-900/50 hover:border-gray-600" : ""}
-      `}
-    >
-      {direction === "left" ? (
-        <ChevronLeft className="w-5 h-5 text-white" />
-      ) : (
-        <ChevronRight className="w-5 h-5 text-white" />
-      )}
+        ${disabled ? 'hover:bg-gray-900/50 hover:border-gray-600' : ''}
+      `}>
+      {direction === 'left' ? <ChevronLeft className="w-5 h-5 text-white" /> : <ChevronRight className="w-5 h-5 text-white" />}
     </button>
   );
 };
@@ -82,7 +77,7 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({
               key={index}
               className={`
                 w-2 h-2 rounded-full transition-colors duration-200
-                ${index === currentSlide ? "bg-red-600" : "bg-gray-600"}
+                ${index === currentSlide ? 'bg-red-600' : 'bg-gray-600'}
               `}
             />
           ))}
@@ -93,7 +88,7 @@ const NavigationControls: React.FC<NavigationControlsProps> = ({
 };
 
 // Slider Container Component
-const SliderContainer: React.FC<SliderContainerProps> = ({ children, className = "" }) => {
+const SliderContainer: React.FC<SliderContainerProps> = ({ children, className = '' }) => {
   return (
     <div className={`relative overflow-hidden ${className}`}>
       <div className="flex transition-transform duration-500 ease-in-out">{children}</div>
@@ -106,7 +101,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({
   title,
   subtitle,
   badge,
-  badgeColor = "red",
+  badgeColor = 'red',
   children,
   onPrevious = () => {},
   onNext = () => {},
@@ -114,13 +109,13 @@ const ContentSection: React.FC<ContentSectionProps> = ({
   totalSlides = 5,
   showNavigation = true,
   showDots = true,
-  className = "",
+  className = '',
 }) => {
   const badgeColorClasses = {
-    red: "bg-red-600 text-white",
-    blue: "bg-blue-600 text-white",
-    green: "bg-green-600 text-white",
-    yellow: "bg-yellow-600 text-black",
+    red: 'bg-red-600 text-white',
+    blue: 'bg-blue-600 text-white',
+    green: 'bg-green-600 text-white',
+    yellow: 'bg-yellow-600 text-black',
   };
 
   return (
@@ -135,8 +130,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({
                 className={`
                 px-4 py-2 rounded-lg text-sm font-medium
                 ${badgeColorClasses[badgeColor]}
-              `}
-              >
+              `}>
                 {badge}
               </span>
             )}
@@ -144,7 +138,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({
             {/* Title and Subtitle */}
             <div>
               <h2 className="text-white text-4xl font-bold mb-2">{title}</h2>
-              {subtitle && <p className="text-gray-400 text-lg">{subtitle}</p>}
+              {subtitle && <p className="text-gray-def text-lg">{subtitle}</p>}
             </div>
           </div>
 
@@ -167,48 +161,17 @@ const ContentSection: React.FC<ContentSectionProps> = ({
   );
 };
 
-// Example Usage Components
-
-// Genre Card Component for demonstration
-const GenreCard: React.FC<{
-  title: string;
-  images: string[];
-  onClick?: () => void;
-}> = ({ title, images, onClick }) => {
-  return (
-    <div
-      onClick={onClick}
-      className="bg-gray-900/30 rounded-xl border border-gray-800 p-6 hover:bg-gray-900/50 transition-colors duration-200 cursor-pointer group"
-    >
-      {/* Image Grid */}
-      <div className="grid grid-cols-2 gap-2 mb-4">
-        {images.slice(0, 4).map((image, index) => (
-          <div key={index} className="aspect-square bg-gray-700 rounded-lg overflow-hidden">
-            <div className="w-full h-full bg-gradient-to-br from-gray-600 to-gray-800"></div>
-          </div>
-        ))}
-      </div>
-
-      {/* Title with Arrow */}
-      <div className="flex items-center justify-between">
-        <h3 className="text-white text-lg font-medium">{title}</h3>
-        <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-200" />
-      </div>
-    </div>
-  );
-};
-
 // Example: Our Genres Section
 const OurGenresSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const totalSlides = 3;
 
   const genres = [
-    { title: "Action", images: ["1", "2", "3", "4"] },
-    { title: "Adventure", images: ["1", "2", "3", "4"] },
-    { title: "Comedy", images: ["1", "2", "3", "4"] },
-    { title: "Drama", images: ["1", "2", "3", "4"] },
-    { title: "Horror", images: ["1", "2", "3", "4"] },
+    { title: 'Action', images: ['1', '2', '3', '4'] },
+    { title: 'Adventure', images: ['1', '2', '3', '4'] },
+    { title: 'Comedy', images: ['1', '2', '3', '4'] },
+    { title: 'Drama', images: ['1', '2', '3', '4'] },
+    { title: 'Horror', images: ['1', '2', '3', '4'] },
   ];
 
   const handlePrevious = () => {
@@ -226,17 +189,11 @@ const OurGenresSection: React.FC = () => {
       currentSlide={currentSlide}
       totalSlides={totalSlides}
       onPrevious={handlePrevious}
-      onNext={handleNext}
-    >
+      onNext={handleNext}>
       <SliderContainer>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 w-full">
           {genres.map((genre, index) => (
-            <GenreCard
-              key={index}
-              title={genre.title}
-              images={genre.images}
-              onClick={() => console.log(`Clicked on ${genre.title}`)}
-            />
+            <GenreCard key={index} title={genre.title} images={genre.images} onClick={() => console.log(`Clicked on ${genre.title}`)} />
           ))}
         </div>
       </SliderContainer>
@@ -250,10 +207,10 @@ const PopularTop10Section: React.FC = () => {
   const totalSlides = 4;
 
   const categories = [
-    { title: "Action", badge: "Top 10 in" },
-    { title: "Adventure", badge: "Top 10 in" },
-    { title: "Comedy", badge: "Top 10 in" },
-    { title: "Drama", badge: "Top 10 in" },
+    { title: 'Action', badge: 'Top 10 in' },
+    { title: 'Adventure', badge: 'Top 10 in' },
+    { title: 'Comedy', badge: 'Top 10 in' },
+    { title: 'Drama', badge: 'Top 10 in' },
   ];
 
   return (
@@ -262,12 +219,11 @@ const PopularTop10Section: React.FC = () => {
       currentSlide={currentSlide}
       totalSlides={totalSlides}
       onPrevious={() => setCurrentSlide((prev) => Math.max(0, prev - 1))}
-      onNext={() => setCurrentSlide((prev) => Math.min(totalSlides - 1, prev + 1))}
-    >
+      onNext={() => setCurrentSlide((prev) => Math.min(totalSlides - 1, prev + 1))}>
       <SliderContainer>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {categories.map((category, index) => (
-            <div key={index} className="bg-gray-900/30 rounded-xl border border-gray-800 p-6">
+            <div key={index} className="bg-quaternary rounded-xl border border-quinary p-6">
               <div className="grid grid-cols-2 gap-2 mb-4">
                 {Array.from({ length: 4 }).map((_, imgIndex) => (
                   <div key={imgIndex} className="aspect-square bg-gray-700 rounded-lg"></div>
@@ -275,12 +231,10 @@ const PopularTop10Section: React.FC = () => {
               </div>
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="bg-red-600 text-white px-2 py-1 rounded text-xs font-medium mb-2 inline-block">
-                    {category.badge}
-                  </span>
+                  <span className="bg-red-600 text-white px-2 py-1 rounded text-xs font-medium mb-2 inline-block">{category.badge}</span>
                   <h3 className="text-white text-lg font-medium">{category.title}</h3>
                 </div>
-                <ChevronRight className="w-5 h-5 text-gray-400" />
+                <ChevronRight className="w-5 h-5 text-gray-def" />
               </div>
             </div>
           ))}
@@ -295,7 +249,7 @@ const TrendingShowsSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const totalSlides = 2;
 
-  const shows = [{ title: "Show 1" }, { title: "Show 2" }, { title: "Show 3" }, { title: "Show 4" }];
+  const shows = [{ title: 'Show 1' }, { title: 'Show 2' }, { title: 'Show 3' }, { title: 'Show 4' }];
 
   return (
     <ContentSection
@@ -303,12 +257,11 @@ const TrendingShowsSection: React.FC = () => {
       currentSlide={currentSlide}
       totalSlides={totalSlides}
       onPrevious={() => setCurrentSlide((prev) => Math.max(0, prev - 1))}
-      onNext={() => setCurrentSlide((prev) => Math.min(totalSlides - 1, prev + 1))}
-    >
+      onNext={() => setCurrentSlide((prev) => Math.min(totalSlides - 1, prev + 1))}>
       <SliderContainer>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {shows.map((show, index) => (
-            <div key={index} className="bg-gray-900/30 rounded-xl border border-gray-800 overflow-hidden">
+            <div key={index} className="bg-quaternary rounded-xl border border-quinary overflow-hidden">
               <div className="aspect-video bg-gradient-to-br from-red-900/50 to-blue-900/50"></div>
               <div className="p-4">
                 <h3 className="text-white text-lg font-medium">{show.title}</h3>
@@ -321,7 +274,6 @@ const TrendingShowsSection: React.FC = () => {
   );
 };
 
-// Main Demo Component
 const StreamVibeContentSections: React.FC = () => {
   return (
     <div className="bg-black">

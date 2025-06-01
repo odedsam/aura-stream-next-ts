@@ -1,9 +1,10 @@
 // import DeviceSection from '../components/sections/DeviceSection';
 // import ResponsiveOverlayImage from '../components/images/ResponsiveImageOverlay';
-
-import SupportForm from '../components/forms/SupportForm';
-import DeviceSection from '../components/sections/DeviceSection';
-import PricingTable from '../components/sections/pricing/PricingTable';
+'use client';
+import { useState } from 'react';
+import { SliderControl } from '../components/sliders/SliderControl';
+import { GenreCarouselExamples } from '../components/sliders/carousels/GenreCarousel';
+import { BrowseContainerExamples } from '../components/sections/BrowseContainer';
 
 // export default function page() {
 //   return (
@@ -22,10 +23,9 @@ import PricingTable from '../components/sections/pricing/PricingTable';
 
 export default function page() {
   return (
-    <div className="h-screen my-60">
-      {/* <SupportForm /> */}
-      <div className="w-[500px] h-[500px] device-gradient"></div>
-      <DeviceSection />
+    <div className="">
+      <BrowseContainerExamples />
+      <GenreCarouselExamples />
     </div>
   );
 }

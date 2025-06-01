@@ -1,7 +1,7 @@
 'use client';
-import React, { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
-import { FAQItem, faqData } from '@/config/mock';
+import type { FAQItem } from '@/types';
+import { useState } from 'react';
+import { faqData } from '@/config/mock';
 import { FaqHeader, FAQCard } from '@/app/components/cards/FaqCard';
 
 interface FAQSectionProps {

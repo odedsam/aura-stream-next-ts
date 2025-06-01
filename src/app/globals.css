@@ -132,3 +132,26 @@ body {
     @apply rounded-lg border border-[#262626] bg-[#0d0000] bg-gradient-to-tr from-[#0d0000] via-[#080000] to-[#250e0e];
   }
 }
+
+.border-bottom-gradient {
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.border-bottom-gradient::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, #300000, #ff0000, #300000);
+}
+
+.cta-background {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(139, 0, 0, 0.6), rgba(255, 0, 0, 0.6));
+  position: relative;
+  width:100%;
+  height: 400px;
+
+}

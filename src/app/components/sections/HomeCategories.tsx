@@ -30,10 +30,10 @@ const HomeCategories = () => {
         {categories.map((category, index) => (
           <div
             key={category.name}
-            className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-6 hover:scale-105 transition-transform duration-200 cursor-pointer border border-gray-700 hover:border-red-500">
+            className="bg-quaternary rounded-lg p-6 hover:scale-105 transition-transform duration-200 cursor-pointer border border-quinary hover:border-red-500">
             <div className="text-3xl mb-3">{category.icon}</div>
             <h3 className="text-white font-semibold text-lg mb-1">{category.name}</h3>
-            <p className="text-gray-400 text-sm">{category.count} movies</p>
+            <p className="text-gray-def text-sm">{category.count} movies</p>
           </div>
         ))}
       </div>
