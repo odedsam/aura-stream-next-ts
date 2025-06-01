@@ -43,7 +43,7 @@ export const Input: React.FC<CustomInputProps> = ({
             required={required}
             rows={4}
             className={cn(
-              'w-full px-4 py-3 bg-primary border border-quinary rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors resize-none',
+              'w-full px-4 py-3 bg-primary border border-quinary rounded-lg text-white placeholder-gray-DEF focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors resize-none',
               className,
             )}
           />
@@ -57,7 +57,7 @@ export const Input: React.FC<CustomInputProps> = ({
             className={cn(
               `w-full px-4 py-3 ${
                 prefix ? 'ml-3' : ''
-              } bg-primary border border-quinary rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors`,
+              } bg-primary border border-quinary rounded-lg text-white placeholder-gray-DEF focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors`,
               className,
             )}
           />

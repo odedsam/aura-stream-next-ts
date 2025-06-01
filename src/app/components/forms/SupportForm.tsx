@@ -42,7 +42,6 @@ const SupportForm: React.FC = () => {
       return;
     }
 
-    // Optional loading state
     const toastId = toast.loading('Sending your message...');
     setTimeout(() => {
       toast.success('Message sent successfully!', { id: toastId });
@@ -53,14 +52,8 @@ const SupportForm: React.FC = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto bg-sec p-6 lg:p-8 rounded-lg">
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-2 text-white">Welcome to our support page!</h2>
-        <p className="text-gray-400 text-sm">We're here to help you with any problems you may be having with our product.</p>
-      </div>
-
       <div className="space-y-6">
-        {/* Name Fields */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 laptop:grid-cols-2 gap-4">
           <Input
             label="First Name"
             placeholder="Enter First Name"
@@ -77,7 +70,6 @@ const SupportForm: React.FC = () => {
           />
         </div>
 
-        {/* Email and Phone */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input
             label="Email"
@@ -98,7 +90,6 @@ const SupportForm: React.FC = () => {
           />
         </div>
 
-        {/* Message */}
         <Input
           label="Message"
           type="textarea"
@@ -108,23 +99,21 @@ const SupportForm: React.FC = () => {
           required
         />
 
-        {/* Terms Checkbox */}
         <div className="flex items-start space-x-3">
           <input
             type="checkbox"
             id="terms"
             checked={agreedToTerms}
             onChange={(e) => setAgreedToTerms(e.target.checked)}
-            className="mt-1 w-4 h-4 bg-gray-800 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 text-red-600"
+            className="mt-1 w-4 h-4 accent-black bg-gray-800 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 text-red-600"
             required
           />
-          <label htmlFor="terms" className="text-sm text-gray-300 leading-relaxed">
-            I agree with <span className="text-white underline cursor-pointer">Terms of Use</span> and{' '}
-            <span className="text-white underline cursor-pointer">Privacy Policy</span>
+          <label htmlFor="terms" className="text-sm text-gray-def leading-relaxed">
+            I agree with <span className="text-gray-400 underline cursor-pointer">Terms of Use</span> and{' '}
+            <span className="text-gray-400 underline cursor-pointer">Privacy Policy</span>
           </label>
         </div>
 
-        {/* Submit Button */}
         <Button type="button" onClick={handleSubmit} variant="red" full>
           Send Message
         </Button>

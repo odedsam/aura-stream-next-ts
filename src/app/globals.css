@@ -99,11 +99,26 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer components {
-  .cta-image {
-    @apply bg-[url('/assets/cta-bg-mobile.webp')] bg-no-repeat bg-cover bg-center
-           laptop:bg-[url('/assets/cta-bg-desktop.webp')] laptop:bg-no-repeat laptop:bg-cover laptop:bg-center;
+/* .cta-gradient {
+  background: #0d0000;
+  background: linear-gradient(45deg, rgba(13, 0, 0, 0.5) 38%, rgba(8, 0, 0, 0.5) 59%, rgba(61, 18, 18, 0.5) 100%);
+} */
+
+.cta-bg-with-gradient {
+  background-image: linear-gradient(45deg, rgba(13, 0, 0, 0.5) 38%, rgba(8, 0, 0, 0.5) 59%, rgba(61, 18, 18, 0.5) 100%),
+    url('/assets/cta-bg-mobile.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 1024px) {
+  .cta-bg-with-gradient {
+    background-image: linear-gradient(45deg, rgba(13, 0, 0, 0.5) 38%, rgba(8, 0, 0, 0.5) 59%, rgba(61, 18, 18, 0.5) 100%),
+      url('/assets/cta-bg-desktop.webp');
   }
+}
+@layer components {
   .movie-hero {
     @apply bg-[url('/assets/hero-movie-mobile.webp')] bg-no-repeat bg-cover bg-center
            laptop:bg-[url('/assets/hero-movie-mobile.webp')] laptop:bg-no-repeat laptop:bg-cover laptop:bg-center;
@@ -112,5 +127,8 @@ body {
   .home-hero {
     @apply bg-[url('/assets/hero-home-mobile.webp')] bg-no-repeat bg-cover bg-center
            laptop:bg-[url('/assets/hero-home-desktop.webp')] laptop:bg-no-repeat laptop:bg-cover laptop:bg-center;
+  }
+  .device-gradient {
+    @apply rounded-lg border border-[#262626] bg-[#0d0000] bg-gradient-to-tr from-[#0d0000] via-[#080000] to-[#250e0e];
   }
 }

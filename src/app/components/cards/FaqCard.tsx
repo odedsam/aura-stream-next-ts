@@ -1,5 +1,6 @@
 import { FAQCardProps, FaqHeaderProps } from '@/types';
 import { Plus, Minus } from 'lucide-react';
+import { BoxTag } from '@/app/components/ui/Tags';
 
 export const FaqHeader: React.FC<FaqHeaderProps> = ({ title, subtitle, onAskQuestion = () => console.log('Ask a question clicked') }) => {
   return (
@@ -12,7 +13,7 @@ export const FaqHeader: React.FC<FaqHeaderProps> = ({ title, subtitle, onAskQues
           Ask a Question
         </button>
       </div>
-      <p className="text-gray-400 text-lg leading-relaxed">{subtitle}</p>
+      <p className="text-gray-def text-lg leading-relaxed">{subtitle}</p>
     </div>
   );
 };
@@ -22,17 +23,20 @@ export const FAQCard: React.FC<FAQCardProps> = ({ question, answer, isOpen, onTo
     <div className="border-b border-quinary">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between py-6 text-left hover:bg-gray-900/50 transition-colors duration-200 px-4">
+        className="w-full flex items-center justify-between py-6 text-left hover:bg-teriary transition-colors duration-200 px-4">
         <div className="flex items-center gap-4">
-          <span className="text-gray-500 text-lg font-medium min-w-[2rem]">{String(number).padStart(2, '0')}</span>
+          <BoxTag className="border-quaternary border-2 hover:bg-quinary px-1">
+            <span className="text-gray-def text-lg font-medium p-3">{String(number).padStart(2, '0')}</span>
+          </BoxTag>
+
           <h3 className="text-white text-lg font-medium">{question}</h3>
         </div>
-        <div className="text-gray-400 flex-shrink-0 ml-4">{isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}</div>
+        <div className="text-gray-def flex-shrink-0 ml-4">{isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}</div>
       </button>
 
       {isOpen && (
         <div className="pb-6 pl-12 pr-8">
-          <p className="text-gray-400 leading-relaxed">{answer}</p>
+          <p className="text-gray-def leading-relaxed">{answer}</p>
         </div>
       )}
     </div>

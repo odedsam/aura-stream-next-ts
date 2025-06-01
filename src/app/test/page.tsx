@@ -2,6 +2,8 @@
 // import ResponsiveOverlayImage from '../components/images/ResponsiveImageOverlay';
 
 import SupportForm from '../components/forms/SupportForm';
+import DeviceSection from '../components/sections/DeviceSection';
+import PricingTable from '../components/sections/pricing/PricingTable';
 
 // export default function page() {
 //   return (
@@ -21,7 +23,9 @@ import SupportForm from '../components/forms/SupportForm';
 export default function page() {
   return (
     <div className="h-screen my-60">
-      <SupportForm />
+      {/* <SupportForm /> */}
+      <div className="w-[500px] h-[500px] device-gradient"></div>
+      <DeviceSection />
     </div>
   );
 }
