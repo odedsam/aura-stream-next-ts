@@ -109,8 +109,8 @@ const SupportForm: React.FC = () => {
             required
           />
           <label htmlFor="terms" className="text-sm text-gray-def leading-relaxed">
-            I agree with <span className="text-gray-400 underline cursor-pointer">Terms of Use</span> and{' '}
-            <span className="text-gray-400 underline cursor-pointer">Privacy Policy</span>
+            I agree with <span className="text-gray-def underline cursor-pointer">Terms of Use</span> and{' '}
+            <span className="text-gray-def underline cursor-pointer">Privacy Policy</span>
           </label>
         </div>
 

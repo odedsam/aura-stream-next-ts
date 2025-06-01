@@ -49,8 +49,8 @@ interface MovieData {
 // Reusable Icon Label Component
 const IconLabel: React.FC<IconLabelProps> = ({ icon: Icon, label, className = "" }) => (
   <div className={`flex items-center gap-2 mb-3 ${className}`}>
-    <Icon className="w-5 h-5 text-gray-400" />
-    <h3 className="text-gray-400 text-sm font-medium">{label}</h3>
+    <Icon className="w-5 h-5 text-gray-def" />
+    <h3 className="text-gray-def text-sm font-medium">{label}</h3>
   </div>
 );
 
@@ -119,7 +119,7 @@ const CastBlock: React.FC<CastBlockProps> = ({ title, members, icon: Icon }) => 
           </div>
           <div>
             <h4 className="text-white font-medium">{member.name}</h4>
-            <p className="text-gray-400 text-sm">From {member.country}</p>
+            <p className="text-gray-def text-sm">From {member.country}</p>
           </div>
         </div>
       ))}
@@ -239,7 +239,7 @@ const MovieDetailsSidebar: React.FC = () => {
 
       {/* Smart Controls */}
       <div className="border-t border-gray-700 pt-4">
-        <h4 className="text-gray-400 text-sm font-medium mb-3">Quick Actions</h4>
+        <h4 className="text-gray-def text-sm font-medium mb-3">Quick Actions</h4>
         <div className="flex flex-wrap gap-2">
           <button
             onClick={incrementYear}

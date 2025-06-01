@@ -28,7 +28,7 @@ export default function SupportHero() {
 
 //  <div className="mb-8">
 //         <h2 className="text-2xl font-bold mb-2 text-white">Welcome to our support page!</h2>
-//         <p className="text-gray-400 text-sm">We're here to help you with any problems you may be having with our product.</p>
+//         <p className="text-gray-def text-sm">We're here to help you with any problems you may be having with our product.</p>
 //       </div>
 //
 

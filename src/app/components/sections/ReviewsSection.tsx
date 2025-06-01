@@ -106,7 +106,7 @@ const MovieReviewComponent = () => {
         {/* Description Section */}
         <section>
           <h2 className="text-xl font-semibold mb-4 text-gray-300">Description</h2>
-          <p className="text-gray-400 leading-relaxed max-w-4xl">
+          <p className="text-gray-def leading-relaxed max-w-4xl">
             When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
             supernatural forces and one strange little girl.
           </p>
@@ -167,7 +167,7 @@ const MovieReviewComponent = () => {
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h3 className="font-semibold text-white">{review.name}</h3>
-                      <p className="text-gray-400 text-sm">{review.location}</p>
+                      <p className="text-gray-def text-sm">{review.location}</p>
                     </div>
                     {renderStars(review.rating)}
                   </div>

@@ -18,7 +18,7 @@ const AppFooter = () => {
               <ul className="space-y-4">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <Link href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                    <Link href={link.href} className="text-gray-def hover:text-white transition-colors">
                       {link.name}
                     </Link>
                   </li>
@@ -55,7 +55,7 @@ const AppFooter = () => {
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <Link href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                      <Link href={link.href} className="text-gray-def hover:text-white transition-colors">
                         {link.name}
                       </Link>
                     </li>
@@ -73,7 +73,7 @@ const AppFooter = () => {
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <Link href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                      <Link href={link.href} className="text-gray-def hover:text-white transition-colors">
                         {link.name}
                       </Link>
                     </li>
@@ -106,10 +106,10 @@ const AppFooter = () => {
       <div className="border-t border-quinary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">©2023 streamvib, All Rights Reserved</div>
+            <div className="text-gray-def text-sm">©2023 streamvib, All Rights Reserved</div>
             <div className="flex flex-wrap justify-center md:justify-end space-x-6 text-sm">
               {legalLinks.map((link, index) => (
-                <a key={index} href={link.href} className="text-gray-400 hover:text-white transition-colors">
+                <a key={index} href={link.href} className="text-gray-def hover:text-white transition-colors">
                   {link.name}
                 </a>
               ))}

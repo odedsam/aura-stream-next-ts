@@ -9,7 +9,7 @@ export const DesktopPricingTable: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Compare our plans and find the right one for you</h1>
-          <p className="text-gray-400 max-w-4xl mx-auto">
+          <p className="text-gray-def max-w-4xl mx-auto">
             StreamVibe offers three different plans to fit your needs: Basic, Standard, and Premium. Compare the features of each plan and
             choose the one that's right for you.
           </p>

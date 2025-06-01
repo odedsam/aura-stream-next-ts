@@ -89,13 +89,13 @@ const NotificationComponent: React.FC = () => {
           <div className="p-4 border-b border-gray-700">
             <div className="flex items-center justify-between">
               <h3 className="text-white font-semibold">Notifications</h3>
-              {unreadCount > 0 && <span className="text-sm text-gray-400">{unreadCount} unread</span>}
+              {unreadCount > 0 && <span className="text-sm text-gray-def">{unreadCount} unread</span>}
             </div>
           </div>
 
           <div className="max-h-96 overflow-y-auto">
             {notifications.length === 0 ? (
-              <div className="p-6 text-center text-gray-400">
+              <div className="p-6 text-center text-gray-def">
                 <Bell className="w-8 h-8 mx-auto mb-2 opacity-50" />
                 <p>No notifications yet</p>
               </div>
@@ -115,7 +115,7 @@ const NotificationComponent: React.FC = () => {
                           </p>
                           {!notification.isRead && <div className="w-2 h-2 bg-red-600 rounded-full flex-shrink-0"></div>}
                         </div>
-                        <p className="text-sm text-gray-400 mt-1">{notification.message}</p>
+                        <p className="text-sm text-gray-def mt-1">{notification.message}</p>
                         <p className="text-xs text-gray-500 mt-2">{formatTime(notification.timestamp)}</p>
                       </div>
                     </div>
@@ -127,7 +127,7 @@ const NotificationComponent: React.FC = () => {
 
           {notifications.length > 0 && (
             <div className="p-3 border-t border-gray-700">
-              <button className="w-full text-sm text-gray-400 hover:text-white transition-colors">Mark all as read</button>
+              <button className="w-full text-sm text-gray-def hover:text-white transition-colors">Mark all as read</button>
             </div>
           )}
         </div>

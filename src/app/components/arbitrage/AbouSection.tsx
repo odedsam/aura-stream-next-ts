@@ -17,11 +17,11 @@ export const StreamVibeApp: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div className="bg-gray-900 p-6 rounded-lg">
             <h2 className="text-white text-xl font-bold mb-4">Movies</h2>
-            <p className="text-gray-400">Discover amazing movies</p>
+            <p className="text-gray-def">Discover amazing movies</p>
           </div>
           <div className="bg-gray-900 p-6 rounded-lg">
             <h2 className="text-white text-xl font-bold mb-4">Shows</h2>
-            <p className="text-gray-400">Watch your favorite TV shows</p>
+            <p className="text-gray-def">Watch your favorite TV shows</p>
           </div>
         </div>
 

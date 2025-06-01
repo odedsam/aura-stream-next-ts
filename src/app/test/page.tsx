@@ -3,8 +3,6 @@
 'use client';
 import { useState } from 'react';
 import { SliderControl } from '../components/sliders/SliderControl';
-import { GenreCarouselExamples } from '../components/sliders/carousels/GenreCarousel';
-import { BrowseContainerExamples } from '../components/sections/BrowseContainer';
 
 // export default function page() {
 //   return (
@@ -22,10 +20,5 @@ import { BrowseContainerExamples } from '../components/sections/BrowseContainer'
 // }
 
 export default function page() {
-  return (
-    <div className="">
-      <BrowseContainerExamples />
-      <GenreCarouselExamples />
-    </div>
-  );
+  return <div className=""></div>;
 }

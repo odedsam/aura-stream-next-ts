@@ -59,9 +59,9 @@ const EpisodeCard: React.FC<{
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
             <div className="flex-1">
               <h4 className="text-white font-semibold text-sm sm:text-base line-clamp-1">{episode.title}</h4>
-              <p className="text-gray-400 text-xs sm:text-sm mt-1 line-clamp-2">{episode.description}</p>
+              <p className="text-gray-def text-xs sm:text-sm mt-1 line-clamp-2">{episode.description}</p>
             </div>
-            <div className="flex items-center gap-2 text-gray-400 text-xs">
+            <div className="flex items-center gap-2 text-gray-def text-xs">
               <Clock className="w-3 h-3" />
               <span>{episode.duration}</span>
             </div>
@@ -87,11 +87,11 @@ const SeasonSection: React.FC<{
         onClick={onToggle}>
         <div className="flex-1">
           <h3 className="text-white font-semibold text-base sm:text-lg">Season {season.number.toString().padStart(2, '0')}</h3>
-          <p className="text-gray-400 text-sm">{season.episodeCount} Episodes</p>
+          <p className="text-gray-def text-sm">{season.episodeCount} Episodes</p>
           {season.description && <p className="text-gray-500 text-xs mt-1 line-clamp-1 sm:line-clamp-none">{season.description}</p>}
         </div>
         <div className="ml-4">
-          {isExpanded ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
+          {isExpanded ? <ChevronUp className="w-5 h-5 text-gray-def" /> : <ChevronDown className="w-5 h-5 text-gray-def" />}
         </div>
       </div>
 
@@ -133,7 +133,7 @@ const SeasonsAndEpisodes: React.FC<SeasonsEpisodesProps> = ({ seasons, currentSe
       {/* Header */}
       <div className="mb-6">
         <h2 className="text-white text-xl sm:text-2xl font-bold mb-2">Seasons and Episodes</h2>
-        <p className="text-gray-400 text-sm">
+        <p className="text-gray-def text-sm">
           {seasons.length} Season{seasons.length !== 1 ? 's' : ''} • {seasons.reduce((total, season) => total + season.episodeCount, 0)}{' '}
           Episodes
         </p>

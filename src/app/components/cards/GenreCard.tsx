@@ -1,5 +1,8 @@
 import { ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+
+
 export const GenreCard: React.FC<{
   title: string;
   images: string[];

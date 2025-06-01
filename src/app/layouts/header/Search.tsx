@@ -82,21 +82,21 @@ const SearchComponent: React.FC = () => {
             <div className="max-w-2xl mx-auto">
               <form onSubmit={handleSubmit} className="relative">
                 <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-def w-5 h-5" />
                   <input
                     ref={inputRef}
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Search movies, TV shows, actors..."
-                    className="w-full bg-gray-900/90 border border-gray-700 rounded-lg pl-12 pr-20 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600"
+                    className="w-full bg-gray-900/90 border border-gray-700 rounded-lg pl-12 pr-20 py-4 text-white placeholder-gray-def focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600"
                   />
                   <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
                     {searchTerm && (
                       <button
                         type="button"
                         onClick={handleClear}
-                        className="p-1 text-gray-400 hover:text-white transition-colors"
+                        className="p-1 text-gray-def hover:text-white transition-colors"
                         aria-label="Clear search"
                       >
                         <X className="w-4 h-4" />
@@ -105,7 +105,7 @@ const SearchComponent: React.FC = () => {
                     <button
                       type="button"
                       onClick={handleClose}
-                      className="p-2 text-gray-400 hover:text-white transition-colors"
+                      className="p-2 text-gray-def hover:text-white transition-colors"
                       aria-label="Close search"
                     >
                       <X className="w-5 h-5" />
@@ -117,7 +117,7 @@ const SearchComponent: React.FC = () => {
               {/* Search Results Preview */}
               {debouncedSearchTerm && (
                 <div className="mt-4 bg-gray-900/90 border border-gray-700 rounded-lg p-4">
-                  <div className="text-gray-400 text-sm mb-2">
+                  <div className="text-gray-def text-sm mb-2">
                     Showing results for: "<span className="text-white">{debouncedSearchTerm}</span>"
                   </div>
                   {/* You can add search suggestions/results here */}

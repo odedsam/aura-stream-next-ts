@@ -111,7 +111,7 @@ const NetflixLoader: React.FC<NetflixLoaderProps> = ({
 
             {/* Progress Text */}
             <div className="flex justify-between items-center text-sm">
-              <span className="text-gray-400">
+              <span className="text-gray-def">
                 Loading{dots}
               </span>
               <span className="text-white font-medium">

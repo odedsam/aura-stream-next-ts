@@ -1,10 +1,10 @@
 'use client';
 
+import type { GenreCarouselProps } from '../types';
+import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { SliderControl } from '@/app/components/sliders/SliderControl';
 import { GenreCard } from '@/app/components/cards/GenreCard';
-import { cn } from '@/lib/utils';
-import { GenreCarouselProps } from '../types';
 
 export const GenreCarousel = ({
   title,
@@ -32,7 +32,13 @@ export const GenreCarousel = ({
   };
 
   const currentItems = getCurrentSlideItems();
-
+  const genres = [
+    { title: 'Action', images: ['1', '2', '3', '4'] },
+    { title: 'Adventure', images: ['1', '2', '3', '4'] },
+    { title: 'Comedy', images: ['1', '2', '3', '4'] },
+    { title: 'Drama', images: ['1', '2', '3', '4'] },
+    { title: 'Horror', images: ['1', '2', '3', '4'] },
+  ];
   return (
     <div className={cn('space-y-6 font-manrope', className)}>
       <div className="flex items-center justify-between">
@@ -42,16 +48,14 @@ export const GenreCarousel = ({
         )}
       </div>
 
-      <div
-        className={`grid gap-4 ${autoHeight ? 'auto-rows-auto' : ''}`}
-        style={{ gridTemplateColumns: `repeat(${Math.min(itemsPerSlide, currentItems.length)}, 1fr)` }}>
-        {currentItems.map((item, index) => (
-          <GenreCard images={[]} key={item.id || `item-${currentIndex}-${index}`} {...item} className={cn(itemClassName)} />
-        ))}
-      </div>
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 w-full">
+                {genres.map((genre, index) => (
+                  <GenreCard key={index} title={genre.title} images={genre.images} onClick={() => console.log(`Clicked on ${genre.title}`)} />
+                ))}
+              </div>
 
       {totalSlides > 1 && (
-        <div className="flex justify-center items-center space-x-2 text-sm text-gray-500">
+        <div className="flex justify-center items-center space-x-2 text-sm text-gray-def font-manrope">
           <span>
             Showing {currentIndex * itemsPerSlide + 1}-{Math.min((currentIndex + 1) * itemsPerSlide, items.length)} of {items.length}
           </span>
