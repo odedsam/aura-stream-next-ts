@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 import { FAQItem, faqData } from '@/config/mock';
@@ -30,7 +30,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
       </div>
 
       <div className="flex flex-col items-center xl:flex-row gap-12 xl:gap-20">
-        <div className="bg-gray-900/30 rounded-xl border border-gray-800  w-full">
+        <div className="bg-primary rounded-xl w-full">
           {faqs.slice(0, 4).map((faq, index) => (
             <FAQCard
               key={index}
@@ -43,7 +43,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
           ))}
         </div>
 
-        <div className="bg-primary rounded-xl border border-gray-800  w-full">
+        <div className="bg-primary rounded-xl w-full">
           {faqs.slice(4).map((faq, index) => (
             <FAQCard
               key={index + 4}
@@ -55,7 +55,6 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
             />
           ))}
         </div>
-
       </div>
     </div>
   );

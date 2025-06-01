@@ -2,7 +2,7 @@ import Image from 'next/image';
 import SupportForm from '../forms/SupportForm';
 export default function SupportHero() {
   return (
-    <div className='flex flex-col gap-6 laptop:flex-row px-20'>
+    <div className="flex flex-col gap-6 laptop:flex-row px-20">
       <div className="flex flex-col justify-center items-center px-3 gap-3">
         <h1 className="font-manrope text-3xl text-white font-bold laptop:text-4xl">Welcome to our support page!</h1>
         <p className="text-gray-def font-manrope text-xs laptop:text-base">
@@ -18,7 +18,6 @@ export default function SupportHero() {
         </div>
       </div>
       <SupportForm />
-
     </div>
   );
 }

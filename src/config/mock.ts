@@ -1,33 +1,4 @@
-import { MovieCatalog, SeasonMock } from '@/types';
-
-export interface DeviceData {
-  id: number;
-  title: string;
-  description: string;
-  iconPath: string;
-}
-export interface Movie {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  genre?: string;
-  rating?: string;
-  year?: number;
-}
-export interface FAQItem {
-  question: string;
-  answer: string;
-}
-export interface PricingPlan {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  period: 'month' | 'year';
-  features?: string[];
-  isPopular?: boolean;
-}
+import { Country, MovieCatalog, Plan, SeasonMock, DeviceData, Movie, FAQItem, PricingPlan } from '@/types';
 
 export const devicesData: DeviceData[] = [
   {
@@ -70,7 +41,7 @@ export const devicesData: DeviceData[] = [
     title: 'VR Headsets',
     description:
       'StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
-    iconPath: '/icons/vrheadsets.svg',
+    iconPath: '/icons/vrheadset.svg',
   },
 ];
 
@@ -462,5 +433,90 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         thumbnail: 'https://via.placeholder.com/200x120/3F51B5/FFFFFF?Text=Season+3+Ep+8',
       },
     ],
+  },
+];
+
+export const plans: Plan[] = [
+  {
+    name: 'Basic',
+    price: '$9.99/Month',
+    popular: false,
+    features: {
+      content: 'Access to a wide selection of movies and shows, including some new releases.',
+      devices: 'Watch on one device simultaneously',
+      freeTrial: '7 Days',
+      cancelAnytime: 'Yes',
+      hdr: 'No',
+      dolbyAtmos: 'No',
+      adFree: 'No',
+      offlineViewing: 'No',
+      familySharing: 'No',
+    },
+  },
+  {
+    name: 'Standard',
+    price: '$12.99/Month',
+    popular: true,
+    features: {
+      content: 'Access to a wider selection of movies and shows, including most new releases and exclusive content',
+      devices: 'Watch on Two device simultaneously',
+      freeTrial: '7 Days',
+      cancelAnytime: 'Yes',
+      hdr: 'Yes',
+      dolbyAtmos: 'Yes',
+      adFree: 'Yes',
+      offlineViewing: 'Yes, for select titles.',
+      familySharing: 'Yes, up to 5 family members.',
+    },
+  },
+  {
+    name: 'Premium',
+    price: '$14.99/Month',
+    popular: false,
+    features: {
+      content: 'Access to a widest selection of movies and shows, including all new releases and Offline Viewing',
+      devices: 'Watch on Four device simultaneously',
+      freeTrial: '7 Days',
+      cancelAnytime: 'Yes',
+      hdr: 'Yes',
+      dolbyAtmos: 'Yes',
+      adFree: 'Yes',
+      offlineViewing: 'Yes, for all titles.',
+      familySharing: 'Yes, up to 6 family members.',
+    },
+  },
+];
+
+export const featureRows = [
+  { key: 'price', label: 'Price' },
+  { key: 'content', label: 'Content' },
+  { key: 'devices', label: 'Devices' },
+  { key: 'freeTrial', label: 'Free Trail' },
+  { key: 'cancelAnytime', label: 'Cancel Anytime' },
+  { key: 'hdr', label: 'HDR' },
+  { key: 'dolbyAtmos', label: 'Dolby Atmos' },
+  { key: 'adFree', label: 'Ad - Free' },
+  { key: 'offlineViewing', label: 'Offline Viewing' },
+  { key: 'familySharing', label: 'Family Sharing' },
+];
+
+export const countries: Country[] = [
+  {
+    code: 'IN',
+    name: 'Ind',
+    flag: 'https://flagcdn.com/w40/in.png',
+    dialCode: '+91',
+  },
+  {
+    code: 'US',
+    name: 'US',
+    flag: 'https://flagcdn.com/w40/us.png',
+    dialCode: '+1',
+  },
+  {
+    code: 'IL',
+    name: 'ISR',
+    flag: 'https://flagcdn.com/w40/il.png',
+    dialCode: '+972',
   },
 ];

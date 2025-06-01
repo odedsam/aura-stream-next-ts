@@ -1,4 +1,5 @@
-import { PricingCardProps } from "@/types/mock";
+import { PricingCardProps } from '@/types/mock';
+import { Button } from '../ui/Buttons';
 
 export const PricingCard: React.FC<PricingCardProps> = ({ plan, billingPeriod, onChoosePlan, onStartFreeTrial }) => {
   const displayPrice =
@@ -9,7 +10,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan, billingPeriod, o
   const periodText = billingPeriod === 'yearly' ? '/year' : '/month';
 
   return (
-    <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-8 relative hover:bg-gray-900/70 transition-colors duration-300">
+    <div className="bg-quaternary border-2 border-quinary rounded-xl p-8 relative hover:bg-sec transition-colors duration-300">
       {plan.isPopular && (
         <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
           <span className="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-medium">Most Popular</span>
@@ -27,17 +28,13 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan, billingPeriod, o
       </div>
 
       <div className="space-y-3">
-        <button
-          onClick={() => onStartFreeTrial(plan.id)}
-          className="w-full bg-transparent border border-gray-600 text-white py-3 px-6 rounded-lg font-medium hover:border-gray-400 transition-colors duration-200">
+        <Button variant="black" className="text-base" full onClick={() => onStartFreeTrial(plan.id)}>
           Start Free Trial
-        </button>
+        </Button>
 
-        <button
-          onClick={() => onChoosePlan(plan.id)}
-          className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-lg font-medium transition-colors duration-200">
+        <Button variant="red" className="text-base" full onClick={() => onChoosePlan(plan.id)}>
           Choose Plan
-        </button>
+        </Button>
       </div>
     </div>
   );

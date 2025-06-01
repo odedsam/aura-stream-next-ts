@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import StreamVibeFAQs from '../components/sections/FaqsSection';
 import SupportHero from '../components/sections/SupportHero';
@@ -9,7 +9,7 @@ export default function page() {
     <div className="">
       <SupportHero />
       <StreamVibeFAQs />
-       <CallToAction />
+      <CallToAction />
     </div>
   );
 }

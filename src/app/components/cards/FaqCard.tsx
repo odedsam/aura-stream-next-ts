@@ -19,7 +19,7 @@ export const FaqHeader: React.FC<FaqHeaderProps> = ({ title, subtitle, onAskQues
 
 export const FAQCard: React.FC<FAQCardProps> = ({ question, answer, isOpen, onToggle, number }) => {
   return (
-    <div className="border-b border-gray-800">
+    <div className="border-b border-quinary">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between py-6 text-left hover:bg-gray-900/50 transition-colors duration-200 px-4">

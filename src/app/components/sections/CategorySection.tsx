@@ -124,7 +124,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({
   };
 
   return (
-    <div className={`bg-black py-16 px-8 ${className}`}>
+    <div className={`bg-primary py-16 px-8 ${className}`}>
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="flex items-center justify-between mb-12">

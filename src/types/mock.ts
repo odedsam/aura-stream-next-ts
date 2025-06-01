@@ -46,18 +46,10 @@ export interface MovieCatalog {
   category: string;
 }
 
-
-
-
-
-
 export interface FAQItem {
   question: string;
   answer: string;
 }
-
-
-
 
 export interface FAQCardProps {
   question: string;
@@ -96,4 +88,58 @@ export interface SeasonsEpisodesProps {
   seasons: SeasonMock[];
   currentSeason?: number;
   onEpisodePlay?: (seasonId: string, episodeId: string) => void;
+}
+
+export interface PlanFeatures {
+  content: string;
+  devices: string;
+  freeTrial: string;
+  cancelAnytime: string;
+  hdr: string;
+  dolbyAtmos: string;
+  adFree: string;
+  offlineViewing: string;
+  familySharing: string;
+}
+
+export interface Plan {
+  name: string;
+  price: string;
+  popular: boolean;
+  features: PlanFeatures;
+}
+
+export type Country = {
+  code: string;
+  name: string;
+  flag: string;
+  dialCode: string;
+};
+export interface DeviceData {
+  id: number;
+  title: string;
+  description: string;
+  iconPath: string;
+}
+export interface Movie {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  genre?: string;
+  rating?: string;
+  year?: number;
+}
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+export interface PricingPlan {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  period: 'month' | 'year';
+  features?: string[];
+  isPopular?: boolean;
 }

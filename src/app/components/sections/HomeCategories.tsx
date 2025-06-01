@@ -2,7 +2,7 @@ import { categories } from '@/config/mock';
 
 const HomeCategories = () => {
   return (
-    <div className="w-full max-w-6xl">
+    <div className="w-full max-w-6xl bg-primary">
       <div className="flex items-center justify-between mb-8">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Explore our wide variety of categories</h2>
