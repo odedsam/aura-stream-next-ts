@@ -100,14 +100,17 @@ body {
 }
 
 @layer components {
-
-
   .cta-image {
-    @apply bg-[url('/assets/cta-bg-mobile.png')] bg-no-repeat bg-cover bg-center
-           laptop:bg-[url('/assets/cta-bg-desktop.png')] laptop:bg-no-repeat laptop:bg-cover laptop:bg-center;
+    @apply bg-[url('/assets/cta-bg-mobile.svg')] bg-no-repeat bg-cover bg-center
+           laptop:bg-[url('/assets/cta-bg-desktop.svg')] laptop:bg-no-repeat laptop:bg-cover laptop:bg-center;
   }
   .movie-hero {
-    @apply bg-[url('/assets/hero-movie-mobile.png')] bg-no-repeat bg-cover bg-center
-           laptop:bg-[url('/assets/hero-movie-mobile.png')] laptop:bg-no-repeat laptop:bg-cover laptop:bg-center;
+    @apply bg-[url('/assets/hero-movie-mobile.svg')] bg-no-repeat bg-cover bg-center
+           laptop:bg-[url('/assets/hero-movie-mobile.svg')] laptop:bg-no-repeat laptop:bg-cover laptop:bg-center;
+  }
+
+  .home-hero {
+    @apply bg-[url('/assets/hero-home-mobile.svg')] bg-no-repeat bg-cover bg-center
+           laptop:bg-[url('/assets/hero-home-desktop.svg')] laptop:bg-no-repeat laptop:bg-cover laptop:bg-center;
   }
 }

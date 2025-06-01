@@ -38,6 +38,19 @@ export interface Movie {
   rating?: string;
   year?: number;
 }
+
+export interface MovieCatalog {
+  id: number;
+  title: string;
+  poster: string;
+  category: string;
+}
+
+
+
+
+
+
 export interface FAQItem {
   question: string;
   answer: string;
@@ -59,3 +72,28 @@ export type FaqHeaderProps = {
   subtitle?: string;
   onAskQuestion?: () => void;
 };
+
+export interface Episode {
+  id: string;
+  number: number;
+  title: string;
+  description: string;
+  duration: string;
+  thumbnail: string;
+  releaseDate?: string;
+}
+
+export interface SeasonMock {
+  id: string;
+  number: number;
+  title: string;
+  episodeCount: number;
+  episodes: Episode[];
+  description?: string;
+}
+
+export interface SeasonsEpisodesProps {
+  seasons: SeasonMock[];
+  currentSeason?: number;
+  onEpisodePlay?: (seasonId: string, episodeId: string) => void;
+}
