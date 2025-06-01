@@ -30,7 +30,7 @@ const AppHeader: React.FC<HeaderProps> = ({ className = '' }) => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-primary backdrop-blur-md' : 'bg-transparent'
       } ${className}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-5 lg:h-20">
           <Logo />
           <Navbar />
