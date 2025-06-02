@@ -26,10 +26,10 @@ export type GenreCardProps = {
   title: string;
   images: string[];
   description?: string;
+  isTopTen?:boolean;
   onClick?: () => void;
   [key: string]: any;
 };
-
 
 export interface GenreCarouselProps {
   onSlide?: (index: number) => void;
@@ -40,4 +40,24 @@ export interface GenreCarouselProps {
   titleClassName?: string;
   itemClassName?: string;
   showControls?: boolean;
+}
+export type GenreCarouselHeaderProps = {
+  title: string;
+  showControls: boolean;
+  totalSlides: number;
+  onSlideChange: (index: number) => void;
+  titleClassName?: string;
+};
+
+export type GenreCarouselFooterProps = {
+  currentIndex: number;
+  itemsPerSlide: number;
+  totalItems: number;
+};
+
+export interface GenreCarouselPanelProps {
+  items: GenreCardProps[];
+  currentIndex: number;
+  itemsPerSlide: number;
+  itemClassName?: string;
 }

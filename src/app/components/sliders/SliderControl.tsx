@@ -6,7 +6,7 @@ import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { Button } from '../ui/Buttons';
 import { cn } from '@/lib/utils';
 import { SliderIndicator } from './SliderIndicator';
-import { SliderControlProps } from './types';
+import { SliderControlProps } from '@/types';
 
 
 export const SliderControl = ({
@@ -54,10 +54,10 @@ export const SliderControl = ({
 
   return (
     <div className={className}>
-      <NavigationBlock className={cn('w-auto px-4 py-4 rounded-xl border-2 border-teriary', navigationClassName)}>
+      <NavigationBlock className={cn('w-auto px-2 py-2 md:px-4 md:py-4 rounded-xl border-2 border-teriary', navigationClassName)}>
         <Button
           variant="dark"
-          className={cn('p-4 rounded-sm bg-teriary border-quinary', buttonClassName)}
+          className={cn('p-2 md:p-4 rounded-sm bg-teriary border-quinary', buttonClassName)}
           onClick={handlePrevious}
           disabled={isPreviousDisabled}>
           <ArrowLeft />
@@ -67,8 +67,8 @@ export const SliderControl = ({
           <SliderIndicator
             currentIndex={currentIndex}
             totalItems={totalItems}
-            className="px-4"
-            dotSize="md"
+            className="px-1 md:px-4"
+            dotSize="sm"
             activeColor="bg-red-500"
             inactiveColor="bg-gray-600"
             onDotClick={handleDotClick}
@@ -78,7 +78,7 @@ export const SliderControl = ({
 
         <Button
           variant="dark"
-          className={cn('p-4 rounded-sm bg-teriary border-quinary', buttonClassName)}
+          className={cn('p-2 md:p-4 rounded-sm bg-teriary border-quinary', buttonClassName)}
           onClick={handleNext}
           disabled={isNextDisabled}>
           <ArrowRight />

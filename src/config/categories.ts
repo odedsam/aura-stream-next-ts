@@ -1,9 +1,13 @@
 export const actionImages = {
+  // 'https://m.media-amazon.com/images/M/MV5BODcwOTg2MDE3NF5BMl5BanBnXkFtZTgwNTUyNTY1NjM@._V1_Ratio1.0000_AL_.jpg',
   genre: [
+    'https://m.media-amazon.com/images/M/MV5BNmQzOWZhOTMtZTcxNC00MTdkLWEwYmUtOWVmOTFhNTdkNjRkXkEyXkFqcGdeQXVyODk2NDQ3MTA@._V1_Ratio0.6716_AL_.jpg',
+
     'https://m.media-amazon.com/images/M/MV5BYTUxYjczMWUtYzlkZC00NTcwLWE3ODQtN2I2YTIxOTU0ZTljXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6699_AL_.jpg',
     'https://m.media-amazon.com/images/M/MV5BNzZmOTU1ZTEtYzVhNi00NzQxLWI5ZjAtNWNhNjEwY2E3YmZjXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_Ratio0.6699_AL_.jpg',
     'https://m.media-amazon.com/images/M/MV5BMDExZGMyOTMtMDgyYi00NGIwLWJhMTEtOTdkZGFjNmZiMTEwXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_Ratio0.6699_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BNmQzOWZhOTMtZTcxNC00MTdkLWEwYmUtOWVmOTFhNTdkNjRkXkEyXkFqcGdeQXVyODk2NDQ3MTA@._V1_Ratio0.6716_AL_.jpg',
+
+    'https://m.media-amazon.com/images/M/MV5BODcwOTg2MDE3NF5BMl5BanBnXkFtZTgwNTUyNTY1NjM@._V1_Ratio1.0000_AL_.jpg',
   ],
   top_ten: [
     'https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_Ratio0.6716_AL_.jpg',
@@ -26,18 +30,32 @@ export const adventureImages = {
     'https://m.media-amazon.com/images/M/MV5BYTUxYjczMWUtYzlkZC00NTcwLWE3ODQtN2I2YTIxOTU0ZTljXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6699_AL_.jpg',
   ],
 };
+
+// for comedy images
+/*
+https://m.media-amazon.com/images/M/MV5BMTkyMTY2MzYyMl5BMl5BanBnXkFtZTcwMzU2NzIwNw@@._V1_Ratio1.0000_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BMjQ5MjdkMjMtNmFlNS00OWM0LWE3ODEtNzBkZDg5NjFiZWE0XkEyXkFqcGdeQXVyNDg4NjY5OTQ@._V1_Ratio1.3200_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BODhkZmYzNTgtNmY0Zi00OWMwLTlhNjMtY2ZhN2Y1NTFjMjFjXkEyXkFqcGdeQXVyODc0OTEyNDU@._V1_Ratio1.7800_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BYTZiZjk1MDAtNzM3ZS00NThlLTkxY2YtNjU1NjAzNzc1ODRjXkEyXkFqcGdeQXVyODc0OTEyNDU@._V1_Ratio1.3800_AL_.jpg
+ comedy top ten
+ https://m.media-amazon.com/images/M/MV5BMjI3MTkzMjQwOF5BMl5BanBnXkFtZTgwNTk0NzU0NzE@._V1_Ratio1.0000_AL_.jpg
+ https://m.media-amazon.com/images/M/MV5BNzQ3ODYzNDMwN15BMl5BanBnXkFtZTgwNzg4OTA4NDM@._V1_Ratio1.7800_AL_.jpg
+ https://m.media-amazon.com/images/M/MV5BMTgzMDU2ODA0OV5BMl5BanBnXkFtZTgwMjE3MDcyOTE@._V1_Ratio1.3200_AL_.jpg
+ https://m.media-amazon.com/images/M/MV5BMTU2MjYxMDgwMl5BMl5BanBnXkFtZTgwOTU0MjYyOTE@._V1_Ratio1.3200_AL_.jpg
+*/
+
 export const comedyImages = {
   genre: [
-    'https://m.media-amazon.com/images/M/MV5BMDgxOTdjMzYtZGQxMS00ZTAzLWI4Y2UtMTQzN2VlYjYyZWRiXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6699_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BOTJhNzlmNzctNTU5Yy00N2YwLThhMjQtZDM0YjEzN2Y0ZjNhXkEyXkFqcGdeQXVyMTEwMTQ4MzU5._V1_Ratio0.6699_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BZTUwYmYwMzUtYmIyZS00OWM3LWE3MWEtM2NjYTk0NzhiM2NmXkEyXkFqcGdeQXVyNDAyNjg5MzY@._V1_Ratio0.6699_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMWNiYzEzNDUtZjA3MS00NGVlLTg1MjMtZGFjN2E0YmQxYWIzXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_Ratio0.6699_AL_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMTkyMTY2MzYyMl5BMl5BanBnXkFtZTcwMzU2NzIwNw@@._V1_Ratio1.0000_AL_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMTk3MjM5NDg1Ml5BMl5BanBnXkFtZTYwMTQ2ODU2._V1_Ratio1.3400_AL_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMjEzNzg3OTM5Ml5BMl5BanBnXkFtZTcwNTkyMDMzNA@@._V1_Ratio1.2800_AL_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BYTZiZjk1MDAtNzM3ZS00NThlLTkxY2YtNjU1NjAzNzc1ODRjXkEyXkFqcGdeQXVyODc0OTEyNDU@._V1_Ratio1.3800_AL_.jpg',
   ],
   top_ten: [
-    'https://m.media-amazon.com/images/M/MV5BMGMzNzEyZWItYjUwZC00NmVkLTk5MWUtZGVjNWJlMjBjODA4XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_Ratio0.6699_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BZTFkNmE5MjUtZDE1Yi00ZmQyLTk2YWUtN2EwODA1ZmNlOTA5XkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_Ratio0.6716_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BZjZjMzQ2ZmUtZWEyZC00NWJiLWFjM2UtMzhmYzZmZDcxMzllXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_Ratio0.7015_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BNjMxMjE5ZTEtMjgyOC00ODM4LWJjZDAtMjcwZDBlNzZhZTkyXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_Ratio0.6716_AL_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMjI3MTkzMjQwOF5BMl5BanBnXkFtZTgwNTk0NzU0NzE@._V1_Ratio1.0000_AL_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BNzQ3ODYzNDMwN15BMl5BanBnXkFtZTgwNzg4OTA4NDM@._V1_Ratio1.7800_AL_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMTgzMDU2ODA0OV5BMl5BanBnXkFtZTgwMjE3MDcyOTE@._V1_Ratio1.3200_AL_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMTU2MjYxMDgwMl5BMl5BanBnXkFtZTgwOTU0MjYyOTE@._V1_Ratio1.3200_AL_.jpg',
   ],
 };
 export const dramaImages = {
@@ -50,8 +68,8 @@ export const dramaImages = {
   top_ten: [
     'https://m.media-amazon.com/images/M/MV5BZTk5OTQyZjYtMDk3Yy00YjhmLWE2MTYtZmY4NTg1YWUzZTQ0XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_Ratio0.6716_AL_.jpg',
     'https://m.media-amazon.com/images/M/MV5BN2IzYzBiOTQtNGZmMi00NDI5LTgxMzMtN2EzZjA1NjhlOGMxXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_Ratio0.6716_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BNGM0YTk3MWEtN2JlZC00ZmZmLWIwMDktZTMxZGE5Zjc2MGExXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_Ratio0.7015_AL_.jpg',
     'https://m.media-amazon.com/images/M/MV5BMTNlYzY0MTItZmI5Ni00ODEwLTkxNDktOTI3MGI1ODRmODJlXkEyXkFqcGdeQXVyMDE4MzA0NQ@@._V1_Ratio0.6716_AL_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMTQ5NDUxMjg1NV5BMl5BanBnXkFtZTgwMTMzMjYzMzE@._V1_Ratio1.3800_AL_.jpg',
   ],
 };
 export const horrorImages = {
@@ -68,3 +86,54 @@ export const horrorImages = {
     'https://m.media-amazon.com/images/M/MV5BMGMzNzEyZWItYjUwZC00NmVkLTk5MWUtZGVjNWJlMjBjODA4XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_Ratio0.6699_AL_.jpg',
   ],
 };
+
+// good looking images :
+
+/*
+
+5 trending movies :
+https://m.media-amazon.com/images/M/MV5BNTEzMDA5NzU1NV5BMl5BanBnXkFtZTgwMDA3ODk0NjM@._V1_Ratio1.5000_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BMjQyMTg1NzkxM15BMl5BanBnXkFtZTgwOTk2ODk0NjM@._V1_Ratio1.5000_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BODcwOTg2MDE3NF5BMl5BanBnXkFtZTgwNTUyNTY1NjM@._V1_Ratio1.0000_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BMTcwNTI3NTExN15BMl5BanBnXkFtZTcwMDQxMTAwOQ@@._V1_Ratio1.4000_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BMzM0MzE2ZTAtZTBjZS00MTk5LTg5OTEtNjNmYmQ5NzU2OTUyXkEyXkFqcGdeQXVyNDY2MTk1ODk@._V1_Ratio0.6767_AL_.jpg
+DONE
+
+
+
+
+4 images must show movies :
+https://m.media-amazon.com/images/M/MV5BMjIwNzMzODY0NV5BMl5BanBnXkFtZTcwMDk3NDQyOA@@._V1_Ratio0.6751_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BZjc4NDZhZWMtNGEzYS00ZWU2LThlM2ItNTA0YzQ0OTExMTE2XkEyXkFqcGdeQXVyNjUwMzI2NzU@._V1_Ratio0.6917_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BZTYwYjYxYzgtMDE1Ni00NzU4LWJlMTEtODQ5YmJmMGJhZjI5L2ltYWdlXkEyXkFqcGdeQXVyMDI2NDg0NQ@@._V1_Ratio0.6767_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BYjBjNzNiNWYtYWU0NC00OTdjLTk3NmYtM2NjZjc2ZGIwOTQ1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.6767_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BNmEyZGQ4NDQtNTEzZC00MDczLWE4ZTEtYTg0ODg2NTkyMWM3XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_Ratio0.6767_AL_.jpg
+
+
+
+
+4 new releases movies :
+
+https://m.media-amazon.com/images/M/MV5BMTg0OTY2OTM0OF5BMl5BanBnXkFtZTcwMTk4OTQ1OQ@@._V1_Ratio0.6767_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BMTYwMzgzMDA0OF5BMl5BanBnXkFtZTgwNjk2ODk0NjM@._V1_Ratio1.5000_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BMTk3MzA3NTE1NF5BMl5BanBnXkFtZTgwNzk2ODk0NjM@._V1_Ratio1.5000_AL_.jpg
+https://m.media-amazon.com/images/M/MV5BMzlmYTVlYjQtNDY5OS00ZDI5LWEwMTEtNGJjNTA3NTU2MmRjXkEyXkFqcGdeQXVyMTYyODkzNzU4._V1_Ratio0.6767_AL_.jpg
+DONE
+MOVIES DONE
+
+*/
+
+/*
+ 4 must show shows
+
+
+
+ */
+
+/*
+
+4 images for new releases shows
+
+
+
+ */

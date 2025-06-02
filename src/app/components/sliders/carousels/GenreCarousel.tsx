@@ -1,30 +1,32 @@
 'use client';
 
+import { useEffect } from 'react';
 import type { GenreCarouselProps, GenreCardProps } from '@/types';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
-import { SliderControl } from '@/app/components/sliders/SliderControl';
+import { GenreCarouselHeader, GenreCarouselPanel, GenreCarouselFooter } from '@/app/components/sliders/carousels/Partials';
 import { GenreCard } from '@/app/components/cards/GenreCard';
-import { ResultsSummary } from '../../common/ResultsSummary';
+import { PaginationProvider, usePagination } from '@/providers/PaginationProvider';
 
-export const GenreCarousel = ({
+const GenreCarouselInner = ({
   title,
   items,
   onSlide,
   itemsPerSlide = 3,
   className,
   titleClassName,
-  itemClassName = '',
+  itemClassName,
   showControls = true,
 }: GenreCarouselProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const totalSlides = Math.ceil(items.length / itemsPerSlide);
+  const { currentIndex, setCurrentIndex, totalSlides, setTotalSlides } = usePagination();
 
-  const updateCurrentSlide = (index: number) => {
-    setCurrentIndex(index);
-    onSlide?.(index);
-  };
-  console.log('items:', items);
+  useEffect(() => {
+    setTotalSlides(Math.ceil(items.length / itemsPerSlide));
+  }, [items.length, itemsPerSlide, setTotalSlides]);
+
+  useEffect(() => {
+    onSlide?.(currentIndex);
+  }, [currentIndex, onSlide]);
+
   const getCurrentSlideItems = () => {
     const startIndex = currentIndex * itemsPerSlide;
     const endIndex = startIndex + itemsPerSlide;
@@ -34,27 +36,28 @@ export const GenreCarousel = ({
   const currentItems = getCurrentSlideItems();
 
   return (
-    <div className={cn('space-y-6 font-manrope', className)}>
-      <div className="flex items-center justify-between">
-        <h2 className={cn('text-2xl font-bold', titleClassName)}>{title}</h2>
-        {showControls && totalSlides > 1 && (
-          <SliderControl totalItems={totalSlides} onSlideChange={updateCurrentSlide} className="ml-auto" />
-        )}
-      </div>
+    <div className={cn('font-manrope', className)}>
+      <GenreCarouselHeader
+        title={title}
+        showControls={showControls}
+        totalSlides={totalSlides}
+        onSlideChange={setCurrentIndex}
+        titleClassName={titleClassName}
+      />
 
-      {currentItems.map((item: GenreCardProps, index) => (
-        <GenreCard key={item.id || `item-${currentIndex}-${index}`} {...item} className={cn(itemClassName)} />
-      ))}
+      <GenreCarouselPanel className="">
+        {currentItems.map((item: GenreCardProps, index) => (
+          <GenreCard key={item.id || `item-${currentIndex}-${index}`} {...item} className={cn('grid gap-4', itemClassName)} />
+        ))}
+      </GenreCarouselPanel>
 
-      {totalSlides > 1 && (
-        <div className="flex justify-center items-center space-x-2 text-sm text-gray-def">
-          <ResultsSummary
-            from={currentIndex * itemsPerSlide + 1}
-            to={Math.min((currentIndex + 1) * itemsPerSlide, items.length)}
-            total={items.length}
-          />
-        </div>
-      )}
+      <GenreCarouselFooter currentIndex={currentIndex} itemsPerSlide={itemsPerSlide} totalItems={items.length} />
     </div>
   );
 };
+
+export const GenreCarousel = (props: GenreCarouselProps) => (
+  <PaginationProvider>
+    <GenreCarouselInner {...props} />
+  </PaginationProvider>
+);

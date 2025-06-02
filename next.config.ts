@@ -2,29 +2,24 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
-  remotePatterns: [
-    {
-      protocol: 'https',
-      hostname: 'flagcdn.com',
-      port: '',
-      pathname: '/**',
-    },
-    {
-      protocol: 'https',
-      hostname: 'm.media-amazon.com',
-      port: '',
-      pathname: '/**',
-    },
-  ],
-},
-
-
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'flagcdn.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
   serverExternalPackages: ['fs', 'path'],
-
   experimental: {},
-
   compress: true,
-
   headers: async () => [
     {
       source: '/api/search',
@@ -54,7 +49,6 @@ const nextConfig: NextConfig = {
       ],
     },
   ],
-
   ...(process.env.NODE_ENV === 'production' && {
     poweredByHeader: false,
     generateEtags: false,

@@ -1,25 +1,25 @@
-'use client';
-import { useState, useCallback, useMemo } from 'react';
+import { useState } from 'react';
 
-export function usePagination<T>(items: T[], itemsPerPage: number = 3) {
-  const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = Math.ceil(items.length / itemsPerPage);
+export const usePagination = (totalItems: number, itemsPerPage: number = 3) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  const currentItems = useMemo(() => {
-    const start = currentPage * itemsPerPage;
-    return items.slice(start, start + itemsPerPage);
-  }, [items, currentPage, itemsPerPage]);
+  const currentRange = {
+    from: currentIndex * itemsPerPage + 1,
+    to: Math.min((currentIndex + 1) * itemsPerPage, totalItems),
+  };
 
-  const goToPage = useCallback((page: number) => {
-    if (page < 0) return setCurrentPage(0);
-    if (page >= totalPages) return setCurrentPage(totalPages - 1);
-    setCurrentPage(page);
-  }, [totalPages]);
+  const getCurrentItems = <T,>(items: T[]) => {
+    const start = currentIndex * itemsPerPage;
+    const end = start + itemsPerPage;
+    return items.slice(start, end);
+  };
 
   return {
-    currentPage,
+    currentIndex,
+    setCurrentIndex,
     totalPages,
-    currentItems,
-    goToPage,
+    currentRange,
+    getCurrentItems,
   };
-}
+};
