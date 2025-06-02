@@ -7,7 +7,6 @@ const HomeHero = () => {
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">
       {/* Movie Grid Background */}
-      <div className='home-hero h-[500px]'></div>
 
       <div className="absolute inset-0 opacity-30">
         <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2 p-4 h-full">
@@ -15,8 +14,7 @@ const HomeHero = () => {
             <div
               key={movie.id}
               className="aspect-[2/3] rounded-lg overflow-hidden bg-gradient-to-br from-purple-600 via-red-500 to-orange-500 animate-pulse"
-              style={{ animationDelay: `${index * 0.1}s`, animationDuration: '3s',}}>
-
+              style={{ animationDelay: `${index * 0.1}s`, animationDuration: '3s' }}>
               <div className="w-full h-full bg-gradient-to-t from-black/50 to-transparent flex items-end p-2">
                 <span className="text-white text-xs font-medium truncate">{movie.title}</span>
               </div>

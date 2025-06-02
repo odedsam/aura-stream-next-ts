@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const DeviceSection: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background font-manrope p-8">
+    <div className="bg-background font-manrope p-8 laptop:my-32">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-white text-3xl font-bold mb-4">We Provide you streaming experience across various devices.</h1>

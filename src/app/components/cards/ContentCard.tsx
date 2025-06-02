@@ -35,7 +35,6 @@ function ContentCard({
           </div>
         )}
       </div>
-      {/* ... אלמנטים משותפים נוספים */}
     </div>
   );
 }

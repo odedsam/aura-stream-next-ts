@@ -10,7 +10,7 @@ type BrowseProps = {
 
 export const BrowseContainer = ({ categoryName, children, className, categoryClassName, showCategory = true }: BrowseProps) => {
   return (
-    <div className={cn('relative bg-primary border-2 border-quinary', className)}>
+    <div className={cn('relative bg-primary border-2 border-quinary w-[90%] my-24 mx-auto', className)}>
       {showCategory && (
         <div
           className={cn(
