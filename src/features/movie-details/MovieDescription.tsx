@@ -1,8 +1,8 @@
 'use client';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Play, Clock, ChevronDown, ChevronUp } from 'lucide-react';
 import { seasonsEpisodesMock } from '@/config/mock';
-import Image from 'next/image';
 
 export interface Episode {
   id: string;
@@ -40,7 +40,13 @@ const EpisodeCard: React.FC<{
       <div className="flex flex-col sm:flex-row">
         {/* Thumbnail */}
         <div className="relative w-full sm:w-32 h-20 sm:h-24 flex-shrink-0">
-          <Image src={episode.thumbnail} alt={episode.title} width={50} height={50} className="w-full h-full object-cover" />
+          <Image
+            src={episode.thumbnail}
+            alt={episode.title}
+            width={50}
+            height={50}
+            className="w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
             <button
               onClick={() => onPlay?.(seasonId, episode.id)}
@@ -58,8 +64,12 @@ const EpisodeCard: React.FC<{
         <div className="flex-1 p-4">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
             <div className="flex-1">
-              <h4 className="text-white font-semibold text-sm sm:text-base line-clamp-1">{episode.title}</h4>
-              <p className="text-gray-def text-xs sm:text-sm mt-1 line-clamp-2">{episode.description}</p>
+              <h4 className="text-white font-semibold text-sm sm:text-base line-clamp-1">
+                {episode.title}
+              </h4>
+              <p className="text-gray-def text-xs sm:text-sm mt-1 line-clamp-2">
+                {episode.description}
+              </p>
             </div>
             <div className="flex items-center gap-2 text-gray-def text-xs">
               <Clock className="w-3 h-3" />
@@ -86,12 +96,24 @@ const SeasonSection: React.FC<{
         className="flex items-center justify-between p-4 bg-gray-800/30 rounded-lg border border-gray-700 cursor-pointer hover:bg-gray-800/50 transition-colors"
         onClick={onToggle}>
         <div className="flex-1">
-          <h3 className="text-white font-semibold text-base sm:text-lg">Season {season.number.toString().padStart(2, '0')}</h3>
-          <p className="text-gray-def text-sm">{season.episodeCount} Episodes</p>
-          {season.description && <p className="text-gray-500 text-xs mt-1 line-clamp-1 sm:line-clamp-none">{season.description}</p>}
+          <h3 className="text-white font-semibold text-base sm:text-lg">
+            Season {season.number.toString().padStart(2, '0')}
+          </h3>
+          <p className="text-gray-def text-sm">
+            {season.episodeCount} Episodes
+          </p>
+          {season.description && (
+            <p className="text-gray-500 text-xs mt-1 line-clamp-1 sm:line-clamp-none">
+              {season.description}
+            </p>
+          )}
         </div>
         <div className="ml-4">
-          {isExpanded ? <ChevronUp className="w-5 h-5 text-gray-def" /> : <ChevronDown className="w-5 h-5 text-gray-def" />}
+          {isExpanded ? (
+            <ChevronUp className="w-5 h-5 text-gray-def" />
+          ) : (
+            <ChevronDown className="w-5 h-5 text-gray-def" />
+          )}
         </div>
       </div>
 
@@ -99,7 +121,12 @@ const SeasonSection: React.FC<{
       {isExpanded && (
         <div className="space-y-3 pl-0 sm:pl-4">
           {season.episodes.map((episode) => (
-            <EpisodeCard key={episode.id} episode={episode} seasonId={season.id} onPlay={onEpisodePlay} />
+            <EpisodeCard
+              key={episode.id}
+              episode={episode}
+              seasonId={season.id}
+              onPlay={onEpisodePlay}
+            />
           ))}
         </div>
       )}
@@ -108,8 +135,14 @@ const SeasonSection: React.FC<{
 };
 
 // Main Seasons and Episodes Component
-const SeasonsAndEpisodes: React.FC<SeasonsEpisodesProps> = ({ seasons, currentSeason = 1, onEpisodePlay }) => {
-  const [expandedSeasons, setExpandedSeasons] = useState<Set<string>>(new Set([seasons[currentSeason - 1]?.id]));
+const SeasonsAndEpisodes: React.FC<SeasonsEpisodesProps> = ({
+  seasons,
+  currentSeason = 1,
+  onEpisodePlay,
+}) => {
+  const [expandedSeasons, setExpandedSeasons] = useState<Set<string>>(
+    new Set([seasons[currentSeason - 1]?.id]),
+  );
 
   const toggleSeason = (seasonId: string) => {
     setExpandedSeasons((prev) => {
@@ -132,9 +165,12 @@ const SeasonsAndEpisodes: React.FC<SeasonsEpisodesProps> = ({ seasons, currentSe
     <div className="bg-gray-900 p-4 sm:p-6 rounded-lg border border-gray-700 max-w-4xl">
       {/* Header */}
       <div className="mb-6">
-        <h2 className="text-white text-xl sm:text-2xl font-bold mb-2">Seasons and Episodes</h2>
+        <h2 className="text-white text-xl sm:text-2xl font-bold mb-2">
+          Seasons and Episodes
+        </h2>
         <p className="text-gray-def text-sm">
-          {seasons.length} Season{seasons.length !== 1 ? 's' : ''} • {seasons.reduce((total, season) => total + season.episodeCount, 0)}{' '}
+          {seasons.length} Season{seasons.length !== 1 ? 's' : ''} •{' '}
+          {seasons.reduce((total, season) => total + season.episodeCount, 0)}{' '}
           Episodes
         </p>
       </div>
@@ -161,7 +197,13 @@ const SeasonsEpisodesDemo: React.FC = () => {
     alert(`Playing Season ${seasonId}, Episode ${episodeId}`);
   };
 
-  return <SeasonsAndEpisodes seasons={seasonsEpisodesMock} currentSeason={1} onEpisodePlay={handleEpisodePlay} />;
+  return (
+    <SeasonsAndEpisodes
+      seasons={seasonsEpisodesMock}
+      currentSeason={1}
+      onEpisodePlay={handleEpisodePlay}
+    />
+  );
 };
 
 export default SeasonsEpisodesDemo;

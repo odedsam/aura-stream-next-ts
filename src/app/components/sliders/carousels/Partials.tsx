@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import type { GenreCarouselHeaderProps, GenreCarouselFooterProps } from '@/types';
 import { cn } from '@/lib/utils';
 import { SliderControl } from '@/app/components/sliders/SliderControl';

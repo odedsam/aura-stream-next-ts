@@ -1,7 +1,7 @@
 "use client";
-import MovieDescription from '@/features/movie-detailes/MovieDescription';
+import MovieDescription from '@/features/movie-details/MovieDescription';
 import MovieReviewComponent from '../components/sections/ReviewsSection';
-import MovieDetailsSidebar from '@/features/movie-detailes/MovieDetailsSidebar';
+import MovieDetailsSidebar from '@/features/movie-details/MovieDetailsSidebar';
 import CallToAction from '../layouts/CallToAction';
 
 export default function page() {
