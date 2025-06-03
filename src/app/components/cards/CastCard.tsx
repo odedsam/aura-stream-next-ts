@@ -1,4 +1,4 @@
-interface CastMember {
+export interface CastMember {
   id: string | number;
   name: string;
 }

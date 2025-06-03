@@ -118,3 +118,35 @@ export interface Review {
 export interface ReviewCardProps {
   review: Review;
 }
+
+export interface SkeletonProps {
+  className?: string;
+  variant?: 'text' | 'circular' | 'rectangular' | 'rounded';
+  width?: string | number;
+  height?: string | number;
+  animation?: 'pulse' | 'wave' | 'none';
+}
+
+export interface SkeletonTextProps {
+  lines?: number;
+  className?: string;
+}
+
+export interface SkeletonCardProps {
+  showAvatar?: boolean;
+  showImage?: boolean;
+  linesOfText?: number;
+  className?: string;
+}
+
+export interface SkeletonListProps {
+  items?: number;
+  showAvatar?: boolean;
+  className?: string;
+}
+
+export interface SkeletonTableProps {
+  rows?: number;
+  columns?: number;
+  className?: string;
+}

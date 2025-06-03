@@ -1,7 +1,7 @@
 'use-client';
 import SmartMovieDetails from '@/features/details/GenreDetailsSidebar';
 import { Hero } from '../components/sections/HeroSection';
-import StreamVibePricing from '../components/sections/pricing/PricingSection';
+import AuraStreamPricing from '../components/sections/pricing/PricingSection';
 import PricingTable from '../components/sections/pricing/DesktopPricingTable';
 import CallToAction from '../layouts/CallToAction';
 
@@ -13,7 +13,7 @@ export default function Page() {
         description="When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl."
         image="/assets/hero-movie-mobile.png"
       />
-      <StreamVibePricing />
+      <AuraStreamPricing />
       <PricingTable />
       <SmartMovieDetails />
       <CallToAction />

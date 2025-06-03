@@ -1,35 +1,22 @@
-import Image from 'next/image';
-import SupportForm from '../forms/SupportForm';
+import SupportForm from '@/app/components/forms/SupportForm';
+
 export default function SupportHero() {
   return (
-    <div className="flex flex-col gap-6 laptop:flex-row px-4 my-[200px] font-manrope">
-      <div className="inline-flex flex-col px-3 gap-3 justify-center max-w-4xl">
-       <div className='max-w-4xl inline-flex flex-col'>
-          <h1 className="text-3xl text-white font-bold self-start laptop:text-4xl">Welcome to our support page!</h1>
-          <p className="text-gray-def text-xs self-start laptop:text-base">
-            We're here to help you with any problems you may be having with our product.
-          </p>
-       </div>
-        <div className='w-full flex max-w-4xl'>
-          <Image
-            src={'/assets/hero-support.webp'}
-            alt={'hero-image'}
-            width={360}
-            height={360}
-            className="w-full h-[22.5rem] laptop:w-[26.815rem] md:h-[23.75rem] obect-fill"
-            draggable={false}
-          />
-        </div>
+    <div className="flex flex-col laptop:flex-row px-6 md:px-12 py-12 gap-10 laptop:gap-0 font-manrope bg-black">
+      <div className="w-full laptop:w-1/2 flex flex-col justify-center items-start text-left space-y-6">
+        <h1 className="text-4xl laptop:text-5xl font-extrabold text-white drop-shadow-[0_0_15px_rgba(255,0,80,0.7)]">
+          Need Help? We've Got You.
+        </h1>
+        <p className="text-gray-300 text-sm laptop:text-base max-w-md">
+          Whether you're experiencing issues or just have a question, our support team is ready to
+          assist you. Let us know what's going on and we'll get back to you as soon as possible.
+        </p>
+        <div className="h-1 w-24 bg-gradient-to-r from-red-500 via-pink-500 to-purple-600 rounded-full"></div>
       </div>
-      <SupportForm />
+
+      <div className="w-full laptop:w-1/2 flex justify-center items-center bg-white/5 backdrop-blur-md p-6 rounded-xl shadow-xl">
+        <SupportForm />
+      </div>
     </div>
   );
 }
-
-//  <div className="mb-8">
-//         <h2 className="text-2xl font-bold mb-2 text-white">Welcome to our support page!</h2>
-//         <p className="text-gray-def text-sm">We're here to help you with any problems you may be having with our product.</p>
-//       </div>
-//
-
-//

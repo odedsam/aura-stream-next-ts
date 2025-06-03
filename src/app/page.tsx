@@ -3,11 +3,12 @@ import { BrowseContainer } from './components/sections/BrowseContainer';
 import { GenreCarousel } from './components/sliders/carousels';
 import { OurGenres, TopTen } from '@/config/categories';
 
-import StreamVibeFAQs from './components/sections/FaqsSection';
+import AuraStreamFAQs from './components/sections/FaqsSection';
 import HomeHero from '@/app/components/sections/HomeHero';
-import StreamVibePricing from './components/sections/pricing/PricingSection';
+import AuraStreamPricing from './components/sections/pricing/PricingSection';
 import CallToAction from './layouts/CallToAction';
 import DeviceSection from './components/sections/DeviceSection';
+import TestHero from './components/sections/HomeHero';
 
 export default function Page() {
   const handleSlideChange = (index: number) => {
@@ -16,7 +17,7 @@ export default function Page() {
 
   return (
     <main className="layout">
-      <HomeHero />
+      <TestHero />
       <BrowseContainer categoryName="Comedy" className="p-4 rounded-lg">
         <GenreCarousel
           title="Explore Movie Genres"
@@ -53,8 +54,8 @@ export default function Page() {
         />
       </BrowseContainer>
       <DeviceSection />
-      <StreamVibeFAQs />
-      <StreamVibePricing />
+      <AuraStreamFAQs />
+      <AuraStreamPricing />
       <CallToAction />
     </main>
   );

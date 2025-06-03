@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AltSuspense: React.FC = () => {
+const AltSuspense = () => {
   return (
     <div className="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center px-4">
       <h2 className="text-4xl font-extrabold text-white tracking-wide mb-4">Loading...</h2>

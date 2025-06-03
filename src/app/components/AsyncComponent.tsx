@@ -6,7 +6,6 @@ export default function AsyncComponent() {
   const [data, setData] = useState<string | null>(null);
 
   useEffect(() => {
-    // מדמה קריאת API עם דיליי
     const timeout = setTimeout(() => {
       setData('Loaded async data!');
     }, 3000);

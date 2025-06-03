@@ -13,7 +13,7 @@ interface FormData {
   phone: string;
   message: string;
 }
-const SupportForm: React.FC = () => {
+const SupportForm = () => {
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -51,7 +51,7 @@ const SupportForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto bg-sec p-6 lg:p-8 rounded-lg">
+    <div className="w-full max-w-4xl my-12 mx-auto bg-sec p-6 lg:p-8 rounded-lg">
       <div className="space-y-6">
         <div className="grid grid-cols-1 laptop:grid-cols-2 gap-4">
           <Input
@@ -109,7 +109,8 @@ const SupportForm: React.FC = () => {
             required
           />
           <label htmlFor="terms" className="text-sm text-gray-def leading-relaxed">
-            I agree with <span className="text-gray-def underline cursor-pointer">Terms of Use</span> and{' '}
+            I agree with{' '}
+            <span className="text-gray-def underline cursor-pointer">Terms of Use</span> and{' '}
             <span className="text-gray-def underline cursor-pointer">Privacy Policy</span>
           </label>
         </div>

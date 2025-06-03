@@ -19,7 +19,7 @@ export const manrope = Manrope({
 
 
 export const appMetaData: Metadata = {
-  title: "Stream Vibe App",
+  title: "AuraStream",
   description: "Enjoy Streaming",
   icons: {
     icon: [
@@ -31,7 +31,7 @@ export const appMetaData: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
-  applicationName: "My App",
+  applicationName: "AuthStream",
   appleWebApp: {
     capable: true,
     title: "My App",

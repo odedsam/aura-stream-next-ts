@@ -1,52 +1,32 @@
-import React from 'react';
+import { cn } from '@/lib/utils';
+import type {
+  SkeletonCardProps,
+  SkeletonListProps,
+  SkeletonProps,
+  SkeletonTextProps,
+  SkeletonTableProps,
+} from '@/types/components';
 
-interface SkeletonProps {
-  className?: string;
-  variant?: 'text' | 'circular' | 'rectangular' | 'rounded';
-  width?: string | number;
-  height?: string | number;
-  animation?: 'pulse' | 'wave' | 'none';
-}
-
-interface SkeletonTextProps {
-  lines?: number;
-  className?: string;
-}
-
-interface SkeletonCardProps {
-  showAvatar?: boolean;
-  showImage?: boolean;
-  linesOfText?: number;
-  className?: string;
-}
-
-interface SkeletonListProps {
-  items?: number;
-  showAvatar?: boolean;
-  className?: string;
-}
-
-// Base Skeleton Component
-export const Skeleton: React.FC<SkeletonProps> = ({
-  className = '',
+export const Skeleton = ({
+  className,
   variant = 'text',
   width,
   height,
-  animation = 'pulse'
-}) => {
+  animation = 'pulse',
+}: SkeletonProps) => {
   const baseClasses = 'bg-gray-200 dark:bg-gray-700';
 
   const variantClasses = {
     text: 'h-4 rounded',
     circular: 'rounded-full',
     rectangular: 'rounded-none',
-    rounded: 'rounded-lg'
+    rounded: 'rounded-lg',
   };
 
   const animationClasses = {
     pulse: 'animate-pulse',
-    wave: 'animate-pulse', // You can customize this for a wave effect
-    none: ''
+    wave: 'animate-pulse',
+    none: '',
   };
 
   const style = {
@@ -67,36 +47,29 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   );
 };
 
-// Skeleton Text - Multiple lines of text
-export const SkeletonText: React.FC<SkeletonTextProps> = ({
-  lines = 3,
-  className = ''
-}) => {
+export const SkeletonText = ({ lines = 3, className }: SkeletonTextProps) => {
   return (
-    <div className={`space-y-2 ${className}`}>
+    <div className={cn('space-y-2', className)}>
       {Array.from({ length: lines }).map((_, index) => (
-        <Skeleton
-          key={index}
-          width={index === lines - 1 ? '75%' : '100%'}
-          className="h-4"
-        />
+        <Skeleton key={index} width={index === lines - 1 ? '75%' : '100%'} className="h-4" />
       ))}
     </div>
   );
 };
 
-// Skeleton Card - Complete card skeleton
-export const SkeletonCard: React.FC<SkeletonCardProps> = ({
+export const SkeletonCard = ({
   showAvatar = false,
   showImage = true,
   linesOfText = 3,
-  className = ''
-}) => {
+  className,
+}: SkeletonCardProps) => {
   return (
-    <div className={`border border-gray-200 dark:border-gray-700 rounded-lg p-4 space-y-4 ${className}`}>
-      {showImage && (
-        <Skeleton variant="rectangular" height={200} className="w-full" />
-      )}
+    <div
+      className={cn(
+        'border border-gray-200 dark:border-gray-700 rounded-lg p-4 space-y-4',
+        className,
+      )}>
+      {showImage && <Skeleton variant="rectangular" height={200} className="w-full" />}
 
       <div className="space-y-3">
         {showAvatar && (
@@ -118,19 +91,14 @@ export const SkeletonCard: React.FC<SkeletonCardProps> = ({
   );
 };
 
-// Skeleton List - List of items
-export const SkeletonList: React.FC<SkeletonListProps> = ({
-  items = 5,
-  showAvatar = true,
-  className = ''
-}) => {
+export const SkeletonList = ({ items = 5, showAvatar = true, className }: SkeletonListProps) => {
   return (
-    <div className={`space-y-4 ${className}`}>
+    <div className={cn('space-y-4', className)}>
       {Array.from({ length: items }).map((_, index) => (
-        <div key={index} className="flex items-center space-x-3 p-3 border-b border-gray-100 dark:border-gray-800">
-          {showAvatar && (
-            <Skeleton variant="circular" width={48} height={48} />
-          )}
+        <div
+          key={index}
+          className="flex items-center space-x-3 p-3 border-b border-gray-100 dark:border-gray-800">
+          {showAvatar && <Skeleton variant="circular" width={48} height={48} />}
           <div className="flex-1 space-y-2">
             <Skeleton width="70%" height={16} />
             <Skeleton width="50%" height={14} />
@@ -141,26 +109,24 @@ export const SkeletonList: React.FC<SkeletonListProps> = ({
   );
 };
 
-// Skeleton Table - Table skeleton
-export const SkeletonTable: React.FC<{ rows?: number; columns?: number; className?: string }> = ({
-  rows = 5,
-  columns = 4,
-  className = ''
-}) => {
+export const SkeletonTable = ({ rows = 5, columns = 4, className }: SkeletonTableProps) => {
   return (
-    <div className={`space-y-4 ${className}`}>
-      {/* Table Header */}
+    <div className={cn('space-y-4', className)}>
       <div className="flex space-x-4 pb-2 border-b border-gray-200 dark:border-gray-700">
         {Array.from({ length: columns }).map((_, index) => (
           <Skeleton key={`header-${index}`} width="100%" height={16} className="flex-1" />
         ))}
       </div>
 
-      {/* Table Rows */}
       {Array.from({ length: rows }).map((_, rowIndex) => (
         <div key={`row-${rowIndex}`} className="flex space-x-4 py-2">
           {Array.from({ length: columns }).map((_, colIndex) => (
-            <Skeleton key={`cell-${rowIndex}-${colIndex}`} width="100%" height={16} className="flex-1" />
+            <Skeleton
+              key={`cell-${rowIndex}-${colIndex}`}
+              width="100%"
+              height={16}
+              className="flex-1"
+            />
           ))}
         </div>
       ))}
@@ -168,11 +134,10 @@ export const SkeletonTable: React.FC<{ rows?: number; columns?: number; classNam
   );
 };
 
-// Export all components
 export default {
   Skeleton,
   SkeletonText,
   SkeletonCard,
   SkeletonList,
-  SkeletonTable
+  SkeletonTable,
 };

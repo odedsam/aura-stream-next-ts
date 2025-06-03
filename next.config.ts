@@ -24,6 +24,9 @@ const nextConfig: NextConfig = {
     ],
   },
   serverExternalPackages: ['fs', 'path'],
+  dev: {
+    allowedDevOrigins: ['https://409e-2a00-a041-1720-800-9dcb-3e83-1fb0-21f4.ngrok-free.app'],
+  },
   experimental: {},
   compress: true,
   headers: async () => [

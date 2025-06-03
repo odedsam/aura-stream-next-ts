@@ -8,7 +8,7 @@ const DeviceSection: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-white text-3xl font-bold mb-4">We Provide you streaming experience across various devices.</h1>
-          <p className="text-gray-def text-lg">With StreamVibe, you can enjoy your favorite movies and TV shows anytime, anywhere.</p>
+          <p className="text-gray-def text-lg">With AuraStream, you can enjoy your favorite movies and TV shows anytime, anywhere.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

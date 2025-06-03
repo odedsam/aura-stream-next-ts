@@ -3,34 +3,36 @@ import type { FAQItem } from '@/types';
 import { useState } from 'react';
 import { faqData } from '@/config/mock';
 import { FaqHeader, FAQCard } from '@/app/components/cards/FaqCard';
+import { cn } from '@/lib/utils';
 
 interface FAQSectionProps {
   title?: string;
   subtitle?: string;
   faqs: FAQItem[];
   onAskQuestion?: () => void;
+  className?: string;
 }
 
-export const FAQSection: React.FC<FAQSectionProps> = ({
+export const FAQSection = ({
   title = 'Frequently Asked Questions',
-  subtitle = "Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe.",
+  subtitle = "Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about AuraStream.",
   faqs,
-  onAskQuestion = () => console.log('Ask a question clicked'),
-}) => {
+  onAskQuestion,
+  className,
+}: FAQSectionProps) => {
   const [openIndex, setOpenIndex] = useState<number>(0);
-
   const handleToggle = (index: number): void => {
     setOpenIndex(openIndex === index ? -1 : index);
   };
 
   return (
-    <div className="bg-primary py-16 px-8 max-w-4/5 mx-auto">
-      <div>
+    <div className={cn('bg-primary grid py-16 max-w-4/5 mx-auto', className)}>
+      <div className="">
         <FaqHeader title={title} subtitle={subtitle} onAskQuestion={onAskQuestion} />
       </div>
 
-      <div className="flex flex-col items-center xl:flex-row gap-12 xl:gap-20">
-        <div className="bg-primary rounded-xl w-full">
+      <div className="flex flex-col items-center xl:flex-row  py-14 xl:gap-20">
+        <div className="bg-primary rounded-xl w-full grow-1 ">
           {faqs.slice(0, 4).map((faq, index) => (
             <FAQCard
               key={index}
@@ -43,7 +45,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
           ))}
         </div>
 
-        <div className="bg-primary rounded-xl w-full">
+        <div className="bg-primary rounded-xl w-full grow-1 ">
           {faqs.slice(4).map((faq, index) => (
             <FAQCard
               key={index + 4}
@@ -60,8 +62,8 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
   );
 };
 
-const StreamVibeFAQs: React.FC = () => {
+const AuraStreamFAQs = () => {
   return <FAQSection faqs={faqData} />;
 };
 
-export default StreamVibeFAQs;
+export default AuraStreamFAQs;

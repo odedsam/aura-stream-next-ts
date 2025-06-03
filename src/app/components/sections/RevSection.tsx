@@ -1,11 +1,11 @@
 'use client';
 
 import { Plus } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { Button, CarouselButton } from '../ui/Buttons';
+import { useSlider } from '@/hooks/useSlider';
 import { SliderIndicator } from '../sliders/SliderIndicator';
 import ReviewCard from '../cards/ReviewCard';
-import { cn } from '@/lib/utils';
-import { useSlider } from '@/hooks/useSlider';
 
 interface Review {
   id: number;
@@ -34,7 +34,7 @@ export const RevSec = ({ reviews, perPage = 2, onAddReview, className }: Reviews
             Add Your Review
           </Button>
         </div>
-        <p className="text-gray-500">No reviews yet. Be the first to add one!</p>
+        <p className="text-gray-def">No reviews yet. Be the first to add one!</p>
       </section>
     );
   }

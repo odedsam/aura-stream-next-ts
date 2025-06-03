@@ -115,7 +115,7 @@ export const MobilePricingTable: React.FC = () => {
         <div className="mb-8 flex flex-col">
           <h1 className="text-2xl lg:text-4xl font-bold mb-4">Compare our plans and find the right one for you</h1>
           <p className="text-gray-def text-sm lg:text-base">
-            StreamVibe offers three different plans to fit your needs: Basic, Standard, and Premium. Compare the features of each plan and
+            AuraStream offers three different plans to fit your needs: Basic, Standard, and Premium. Compare the features of each plan and
             choose the one that's right for you.
           </p>
         </div>

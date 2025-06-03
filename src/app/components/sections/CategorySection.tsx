@@ -274,7 +274,7 @@ const TrendingShowsSection: React.FC = () => {
   );
 };
 
-const StreamVibeContentSections: React.FC = () => {
+const AuraStreamContentSections: React.FC = () => {
   return (
     <div className="bg-black">
       <OurGenresSection />
@@ -284,6 +284,6 @@ const StreamVibeContentSections: React.FC = () => {
   );
 };
 
-export default StreamVibeContentSections;
+export default AuraStreamContentSections;
 export { ContentSection, NavigationControls, SliderContainer, ArrowButton, GenreCard };
 export type { ContentSectionProps, NavigationControlsProps, SliderContainerProps };

@@ -7,11 +7,8 @@ import Image from "next/image";
 const AppFooter = () => {
   return (
     <footer className="bg-sec text-white">
-      {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Desktop & Laptop Layout (md and up) */}
         <div className="hidden md:grid md:grid-cols-6 gap-8">
-          {/* Map through footer sections */}
           {footerData.map((section, index) => (
             <div key={index}>
               <h3 className="text-white font-semibold text-lg mb-6">{section.title}</h3>
@@ -27,7 +24,6 @@ const AppFooter = () => {
             </div>
           ))}
 
-          {/* Connect With Us Column */}
           <div>
             <h3 className="text-white font-semibold text-lg mb-6">Connect With Us</h3>
             <div className="flex space-x-4">
@@ -38,7 +34,7 @@ const AppFooter = () => {
                   className="w-10 h-10 bg-quaternary rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors border border-quinary"
                   aria-label={social.name}
                 >
-                  <Image src={social.icon} alt={'social-icon'} width={24} height={24} className="w-6 h-6" />
+                  <Image src={social.icon} alt={'social-icon'} width={24} height={24} className="w-auto h-auto" />
                 </Link>
               ))}
             </div>

@@ -1,22 +1,13 @@
-// import HeroSliderServer from "@/app/components/common/HeroSliderServer";
-
-import LuxuryStreamingLogos from "../components/common/NewLogoExamples";
-
-// export default async function page() {
-//   return (
-//     <main>
-//       <div>h</div>
-
-//       <HeroSliderServer />
-//       {/* שאר התוכן */}
-//     </main>
-//   );
-// }// app/server-test/page.tsx
+'use client';
+import HeroSliderServer from '@/app/components/common/HeroSliderServer';
+import CallToAction from '../layouts/CallToAction';
 
 export default async function page() {
   return (
-    <div className="">
-      <LuxuryStreamingLogos />
-    </div>
+    <main>
+      <HeroSliderServer />
+
+      <CallToAction />
+    </main>
   );
 }

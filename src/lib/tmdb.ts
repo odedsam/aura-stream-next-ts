@@ -1,6 +1,11 @@
-import { env } from "@/config/env";
+import { CastMember } from '@/app/components/cards/CastCard';
+import { env } from '@/config/env';
 
-const BASE_URL = "https://api.themoviedb.org/3";
+const BASE_URL = 'https://api.themoviedb.org/3';
+
+if (!env.IMDB_API_KEY || !env.IMDB_ACCESS_TOKEN) {
+  throw new Error('Missing required IMDB API keys in environment variables');
+}
 
 const headers = {
   Authorization: `Bearer ${env.IMDB_ACCESS_TOKEN}`,
@@ -8,7 +13,7 @@ const headers = {
 
 export type Movie = {
   id: number;
-  title: string;
+  title?: string;
   name?: string;
   overview: string;
   poster_path: string | null;
@@ -16,10 +21,10 @@ export type Movie = {
 
 export type Trailer = {
   id: string;
-  key: string; // YouTube key
+  key: string;
   name: string;
-  site: string; // e.g. "YouTube"
-  type: string; // e.g. "Trailer"
+  site: string;
+  type: string;
 };
 
 export const fetchPopularMovies = async (): Promise<Movie[]> => {
@@ -27,9 +32,9 @@ export const fetchPopularMovies = async (): Promise<Movie[]> => {
     headers,
     next: { revalidate: 3600 },
   });
-  if (!res.ok) {
-    throw new Error("Failed to fetch popular movies");
-  }
+
+  if (!res.ok) throw new Error('Failed to fetch popular movies');
+
   const data = await res.json();
   return data.results;
 };
@@ -39,9 +44,9 @@ export const fetchPopularShows = async (): Promise<Movie[]> => {
     headers,
     next: { revalidate: 3600 },
   });
-  if (!res.ok) {
-    throw new Error("Failed to fetch popular shows");
-  }
+
+  if (!res.ok) throw new Error('Failed to fetch popular shows');
+
   const data = await res.json();
   return data.results;
 };
@@ -51,9 +56,9 @@ export const fetchMovieById = async (id: string): Promise<Movie> => {
     headers,
     next: { revalidate: 3600 },
   });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch movie with id: ${id}`);
-  }
+
+  if (!res.ok) throw new Error(`Failed to fetch movie with id: ${id}`);
+
   return res.json();
 };
 
@@ -62,12 +67,11 @@ export const fetchShowById = async (id: string): Promise<Movie> => {
     headers,
     next: { revalidate: 3600 },
   });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch show with id: ${id}`);
-  }
+
+  if (!res.ok) throw new Error(`Failed to fetch show with id: ${id}`);
+
   return res.json();
 };
-
 
 export const fetchMovieTrailers = async (movieId: string): Promise<Trailer[]> => {
   const res = await fetch(`${BASE_URL}/movie/${movieId}/videos?language=en-US`, {
@@ -75,14 +79,11 @@ export const fetchMovieTrailers = async (movieId: string): Promise<Trailer[]> =>
     next: { revalidate: 3600 },
   });
 
-  if (!res.ok) {
-    throw new Error(`Failed to fetch trailers for movie ${movieId}`);
-  }
+  if (!res.ok) throw new Error(`Failed to fetch trailers for movie ${movieId}`);
 
   const data = await res.json();
-  // מסננים רק טריילרים מיוטיוב
   return data.results.filter(
-    (video: Trailer) => video.site === "YouTube" && video.type === "Trailer"
+    (video: Trailer) => video.site === 'YouTube' && video.type === 'Trailer',
   );
 };
 
@@ -92,12 +93,22 @@ export const fetchShowTrailers = async (showId: string): Promise<Trailer[]> => {
     next: { revalidate: 3600 },
   });
 
-  if (!res.ok) {
-    throw new Error(`Failed to fetch trailers for show ${showId}`);
-  }
+  if (!res.ok) throw new Error(`Failed to fetch trailers for show ${showId}`);
 
   const data = await res.json();
   return data.results.filter(
-    (video: Trailer) => video.site === "YouTube" && video.type === "Trailer"
+    (video: Trailer) => video.site === 'YouTube' && video.type === 'Trailer',
   );
+};
+
+export const fetchShowCast = async (id: string): Promise<CastMember[]> => {
+  const res = await fetch(`${BASE_URL}/tv/${id}/credits`, {
+    headers,
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) throw new Error(`Failed to fetch cast for show ${id}`);
+
+  const data = await res.json();
+  return data.cast;
 };

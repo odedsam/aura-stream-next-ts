@@ -47,7 +47,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ title, subtitle,
   );
 };
 
-const StreamVibePricing: React.FC = () => {
+const AuraStreamPricing: React.FC = () => {
   const handleChoosePlan = (planId: string) => {
     console.log(`User chose plan: ${planId}`);
   };
@@ -60,11 +60,11 @@ const StreamVibePricing: React.FC = () => {
     <PricingSection
       plans={pricingPlans}
       title="Choose the plan that's right for you"
-      subtitle="Join StreamVibe and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!"
+      subtitle="Join AuraStream and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!"
       onChoosePlan={handleChoosePlan}
       onStartFreeTrial={handleStartFreeTrial}
     />
   );
 };
 
-export default StreamVibePricing;
+export default AuraStreamPricing;

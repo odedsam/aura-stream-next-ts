@@ -82,7 +82,6 @@ const MovieReviewComponent: React.FC = () => {
               ))}
             </div>
 
-            {/* Review Navigation */}
             <div className="flex items-center justify-center mt-6 gap-4">
               <Button
                 className="p-2 rounded-full bg-primary text-gray-def hover:bg-gray-700 transition-colors whitespace-normal h-auto"
@@ -90,7 +89,6 @@ const MovieReviewComponent: React.FC = () => {
                 icon={<ArrowLeft className="w-5 h-5" />}
               />
 
-              {/* Review Indicators */}
               <SliderIndicator
                 currentIndex={currentReviewIndex}
                 totalItems={reviews.length}

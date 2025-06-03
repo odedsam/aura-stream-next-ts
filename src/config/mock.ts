@@ -14,42 +14,42 @@ export const devicesData: DeviceData[] = [
     id: 1,
     title: 'Smartphones',
     description:
-      'StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
+      'AuraStream is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
     iconPath: '/icons/smart-phones.svg',
   },
   {
     id: 2,
     title: 'Tablet',
     description:
-      'StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
+      'AuraStream is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
     iconPath: '/icons/tablet.svg',
   },
   {
     id: 3,
     title: 'Smart TV',
     description:
-      'StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
+      'AuraStream is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
     iconPath: '/icons/smart-tv.svg',
   },
   {
     id: 4,
     title: 'Laptops',
     description:
-      'StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
+      'AuraStream is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
     iconPath: '/icons/laptops.svg',
   },
   {
     id: 5,
     title: 'Gaming Consoles',
     description:
-      'StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
+      'AuraStream is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
     iconPath: '/icons/gaming-consoles.svg',
   },
   {
     id: 6,
     title: 'VR Headsets',
     description:
-      'StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
+      'AuraStream is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
     iconPath: '/icons/vrheadset.svg',
   },
 ];
@@ -109,44 +109,44 @@ export const sampleMovies: Movie[] = [
 
 export const faqData: FAQItem[] = [
   {
-    question: 'What is StreamVibe?',
+    question: 'What is AuraStream?',
     answer:
-      'StreamVibe is a streaming service that allows you to watch movies and shows on demand.',
+      'AuraStream is a streaming service that allows you to watch movies and shows on demand.',
   },
   {
-    question: 'How much does StreamVibe cost?',
+    question: 'How much does AuraStream cost?',
     answer:
-      'StreamVibe offers three subscription plans: Basic Plan at $9.99/month, Standard Plan at $12.99/month, and Premium Plan at $14.99/month. Each plan comes with different features and content access levels.',
+      'AuraStream offers three subscription plans: Basic Plan at $9.99/month, Standard Plan at $12.99/month, and Premium Plan at $14.99/month. Each plan comes with different features and content access levels.',
   },
   {
-    question: 'What content is available on StreamVibe?',
+    question: 'What content is available on AuraStream?',
     answer:
-      'StreamVibe offers an extensive library of movies and TV shows across various genres, including the latest releases, classic films, documentaries, and exclusive original content.',
+      'AuraStream offers an extensive library of movies and TV shows across various genres, including the latest releases, classic films, documentaries, and exclusive original content.',
   },
   {
-    question: 'How can I watch StreamVibe?',
+    question: 'How can I watch AuraStream?',
     answer:
-      'You can watch StreamVibe on multiple devices including smartphones, tablets, smart TVs, laptops, and desktop computers. Our platform is accessible through web browsers and dedicated mobile apps.',
+      'You can watch AuraStream on multiple devices including smartphones, tablets, smart TVs, laptops, and desktop computers. Our platform is accessible through web browsers and dedicated mobile apps.',
   },
   {
-    question: 'How do I sign up for StreamVibe?',
+    question: 'How do I sign up for AuraStream?',
     answer:
-      'Signing up for StreamVibe is easy! Simply visit our website, choose your preferred subscription plan, create an account with your email, and provide payment information. You can start watching immediately after registration.',
+      'Signing up for AuraStream is easy! Simply visit our website, choose your preferred subscription plan, create an account with your email, and provide payment information. You can start watching immediately after registration.',
   },
   {
-    question: 'What is the StreamVibe free trial?',
+    question: 'What is the AuraStream free trial?',
     answer:
-      'StreamVibe offers a free trial period for new subscribers. During this trial, you can explore our full content library and features without any charges. The trial duration varies by plan.',
+      'AuraStream offers a free trial period for new subscribers. During this trial, you can explore our full content library and features without any charges. The trial duration varies by plan.',
   },
   {
-    question: 'How do I contact StreamVibe customer support?',
+    question: 'How do I contact AuraStream customer support?',
     answer:
       'You can reach our customer support team through multiple channels: email support, live chat on our website, or phone support. Our team is available 24/7 to assist with any questions or technical issues.',
   },
   {
-    question: 'What are the StreamVibe payment methods?',
+    question: 'What are the AuraStream payment methods?',
     answer:
-      'StreamVibe accepts various payment methods including major credit cards (Visa, MasterCard, American Express), PayPal, and digital wallets. All payments are processed securely through encrypted channels.',
+      'AuraStream accepts various payment methods including major credit cards (Visa, MasterCard, American Express), PayPal, and digital wallets. All payments are processed securely through encrypted channels.',
   },
 ];
 

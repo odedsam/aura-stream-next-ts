@@ -1,54 +1,183 @@
 'use client';
-import React from 'react';
-import { Play, Search, Menu } from 'lucide-react';
-import { categories, moviesCatalog } from '@/config/mock';
+import { Play } from 'lucide-react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
-const HomeHero = () => {
+const ColorfulLiquidHero: React.FC = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
+  const [isLoaded, setIsLoaded] = useState(false);
+  const timeRef = useRef(0);
+
+  // Mouse tracking
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      setMousePos({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    setTimeout(() => setIsLoaded(true), 300);
+
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const drawColorfulLiquid = useCallback(
+    (ctx: CanvasRenderingContext2D, width: number, height: number) => {
+      const centerX = width / 2;
+      const centerY = height / 2.5;
+
+      const layers = [
+        { color: '#e50000', alpha: 0.4, scale: 1.0, speed: 1.0 },
+        { color: '#ff3366', alpha: 0.3, scale: 0.8, speed: 0.8 },
+        { color: '#ff6699', alpha: 0.25, scale: 0.6, speed: 1.2 },
+        { color: '#cc0033', alpha: 0.35, scale: 1.2, speed: 0.6 },
+      ];
+
+      layers.forEach((layer, index) => {
+        ctx.save();
+        ctx.globalAlpha = layer.alpha;
+
+        const gradient = ctx.createRadialGradient(
+          centerX + mousePos.x * 100 - 50,
+          centerY + mousePos.y * 100 - 50,
+          0,
+          centerX,
+          centerY,
+          Math.min(width, height) * 0.4 * layer.scale,
+        );
+
+        gradient.addColorStop(0, layer.color);
+        gradient.addColorStop(0.3, layer.color + '80');
+        gradient.addColorStop(0.7, layer.color + '40');
+        gradient.addColorStop(1, layer.color + '00');
+
+        ctx.fillStyle = gradient;
+
+        ctx.beginPath();
+        const points = 8;
+        const baseRadius = Math.min(width, height) * 0.15 * layer.scale;
+
+        for (let i = 0; i <= points; i++) {
+          const angle = (i / points) * Math.PI * 2;
+          const wave1 = Math.sin(timeRef.current * 0.02 * layer.speed + angle * 2 + index) * 0.3;
+          const wave2 = Math.cos(timeRef.current * 0.015 * layer.speed + angle * 3 + index) * 0.2;
+          const mouseInfluence = (mousePos.x - 0.5) * 0.4 + (mousePos.y - 0.5) * 0.3;
+
+          const radius = baseRadius * (1 + wave1 + wave2 + mouseInfluence);
+          const x = centerX + Math.cos(angle) * radius;
+          const y = centerY + Math.sin(angle) * radius;
+
+          if (i === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            const prevAngle = ((i - 1) / points) * Math.PI * 2;
+            const prevRadius =
+              baseRadius *
+              (1 + Math.sin(timeRef.current * 0.02 * layer.speed + prevAngle * 2 + index) * 0.3);
+            const prevX = centerX + Math.cos(prevAngle) * prevRadius;
+            const prevY = centerY + Math.sin(prevAngle) * prevRadius;
+
+            const cp1x = prevX + Math.cos(prevAngle + Math.PI / 2) * 25;
+            const cp1y = prevY + Math.sin(prevAngle + Math.PI / 2) * 25;
+            const cp2x = x + Math.cos(angle - Math.PI / 2) * 25;
+            const cp2y = y + Math.sin(angle - Math.PI / 2) * 25;
+
+            ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+          }
+        }
+
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      });
+    },
+    [mousePos],
+  );
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+
+    const resizeCanvas = () => {
+      const rect = container.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    };
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const animate = () => {
+      if (!canvasRef.current) return;
+
+      const width = canvas.width;
+      const height = canvas.height;
+
+      const bgGradient = ctx.createRadialGradient(
+        width * mousePos.x,
+        height * mousePos.y,
+        0,
+        width / 2,
+        height / 2,
+        Math.max(width, height),
+      );
+      bgGradient.addColorStop(0, '#1a1a1a');
+      bgGradient.addColorStop(0.3, '#0d0d0d');
+      bgGradient.addColorStop(1, '#000000');
+
+      ctx.fillStyle = bgGradient;
+      ctx.fillRect(0, 0, width, height);
+
+      drawColorfulLiquid(ctx, width, height);
+
+      timeRef.current += 1;
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, [drawColorfulLiquid, mousePos]);
+
   return (
-    <div className="relative min-h-screen bg-black overflow-hidden">
-      {/* Movie Grid Background */}
+    <div
+      ref={containerRef}
+      className={`relative w-full h-screen overflow-hidden transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      <div className="absolute inset-0 opacity-30">
-        <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2 p-4 h-full">
-          {moviesCatalog.map((movie, index) => (
-            <div
-              key={movie.id}
-              className="aspect-[2/3] rounded-lg overflow-hidden bg-gradient-to-br from-purple-600 via-red-500 to-orange-500 animate-pulse"
-              style={{ animationDelay: `${index * 0.1}s`, animationDuration: '3s' }}>
-              <div className="w-full h-full bg-gradient-to-t from-black/50 to-transparent flex items-end p-2">
-                <span className="text-white text-xs font-medium truncate">{movie.title}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="absolute bottom-40 left-1/2 transform -translate-x-1/2 z-10 text-center space-y-2">
+        <h1 className="text-3xl md:text-5xl text-white font-black uppercase tracking-widest drop-shadow-[0_0_10px_rgba(255,0,80,0.8)] animate-pulse">
+          Aura Stream
+        </h1>
+        <p className="text-sm md:text-base text-pink-200 max-w-sm drop-shadow-md mx-auto italic">
+          Streaming evolved. A new dimension of cinematic experience. Experience quantum-stitched
+          realities in real time.
+        </p>
       </div>
 
-      {/* Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50"></div>
-
-      {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 max-w-4xl leading-tight">
-          The Best Streaming Experience
-        </h1>
-
-        <p className="text-gray-300 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
-          StreamVibe is the best streaming experience for watching your favorite movies and shows on demand, anytime, anywhere. With
-          StreamVibe, you can enjoy a wide variety of content including the latest blockbusters, classic movies, popular TV shows, and more.
-          You can also create your own watchlists, so you never miss a beat.
-        </p>
-
-        <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200 flex items-center gap-3 mb-16">
-          <Play className="w-5 h-5" />
-          Start Watching Now
+      <div className="absolute bottom-8 w-full flex justify-center z-10">
+        <button
+          className="group relative px-8 py-3 border border-red-600/30 text-white font-light uppercase tracking-widest text-sm transition-all duration-500 hover:border-red-600 hover:bg-red-600/5"
+          style={{
+            clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%)',
+          }}>
+          <Play className="w-4 h-4 inline-block mr-2" />
+          <span className="relative z-10">Start Watching</span>
+          <div className="absolute inset-0 bg-red-600/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
         </button>
       </div>
-
-      {/* Bottom Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent"></div>
     </div>
   );
 };
 
-export default HomeHero;
+export default ColorfulLiquidHero;
