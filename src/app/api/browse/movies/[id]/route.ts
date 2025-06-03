@@ -1,12 +1,14 @@
 import { fetchMovieById, fetchMovieTrailers } from '@/lib/tmdb';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } },
+): Promise<NextResponse> {
+  const { id } = params;
   try {
-    const movie = await fetchMovieById(params.id);
-    console.log(request);
-    console.log(params.id);
-    const trailers = await fetchMovieTrailers(params.id);
+    const movie = await fetchMovieById(id);
+    const trailers = await fetchMovieTrailers(id);
 
     return NextResponse.json({ movie, trailers });
   } catch (error) {

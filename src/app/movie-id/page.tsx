@@ -2,8 +2,8 @@
 import SmartMovieDetails from '@/features/details/GenreDetailsSidebar';
 import { Hero } from '../components/sections/HeroSection';
 import AuraStreamPricing from '../components/sections/pricing/PricingSection';
-import PricingTable from '../components/sections/pricing/DesktopPricingTable';
 import CallToAction from '../layouts/CallToAction';
+import PricingTable from '../components/sections/pricing/PricingTable';
 
 export default function Page() {
   return (

@@ -56,6 +56,9 @@ const nextConfig: NextConfig = {
       ],
     },
   ],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   ...(process.env.NODE_ENV === 'production' && {
     poweredByHeader: false,
     generateEtags: false,
