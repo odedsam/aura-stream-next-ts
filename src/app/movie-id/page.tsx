@@ -1,5 +1,5 @@
 'use-client';
-import SmartMovieDetails from '@/features/movie-details/MovieDetailsSidebar';
+import SmartMovieDetails from '@/features/details/GenreDetailsSidebar';
 import { Hero } from '../components/sections/HeroSection';
 import StreamVibePricing from '../components/sections/pricing/PricingSection';
 import PricingTable from '../components/sections/pricing/DesktopPricingTable';

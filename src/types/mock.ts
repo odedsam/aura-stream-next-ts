@@ -84,11 +84,7 @@ export interface SeasonMock {
   description?: string;
 }
 
-export interface SeasonsEpisodesProps {
-  seasons: SeasonMock[];
-  currentSeason?: number;
-  onEpisodePlay?: (seasonId: string, episodeId: string) => void;
-}
+
 
 export interface PlanFeatures {
   content: string;

@@ -1,4 +1,6 @@
+import { QuickAction } from '@/app/components/common/QuickActions';
 import { clsx, type ClassValue } from 'clsx';
+import { LucideIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -10,6 +12,10 @@ export const formatPrice = (price: number): string => {
     style: 'currency',
     currency: 'USD',
   }).format(price);
+};
+
+export const formatRating = (rating: number): string => {
+  return rating % 1 === 0 ? rating.toString() : rating.toFixed(1);
 };
 
 export const addItemToArray = <T>(array: T[], newItem: T): T[] => {
@@ -25,10 +31,7 @@ export const safeParseInt = (value: string, fallback: number = 0): number => {
   return isNaN(parsed) ? fallback : parsed;
 };
 
-export const incrementNumber = (
-  current: number,
-  increment: number = 1,
-): number => {
+export const incrementNumber = (current: number, increment: number = 1): number => {
   return current + increment;
 };
 
@@ -47,10 +50,7 @@ export const addLanguageToMovie = (
   return addItemToArray(languages, newLanguage);
 };
 
-export const addGenreToMovie = (
-  genres: string[],
-  newGenre: string = 'Action',
-): string[] => {
+export const addGenreToMovie = (genres: string[], newGenre: string = 'Action'): string[] => {
   if (genres.includes(newGenre)) {
     return genres;
   }
@@ -68,4 +68,42 @@ export const formatDuration = (minutes: number): string => {
 
 export const getMovieAge = (releaseYear: number): number => {
   return new Date().getFullYear() - releaseYear;
+};
+
+export const createQuickAction = (
+  id: string,
+  label: string,
+  onClick: () => void,
+  options?: Partial<Omit<QuickAction, 'id' | 'label' | 'onClick'>>,
+): QuickAction => ({
+  id,
+  label,
+  onClick,
+  ...options,
+});
+
+export const QuickActionCreators = {
+  add: (label: string, onClick: () => void, icon?: LucideIcon) =>
+    createQuickAction(`add-${label.toLowerCase()}`, `Add ${label}`, onClick, {
+      variant: 'success',
+      icon,
+    }),
+
+  edit: (label: string, onClick: () => void, icon?: LucideIcon) =>
+    createQuickAction(`edit-${label.toLowerCase()}`, `Edit ${label}`, onClick, {
+      variant: 'warning',
+      icon,
+    }),
+
+  delete: (label: string, onClick: () => void, icon?: LucideIcon) =>
+    createQuickAction(`delete-${label.toLowerCase()}`, `Delete ${label}`, onClick, {
+      variant: 'danger',
+      icon,
+    }),
+
+  next: (label: string, onClick: () => void, icon?: LucideIcon) =>
+    createQuickAction(`next-${label.toLowerCase()}`, `Next ${label}`, onClick, {
+      variant: 'primary',
+      icon,
+    }),
 };

@@ -1,4 +1,13 @@
-import { Country, MovieCatalog, Plan, SeasonMock, DeviceData, Movie, FAQItem, PricingPlan } from '@/types';
+import {
+  Country,
+  MovieCatalog,
+  Plan,
+  SeasonMock,
+  DeviceData,
+  Movie,
+  FAQItem,
+  PricingPlan,
+} from '@/types';
 
 export const devicesData: DeviceData[] = [
   {
@@ -101,7 +110,8 @@ export const sampleMovies: Movie[] = [
 export const faqData: FAQItem[] = [
   {
     question: 'What is StreamVibe?',
-    answer: 'StreamVibe is a streaming service that allows you to watch movies and shows on demand.',
+    answer:
+      'StreamVibe is a streaming service that allows you to watch movies and shows on demand.',
   },
   {
     question: 'How much does StreamVibe cost?',
@@ -144,14 +154,16 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: 'basic',
     name: 'Basic Plan',
-    description: 'Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.',
+    description:
+      'Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.',
     price: 9.99,
     period: 'month',
   },
   {
     id: 'standard',
     name: 'Standard Plan',
-    description: 'Access to a wider selection of movies and shows, including most new releases and exclusive content.',
+    description:
+      'Access to a wider selection of movies and shows, including most new releases and exclusive content.',
     price: 12.99,
     period: 'month',
     isPopular: true,
@@ -159,7 +171,8 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: 'premium',
     name: 'Premium Plan',
-    description: 'Access to a widest selection of movies and shows, including all new releases and Offline Viewing.',
+    description:
+      'Access to a widest selection of movies and shows, including all new releases and Offline Viewing.',
     price: 14.99,
     period: 'month',
   },
@@ -211,7 +224,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'After a young boy vanishes, his mother, a police chief and his friends must confront terrifying supernatural forces in order to get him back.',
         duration: '47 min',
-        thumbnail: 'https://via.placeholder.com/200x120/FFC107/000000?Text=Episode+1',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_Ratio0.6716_AL_.jpg',
         releaseDate: '2016-07-15',
       },
       {
@@ -221,7 +234,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'Lucas, Mike and Dustin try to talk to the girl they found in the woods. Hopper questions an anxious Joyce about an unsettling phone call.',
         duration: '55 min',
-        thumbnail: 'https://via.placeholder.com/200x120/4CAF50/FFFFFF?Text=Episode+2',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-1-3',
@@ -230,7 +243,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'An increasingly concerned Nancy looks for Barb and finds out what Jonathan has been up to. Joyce is convinced Will is trying to talk to her.',
         duration: '52 min',
-        thumbnail: 'https://via.placeholder.com/200x120/F44336/FFFFFF?Text=Episode+3',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMTI3NTQyMzU5M15BMl5BanBnXkFtZTcwMTM2MjgyMQ@@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-1-4',
@@ -239,15 +252,21 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'Refusing to believe Will is dead, Joyce and Hopper team up to investigate what happened to him. Hopper breaks into the lab.',
         duration: '50 min',
-        thumbnail: 'https://via.placeholder.com/200x120/2196F3/FFFFFF?Text=Episode+4',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6716_AL_.jpg',
       },
+
+
+
+
+
+
       {
         id: 'ep-1-5',
         number: 5,
         title: 'Chapter Five: The Flea and the Acrobat',
         description: '...',
         duration: '51 min',
-        thumbnail: 'https://via.placeholder.com/200x120/9C27B0/FFFFFF?Text=Episode+5',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BOTJiNDEzOWYtMTVjOC00ZjlmLWE0NGMtZmE1OWVmZDQ2OWJhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-1-6',
@@ -255,7 +274,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Six: The Monster',
         description: '...',
         duration: '51 min',
-        thumbnail: 'https://via.placeholder.com/200x120/673AB7/FFFFFF?Text=Episode+6',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-1-7',
@@ -263,7 +282,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Seven: The Bathtub',
         description: '...',
         duration: '47 min',
-        thumbnail: 'https://via.placeholder.com/200x120/3F51B5/FFFFFF?Text=Episode+7',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNDBjMWUxNTUtNjZiNi00YzJhLTgzNzUtMTRiY2FkZmMzYTNjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-1-8',
@@ -271,7 +290,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Eight: The Upside Down',
         description: '...',
         duration: '53 min',
-        thumbnail: 'https://via.placeholder.com/200x120/00BCD4/FFFFFF?Text=Episode+8',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMzkzMmU0YTYtOWM3My00YzBmLWI0YzctOGYyNTkwMWE5MTJkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_Ratio0.6716_AL_.jpg',
       },
     ],
   },
@@ -290,7 +309,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'As the town preps for Halloween, a high-scoring rival shakes things up in the arcade, and a skeptical Hopper inspects a field of rotting pumpkins.',
         duration: '48 min',
-        thumbnail: 'https://via.placeholder.com/200x120/E91E63/FFFFFF?Text=Season+2+Ep+1',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGdeQXVyODIxMzk5NjA@._V1_Ratio0.7015_AL_.jpg',
       },
       {
         id: 'ep-2-2',
@@ -299,7 +318,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'After Will sees something terrible on his trick-or-treat Halloween night, Mike wonders whether Eleven is still out there. Nancy wrestles with the truth about Barb.',
         duration: '53 min',
-        thumbnail: 'https://via.placeholder.com/200x120/9E9E9E/FFFFFF?Text=Season+2+Ep+2',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNWJlNzUzNGMtYTAwMS00ZjI2LWFmNWQtODcxNWUxODA5YmU1XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-2-3',
@@ -307,7 +326,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Three: The Pollywog',
         description: '...',
         duration: '51 min',
-        thumbnail: 'https://via.placeholder.com/200x120/607D8B/FFFFFF?Text=Season+2+Ep+3',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BOTI4NTNhZDMtMWNkZi00MTRmLWJmZDQtMmJkMGVmZTEzODlhXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-2-4',
@@ -315,7 +334,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Four: Will the Wise',
         description: '...',
         duration: '55 min',
-        thumbnail: 'https://via.placeholder.com/200x120/009688/FFFFFF?Text=Season+2+Ep+4',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNTkyOGVjMGEtNmQzZi00NzFlLTlhOWQtODYyMDc2ZGJmYzFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_Ratio0.7015_AL_.jpg',
       },
       {
         id: 'ep-2-5',
@@ -323,15 +342,20 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Five: Dig Dug',
         description: '...',
         duration: '53 min',
-        thumbnail: 'https://via.placeholder.com/200x120/795548/FFFFFF?Text=Season+2+Ep+5',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BOTdiNzJlOWUtNWMwNS00NmFlLWI0YTEtZmI3YjIzZWUyY2Y3XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_Ratio0.6716_AL_.jpg',
       },
+
+
+
+
+
       {
         id: 'ep-2-6',
         number: 6,
         title: 'Chapter Six: The Spy',
         description: '...',
         duration: '57 min',
-        thumbnail: 'https://via.placeholder.com/200x120/FF9800/FFFFFF?Text=Season+2+Ep+6',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMmExNzU2ZWMtYzUwYi00YmM2LTkxZTQtNmVhNjY0NTMyMWI2XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-2-7',
@@ -339,15 +363,21 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Seven: The Lost Sister',
         description: '...',
         duration: '50 min',
-        thumbnail: 'https://via.placeholder.com/200x120/3F51B5/FFFFFF?Text=Season+2+Ep+7',
+        thumbnail:
+'https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_Ratio0.6716_AL_.jpg',
       },
+
+
+
+
+
       {
         id: 'ep-2-8',
         number: 8,
         title: 'Chapter Eight: The Mind Flayer',
         description: '...',
         duration: '52 min',
-        thumbnail: 'https://via.placeholder.com/200x120/9C27B0/FFFFFF?Text=Season+2+Ep+8',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-2-9',
@@ -355,7 +385,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Nine: The Gate',
         description: '...',
         duration: '62 min',
-        thumbnail: 'https://via.placeholder.com/200x120/673AB7/FFFFFF?Text=Season+2+Ep+9',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_Ratio0.6716_AL_.jpg',
+
       },
     ],
   },
@@ -374,7 +405,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           "Summer brings new jobs and budding romance. But the mood shifts when Dustin's radio picks up a Russian broadcast, and Will senses something is wrong.",
         duration: '50 min',
-        thumbnail: 'https://via.placeholder.com/200x120/00BCD4/FFFFFF?Text=Season+3+Ep+1',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-3-2',
@@ -382,7 +413,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Two: The Mall Rats',
         description: '...',
         duration: '59 min',
-        thumbnail: 'https://via.placeholder.com/200x120/E91E63/FFFFFF?Text=Season+3+Ep+2',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_Ratio0.7015_AL_.jpg',
       },
       {
         id: 'ep-3-3',
@@ -390,15 +421,22 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Three: The Case of the Missing Lifeguard',
         description: '...',
         duration: '49 min',
-        thumbnail: 'https://via.placeholder.com/200x120/4CAF50/FFFFFF?Text=Season+3+Ep+3',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BOTI0MzcxMTYtZDVkMy00NjY1LTgyMTYtZmUxN2M3NmQ2NWJhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.6716_AL_.jpg',
       },
+
+
+
+
+
+
+
       {
         id: 'ep-3-4',
         number: 4,
         title: 'Chapter Four: The Sauna Test',
         description: '...',
         duration: '52 min',
-        thumbnail: 'https://via.placeholder.com/200x120/F44336/FFFFFF?Text=Season+3+Ep+4',
+        thumbnail:'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-3-5',
@@ -406,7 +444,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Five: The Flayed',
         description: '...',
         duration: '50 min',
-        thumbnail: 'https://via.placeholder.com/200x120/2196F3/FFFFFF?Text=Season+3+Ep+5',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNTBmZWJkNjctNDhiNC00MGE2LWEwOTctZTk5OGVhMWMyNmVhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-3-6',
@@ -414,7 +452,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Six: E Pluribus Unum',
         description: '...',
         duration: '59 min',
-        thumbnail: 'https://via.placeholder.com/200x120/9C27B0/FFFFFF?Text=Season+3+Ep+6',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-3-7',
@@ -422,7 +460,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Seven: The Bite',
         description: '...',
         duration: '55 min',
-        thumbnail: 'https://via.placeholder.com/200x120/673AB7/FFFFFF?Text=Season+3+Ep+7',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMTI3NTQyMzU5M15BMl5BanBnXkFtZTcwMTM2MjgyMQ@@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-3-8',
@@ -430,7 +468,7 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Eight: The Battle of Starcourt',
         description: '...',
         duration: '77 min',
-        thumbnail: 'https://via.placeholder.com/200x120/3F51B5/FFFFFF?Text=Season+3+Ep+8',
+        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6716_AL_.jpg',
       },
     ],
   },
@@ -458,7 +496,8 @@ export const plans: Plan[] = [
     price: '$12.99/Month',
     popular: true,
     features: {
-      content: 'Access to a wider selection of movies and shows, including most new releases and exclusive content',
+      content:
+        'Access to a wider selection of movies and shows, including most new releases and exclusive content',
       devices: 'Watch on Two device simultaneously',
       freeTrial: '7 Days',
       cancelAnytime: 'Yes',
@@ -474,7 +513,8 @@ export const plans: Plan[] = [
     price: '$14.99/Month',
     popular: false,
     features: {
-      content: 'Access to a widest selection of movies and shows, including all new releases and Offline Viewing',
+      content:
+        'Access to a widest selection of movies and shows, including all new releases and Offline Viewing',
       devices: 'Watch on Four device simultaneously',
       freeTrial: '7 Days',
       cancelAnytime: 'Yes',

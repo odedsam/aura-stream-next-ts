@@ -1,71 +1,34 @@
 'use client';
-import { ChevronLeft, ChevronRight, Star, User } from 'lucide-react';
-import { Button } from '../ui/Buttons';
-import { cn } from '@/lib/utils';
-import {
-  CastBlockProps,
-  NavigationBlockComponentProps,
-  NavigationBlockProps,
-  RatingBlockProps,
-} from '@/types/components';
-import { IconLabel } from './Labels';
+import type { CastBlockProps, NavigationBlockComponentProps, NavigationBlockProps, RatingBlockProps } from '@/types/components';
+import { ChevronLeft, ChevronRight, User } from 'lucide-react';
+import { Button } from '@/app/components/ui/Buttons';
+import { IconLabel } from '@/app/components/ui/Labels';
+import { cn, formatRating } from '@/lib/utils';
+import { StarRating } from '@/app/components/common/StarRating';
 
-export const RatingBlock = ({
-  platform,
-  rating,
-  maxRating = 5,
-}: RatingBlockProps) => {
-  const renderStars = (): React.ReactElement[] => {
-    const stars: React.ReactElement[] = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-
-    for (let i = 0; i < maxRating; i++) {
-      if (i < fullStars) {
-        stars.push(
-          <Star key={i} className="w-4 h-4 fill-red-500 text-red-500" />,
-        );
-      } else if (i === fullStars && hasHalfStar) {
-        stars.push(
-          <Star key={i} className="w-4 h-4 fill-red-500/50 text-red-500" />,
-        );
-      } else {
-        stars.push(<Star key={i} className="w-4 h-4 text-gray-600" />);
-      }
-    }
-    return stars;
-  };
-
+export const RatingBlock = ({ platform, rating, maxRating = 5 }: RatingBlockProps) => {
   return (
-    <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+    <div className="bg-primary p-4 rounded-lg border-2 border-quinary">
       <h4 className="text-white font-semibold mb-2">{platform}</h4>
       <div className="flex items-center gap-2">
-        <div className="flex gap-1">{renderStars()}</div>
-        <span className="text-white font-medium">{rating}</span>
+        <StarRating rating={rating} maxRating={maxRating} color="red-def" />
+        <span className="text-white font-medium">{formatRating(rating)}</span>
       </div>
     </div>
   );
 };
 
-export const CastBlock: React.FC<CastBlockProps> = ({
-  title,
-  members,
-  icon: Icon,
-}) => (
+export const CastBlock = ({ title, members, icon: Icon }: CastBlockProps) => (
   <div className="space-y-3">
     <IconLabel icon={Icon} label={title} />
     <div className="space-y-3">
       {members.map((member, index) => (
         <div
           key={index}
-          className="flex items-center gap-3 bg-gray-800/50 p-3 rounded-lg border border-gray-700">
+          className="flex items-center gap-3 bg-primary p-4 rounded-lg border-2 border-quinary">
           <div className="w-12 h-12 rounded-full bg-gray-700 overflow-hidden flex-shrink-0">
             {member.image ? (
-              <img
-                src={member.image}
-                alt={member.name}
-                className="w-full h-full object-cover"
-              />
+              <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
             ) : (
               <div className="w-full h-full flex items-center justify-center">
                 <User className="w-6 h-6 text-gray-500" />
@@ -82,20 +45,14 @@ export const CastBlock: React.FC<CastBlockProps> = ({
   </div>
 );
 
-// Base NavigationBlock container (your existing component)
 export function NavigationBlock({ className, children }: NavigationBlockProps) {
   return (
-    <div
-      className={cn(
-        'inline-flex bg-sec border-2 border-teriary rounded-lg p-1',
-        className,
-      )}>
+    <div className={cn('inline-flex bg-sec border-2 border-teriary rounded-lg p-1', className)}>
       {children}
     </div>
   );
 }
 
-// Reusable Navigation Component
 export default function NavigationBlockComponent({
   currentIndex = 0,
   totalItems = 1,
@@ -121,10 +78,7 @@ export default function NavigationBlockComponent({
 
   return (
     <NavigationBlock className={className}>
-      <Button
-        variant="dark"
-        onClick={handlePrevious}
-        disabled={isPreviousDisabled}>
+      <Button variant="dark" onClick={handlePrevious} disabled={isPreviousDisabled}>
         <ChevronLeft size={20} />
       </Button>
 
