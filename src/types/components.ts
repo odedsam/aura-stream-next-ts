@@ -1,4 +1,4 @@
-import type { QuickAction } from "@/app/components/common/QuickActions";
+import type { QuickAction } from '@/app/components/common/QuickActions';
 
 export interface RatingData {
   platform: string;
@@ -55,7 +55,6 @@ export interface NavigationBlockComponentProps {
   className?: string;
 }
 
-
 export interface QuickActionsProps {
   title?: string;
   actions: QuickAction[];
@@ -91,17 +90,17 @@ export interface SeasonsEpisodesProps {
 }
 
 export type SeasonsHeader = {
- season: SeasonMock;
+  season: SeasonMock;
   isExpanded: boolean;
   onToggle: () => void;
   onEpisodePlay?: (seasonId: string, episodeId: string) => void;
-}
+};
 
 export type EpisodeCardProps = {
   episode: Episode;
   seasonId: string;
   onPlay?: (seasonId: string, episodeId: string) => void;
-}
+};
 export interface MovieCastMember {
   id: number;
   name: string;
@@ -114,4 +113,8 @@ export interface Review {
   location: string;
   rating: number;
   content: string;
+}
+
+export interface ReviewCardProps {
+  review: Review;
 }

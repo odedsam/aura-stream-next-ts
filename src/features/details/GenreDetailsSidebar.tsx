@@ -15,7 +15,7 @@ const GenreDetailsSidebar = () => {
   };
 
   return (
-    <div className="bg-quaternary p-6 rounded-lg border-2 border-quinary max-w-2xl space-y-6">
+    <div className="content-block-gray p-6 max-w-2xl space-y-6">
       <div>
         <IconLabel icon={Calendar} label="Released Year" />
         <div className="flex items-center gap-3">

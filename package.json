@@ -23,6 +23,7 @@
     "sonner": "^2.0.3",
     "tailwind-merge": "^3.3.0",
     "tw-animate-css": "^1.3.0",
+    "zod": "^3.25.49",
     "zustand": "^5.0.5"
   },
   "devDependencies": {

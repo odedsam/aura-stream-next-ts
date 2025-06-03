@@ -4,7 +4,7 @@ import { StarRating } from '../common/StarRating';
 
 const ReviewCard = ({ review }: ReviewCardProps) => {
   return (
-    <div className="bg-gray-800 rounded-lg p-6">
+    <div className="content-block-black rounded-lg p-6">
       <div className="flex items-start justify-between mb-4">
         <div>
           <h3 className="font-semibold text-white">{review.name}</h3>

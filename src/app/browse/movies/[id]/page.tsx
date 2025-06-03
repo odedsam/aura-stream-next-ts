@@ -1,34 +1,13 @@
-import { notFound } from 'next/navigation'
-
-type Movie = {
-  id: string
-  title: string
-  description: string
-}
-
-async function fetchMovie(id: string): Promise<Movie | null> {
-  const res = await fetch(`https://api.example.com/movies/${id}`, {
-    cache: 'no-store', // Full SSR
-  })
-  if (!res.ok) return null
-  return res.json()
-}
-
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const movie = await fetchMovie(params.id)
-  return {
-    title: movie?.title || 'Movie',
-  }
-}
+import { fetchMovieById } from "@/lib/tmdb";
 
 export default async function MoviePage({ params }: { params: { id: string } }) {
-  const movie = await fetchMovie(params.id)
-  if (!movie) notFound()
+  const movie = await fetchMovieById(params.id);
 
   return (
-    <main className="p-4">
-      <h1 className="text-2xl font-bold">{movie.title}</h1>
-      <p className="mt-2 text-gray-700">{movie.description}</p>
-    </main>
-  )
+    <div className="p-6">
+      <h1 className="text-3xl font-bold">{movie.title}</h1>
+      <img className="w-64 mt-4" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+      <p className="mt-4 text-gray-700">{movie.overview}</p>
+    </div>
+  );
 }

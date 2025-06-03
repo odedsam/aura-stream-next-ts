@@ -2,6 +2,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center gap-2 whitespace-nowrap font-manrope font-semibold rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
@@ -85,6 +86,39 @@ const Button = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonPro
 Button.displayName = 'Button';
 
 export { Button, buttonVariants };
+
+
+interface CarouselButtonProps {
+  direction: 'prev' | 'next';
+  onClick: () => void;
+  disabled?: boolean;
+  className?: string;
+}
+
+export const CarouselButton = ({ direction, onClick, disabled, className }: CarouselButtonProps) => (
+  <Button
+    className={cn(
+      "p-2 rounded-full bg-primary text-gray-def hover:bg-gray-700 transition-colors h-auto",
+      className
+    )}
+    disabled={disabled}
+    onClick={onClick}
+    icon={direction === 'prev' ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+    aria-label={`${direction === 'prev' ? 'Previous' : 'Next'} items`}
+  />
+);
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 //  Click action
 <Button onClick={() => console.log('Clicked')} variant="red">

@@ -129,7 +129,13 @@ body {
            laptop:bg-[url('/assets/hero-home-desktop.webp')] laptop:bg-no-repeat laptop:bg-cover laptop:bg-center;
   }
   .device-gradient {
-    @apply rounded-lg border border-[#262626] bg-[#0d0000] bg-gradient-to-tr from-[#0d0000] via-[#080000] to-[#250e0e];
+    @apply rounded-lg border border-quinary bg-[#0d0000] bg-gradient-to-tr from-[#0d0000] via-[#080000] to-[#250e0e];
+  }
+  .content-block-gray {
+    @apply bg-quaternary rounded-lg border-2 border-quinary;
+  }
+  .content-block-black {
+    @apply bg-sec rounded-lg border-2 border-quinary;
   }
 }
 
