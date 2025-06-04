@@ -1,19 +1,32 @@
+import { prisma } from '@/lib/prisma';
+import { compare } from 'bcryptjs';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
-  const { email, password } = await req.json();
+  try {
+    const { email, password } = await req.json();
 
-  // Simulate DB check
-  if (email && password) {
-    const user = {
-      id: '1',
-      email,
-      name: email.split('@')[0],
-      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
-    };
+    const user = await prisma.user.findUnique({ where: { email } });
 
-    return NextResponse.json({ user }, { status: 200 });
+    if (!user || !user.password) {
+      return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
+    }
+
+    const isMatch = await compare(password, user.password);
+
+    if (!isMatch) {
+      return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
+    }
+
+    return NextResponse.json({
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+      },
+    });
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
-
-  return NextResponse.json({ message: 'Invalid credentials' }, { status: 401 });
 }

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/store/useAuth';
+import { AuraButton } from '@/app/components/ui/AuraButton';
 import Link from 'next/link';
 
 export default function LoginPage() {
@@ -25,48 +26,58 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-      <div className="bg-gray-800 p-8 rounded-lg w-full max-w-md">
-        <h1 className="text-2xl font-bold text-white mb-6 text-center">Sign In</h1>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="h-screen flex items-center justify-center bg-primary mt-8 px-4 py-12">
+      <div className="w-full max-w-md space-y-8 content-block-gray rounded-none p-8  shadow-md ">
+        <h2 className="text-center text-2xl aura-text">Sign In</h2>
+        <form className="space-y-6" onSubmit={handleSubmit}>
           {error && (
-            <div className="bg-red-600 text-white p-2 rounded text-sm text-center">{error}</div>
+            <div className="bg-[var(--red-def)] text-white p-3  text-sm text-center">{error}</div>
           )}
 
-          <div>
-            <label className="block text-gray-300 mb-2">Email</label>
+          <div className="space-y-2">
+            <label htmlFor="email" className="block text-sm text-[var(--gray-65)] font-medium">
+              Email
+            </label>
             <input
               type="email"
+              id="email"
+              autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)]  text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
+              placeholder="you@example.com"
               required
             />
           </div>
 
-          <div>
-            <label className="block text-gray-300 mb-2">Password</label>
+          <div className="space-y-2">
+            <label htmlFor="password" className="block text-sm text-[var(--gray-65)] font-medium">
+              Password
+            </label>
             <input
               type="password"
+              id="password"
+              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)]  text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
+              placeholder="••••••••"
               required
             />
           </div>
 
-          <button
+          <AuraButton
             type="submit"
-            disabled={isLoading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-colors disabled:opacity-50">
+            variant="primary"
+            className="w-full aura-text"
+            disabled={isLoading}>
             {isLoading ? 'Signing in...' : 'Sign In'}
-          </button>
+          </AuraButton>
         </form>
 
-        <p className="text-gray-400 text-center mt-4">
+        <p className="mt-6 text-center text-sm text-[var(--gray-60)]">
           Don't have an account?{' '}
-          <Link href="/register" className="text-blue-400 hover:underline">
+          <Link href="/register" className="text-[var(--red-def)] hover:underline">
             Sign up
           </Link>
         </p>

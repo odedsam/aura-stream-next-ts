@@ -1,160 +1,139 @@
 'use client';
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/store/useAuth';
+import { AuraButton } from '@/app/components/ui/AuraButton';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 
-export default function RegisterPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+const registerSchema = z
+  .object({
+    name: z.string().min(2, 'Name is required'),
+    email: z.string().email('Invalid email'),
+    password: z.string().min(6, 'Password must be at least 6 characters'),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Passwords do not match',
+    path: ['confirmPassword'],
   });
-  const [error, setError] = useState('');
-  const { register, isLoading } = useAuth();
+
+type RegisterFormData = z.infer<typeof registerSchema>;
+
+export default function RegisterPage() {
+  const { register: registerUser, isLoading } = useAuth();
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterFormData>({
+    resolver: zodResolver(registerSchema),
+  });
 
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
-      return;
-    }
-
-    if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters');
-      return;
-    }
-
+  const onSubmit = async (data: RegisterFormData) => {
     try {
-      await register(formData.email, formData.password, formData.name);
+      await registerUser(data.email, data.password, data.name);
       router.push('/dashboard');
     } catch (err) {
-      setError('Registration failed. Please try again.');
+      console.error(err);
     }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="max-w-md w-full space-y-8">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
-            <p className="text-gray-600">Join us today and get started</p>
+    <div className="h-screen flex items-center my-20 justify-center bg-primary px-4 py-12">
+      <div className="w-full max-w-md space-y-8 content-block-gray rounded-none p-8  shadow-md ">
+        <h2 className="text-center text-2xl aura-text tracking-widest">Create Account</h2>
+
+        <form className="space-y-6 " onSubmit={handleSubmit(onSubmit)}>
+          <div className="space-y-2">
+            <label htmlFor="name" className="block text-sm text-[var(--gray-65)] font-medium">
+              Full Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              autoComplete="name"
+              {...register('name')}
+              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)]  text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
+              placeholder="John Doe"
+            />
+            {errors.name && (
+              <p className="text-sm text-[var(--red-def)] mt-1">{errors.name.message}</p>
+            )}
           </div>
 
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            {error && (
-              <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
-                {error}
-              </div>
+          <div className="space-y-2">
+            <label htmlFor="email" className="block text-sm text-[var(--gray-65)] font-medium">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              autoComplete="email"
+              {...register('email')}
+              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)]  text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
+              placeholder="you@example.com"
+            />
+            {errors.email && (
+              <p className="text-sm text-[var(--red-def)] mt-1">{errors.email.message}</p>
             )}
+          </div>
 
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter your full name"
-                />
-              </div>
+          <div className="space-y-2">
+            <label htmlFor="password" className="block text-sm text-[var(--gray-65)] font-medium">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              autoComplete="new-password"
+              {...register('password')}
+              className="w-full px-4 py-2 bg-sec border border-[var(--black-25)]  text-white placeholder-gray-def focus:outline-none focus:ring-2 focus:ring-red-def"
+              placeholder="••••••••"
+            />
+            {errors.password && (
+              <p className="text-sm text-red-def mt-1">{errors.password.message}</p>
+            )}
+          </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter your email"
-                />
-              </div>
+          <div className="space-y-2">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-sm text-[var(--gray-65)] font-medium">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              autoComplete="new-password"
+              {...register('confirmPassword')}
+              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)]  text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
+              placeholder="••••••••"
+            />
+            {errors.confirmPassword && (
+              <p className="text-sm text-[var(--red-def)] mt-1">{errors.confirmPassword.message}</p>
+            )}
+          </div>
 
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter your password"
-                />
-              </div>
+          <AuraButton
+            type="submit"
+            variant="primary"
+            className="w-full aura-text"
+            disabled={isLoading}>
+            {isLoading ? 'Creating Account...' : 'Sign Up'}
+          </AuraButton>
+        </form>
 
-              <div>
-                <label
-                  htmlFor="confirmPassword"
-                  className="block text-sm font-medium text-gray-700 mb-1">
-                  Confirm Password
-                </label>
-                <input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  required
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Confirm your password"
-                />
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-              {isLoading ? (
-                <div className="flex items-center">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                  Creating Account...
-                </div>
-              ) : (
-                'Create Account'
-              )}
-            </button>
-
-            <div className="text-center">
-              <p className="text-sm text-gray-600">
-                Already have an account?{' '}
-                <Link
-                  href="/auth/login"
-                  className="font-medium text-blue-600 hover:text-blue-500 transition-colors">
-                  Sign in here
-                </Link>
-              </p>
-            </div>
-          </form>
-        </div>
+        <p className="mt-6 text-center text-sm text-[var(--gray-60)]">
+          Already have an account?{' '}
+          <Link href="/login" className="text-[var(--red-def)] hover:underline">
+            Log in
+          </Link>
+        </p>
       </div>
     </div>
   );

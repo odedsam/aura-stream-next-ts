@@ -1,7 +1,8 @@
 import { fetchPopularMovies, fetchPopularShows } from '@/lib/tmdb';
 import Image from 'next/image';
-import CallToAction from '../layouts/CallToAction';
-import HeroSliderServer from '../components/common/HeroSliderServer';
+import CallToAction from '@/app/layouts/CallToAction';
+import HeroSliderServer from '@/app/components/common/HeroSliderServer';
+import Link from 'next/link';
 
 export default async function BrowsePage() {
   const [movies, shows] = await Promise.all([fetchPopularMovies(), fetchPopularShows()]);
@@ -14,14 +15,19 @@ export default async function BrowsePage() {
           <h2 className="text-2xl font-bold mb-4">Popular Movies</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {movies.map((m) => (
-              <Image
+              <Link
                 key={m.id}
-                src={`https://image.tmdb.org/t/p/w500${m.poster_path}`}
-                alt={m.title || ''}
-                width={500}
-                height={750}
-                priority
-              />
+                href={`/browse/movies/${m.id}`}
+                className="block hover:opacity-80 transition"
+              >
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500${m.poster_path}`}
+                  alt={m.title || ''}
+                  width={500}
+                  height={750}
+                  priority
+                />
+              </Link>
             ))}
           </div>
         </section>
@@ -30,14 +36,19 @@ export default async function BrowsePage() {
           <h2 className="text-2xl font-bold mb-4">Popular Shows</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {shows.map((s) => (
-              <Image
+              <Link
                 key={s.id}
-                src={`https://image.tmdb.org/t/p/w500${s.poster_path}`}
-                alt={s.title || ''}
-                width={500}
-                height={750}
-                priority
-              />
+                href={`/browse/shows/${s.id}`}
+                className="block hover:opacity-80 transition"
+              >
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500${s.poster_path}`}
+                  alt={s.name || ''}
+                  width={500}
+                  height={750}
+                  priority
+                />
+              </Link>
             ))}
           </div>
         </section>

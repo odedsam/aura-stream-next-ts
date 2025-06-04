@@ -22,7 +22,7 @@
   --color-black: #000;
 
   /* Black Shades */
-  --black-06: #0d0d0d;
+  --black-06: #131313;
   --black-08: #1a1a1a;
   --black-10: #262626;
   --black-12: #f5f5f5;
@@ -66,6 +66,7 @@
   --color-teriary: var(--clr-teriary);
   --color-quaternary: var(--clr-quaternary);
   --color-quinary: var(--clr-quinary);
+  --color-shade-black: var(--black-06);
 
   --color-gray-def: var(--gray-def);
   --color-gray-60: var(--gray-60);
@@ -99,41 +100,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.cta-bg-with-gradient {
-  background-image:
-    linear-gradient(
-      45deg,
-      rgba(13, 0, 0, 0.5) 38%,
-      rgba(8, 0, 0, 0.5) 59%,
-      rgba(61, 18, 18, 0.5) 100%
-    ),
-    url('/assets/cta-bg-mobile.webp');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-@media (min-width: 1024px) {
-  .cta-bg-with-gradient {
-    background-image:
-      linear-gradient(
-        45deg,
-        rgba(13, 0, 0, 0.5) 38%,
-        rgba(8, 0, 0, 0.5) 59%,
-        rgba(61, 18, 18, 0.5) 100%
-      ),
-      url('/assets/cta-bg-desktop.webp');
-  }
-}
 @layer components {
-  .movie-hero {
-    @apply bg-[url('/assets/hero-movie-mobile.webp')] bg-no-repeat bg-cover bg-center
-           laptop:bg-[url('/assets/hero-movie-mobile.webp')] laptop:bg-no-repeat laptop:bg-cover laptop:bg-center;
-  }
-
-  .home-hero {
-    @apply bg-[url('/assets/hero-home-mobile.webp')] bg-no-repeat bg-cover bg-center
-           laptop:bg-[url('/assets/hero-home-desktop.webp')] laptop:bg-no-repeat laptop:bg-cover laptop:bg-center;
+  .aura-text {
+    @apply font-black text-white uppercase tracking-widest drop-shadow-[0_0_10px_rgba(255,0,80,0.8)];
   }
   .device-gradient {
     @apply rounded-lg border border-quinary bg-[#0d0000] bg-gradient-to-tr from-[#0d0000] via-[#080000] to-[#250e0e];
@@ -144,21 +113,6 @@ body {
   .content-block-black {
     @apply bg-sec rounded-lg border-2 border-quinary;
   }
-}
-
-.border-bottom-gradient {
-  position: relative;
-  padding-bottom: 1rem;
-}
-
-.border-bottom-gradient::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, #300000, #ff0000, #300000);
 }
 
 .cta-background {
