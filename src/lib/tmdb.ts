@@ -1,3 +1,4 @@
+import { Review } from '@/app/browse/shows/[id]/page';
 import { CastMember } from '@/app/components/cards/CastCard';
 import { env } from '@/config/env';
 
@@ -15,7 +16,7 @@ export type Movie = {
   id: number;
   title?: string;
   name?: string;
-  backdrop_path?:string;
+  backdrop_path?: string;
   overview: string;
   poster_path: string | null;
 };
@@ -27,6 +28,46 @@ export type Trailer = {
   site: string;
   type: string;
 };
+
+
+interface TmdbReview {
+  id: string;
+  author: string;
+  content: string;
+  created_at: string;
+  author_details: {
+    name: string | null;
+    username: string;
+    rating: number | null;
+    avatar_path: string | null;
+  };
+}
+
+export const fetchMovieReviews = async (id: string): Promise<TmdbReview[]> => {
+  const res = await fetch(`${BASE_URL}/movie/${id}/reviews?language=en-US`, {
+    headers,
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) {
+    console.warn(`Failed to fetch reviews for movie ${id}`);
+    return [];
+  }
+
+  const data = await res.json();
+  return data.results || [];
+};
+
+
+
+
+
+
+
+
+
+
+
 
 export const fetchPopularMovies = async (): Promise<Movie[]> => {
   const res = await fetch(`${BASE_URL}/movie/popular?language=en-US&page=1`, {
@@ -113,3 +154,26 @@ export const fetchShowCast = async (id: string): Promise<CastMember[]> => {
   const data = await res.json();
   return data.cast;
 };
+
+
+
+
+
+
+
+
+export const fetchMovieCast = async (id: string): Promise<CastMember[]> => {
+  const res = await fetch(`${BASE_URL}/movie/${id}/credits?language=en-US`, {
+    headers,
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) {
+    console.warn(`Failed to fetch cast for movie ${id}`);
+    return [];
+  }
+
+  const data = await res.json();
+  return data.cast || [];
+};
+

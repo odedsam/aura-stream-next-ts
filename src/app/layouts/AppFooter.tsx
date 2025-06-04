@@ -1,6 +1,6 @@
-import { footerData, socialLinks, legalLinks } from "@/config";
-import Link from "next/link";
-import Image from "next/image";
+import { footerData, socialLinks, legalLinks } from '@/config';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const AppFooter = () => {
   return (
@@ -13,7 +13,9 @@ const AppFooter = () => {
               <ul className="space-y-4">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <Link href={link.href} className="text-gray-def hover:text-white transition-colors">
+                    <Link
+                      href={link.href}
+                      className="text-gray-def hover:text-white transition-colors">
                       {link.name}
                     </Link>
                   </li>
@@ -30,9 +32,14 @@ const AppFooter = () => {
                   key={index}
                   href={social.href}
                   className="w-10 h-10 bg-quaternary rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors border border-quinary"
-                  aria-label={social.name}
-                >
-                  <Image src={social.icon} alt={'social-icon'} width={24} height={24}  />
+                  aria-label={social.name}>
+                  <Image
+                    src={social.icon}
+                    alt={'social-icon'}
+                    width={24}
+                    height={24}
+                    style={{ width: 'auto', height: 'auto' }}
+                  />
                 </Link>
               ))}
             </div>
@@ -49,7 +56,9 @@ const AppFooter = () => {
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <Link href={link.href} className="text-gray-def hover:text-white transition-colors">
+                      <Link
+                        href={link.href}
+                        className="text-gray-def hover:text-white transition-colors">
                         {link.name}
                       </Link>
                     </li>
@@ -67,7 +76,9 @@ const AppFooter = () => {
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <Link href={link.href} className="text-gray-def hover:text-white transition-colors">
+                      <Link
+                        href={link.href}
+                        className="text-gray-def hover:text-white transition-colors">
                         {link.name}
                       </Link>
                     </li>
@@ -85,9 +96,14 @@ const AppFooter = () => {
                     key={index}
                     href={social.href}
                     className="w-10 h-10 content-block-gray rounded-lg flex items-center justify-center hover:bg-gray-600 transition-colors"
-                    aria-label={social.name}
-                  >
-                    <Image src={social.icon} alt={'social-icon'} width={20} height={20}  />
+                    aria-label={social.name}>
+                    <Image
+                      src={social.icon}
+                      alt={'social-icon'}
+                      width={20}
+                      height={20}
+                      style={{ width: 'auto', height: 'auto' }}
+                    />
                   </Link>
                 ))}
               </div>
@@ -103,7 +119,10 @@ const AppFooter = () => {
             <div className="text-gray-def text-sm">©2023 streamvib, All Rights Reserved</div>
             <div className="flex flex-wrap justify-center md:justify-end space-x-6 text-sm">
               {legalLinks.map((link, index) => (
-                <a key={index} href={link.href} className="text-gray-def hover:text-white transition-colors">
+                <a
+                  key={index}
+                  href={link.href}
+                  className="text-gray-def hover:text-white transition-colors">
                   {link.name}
                 </a>
               ))}

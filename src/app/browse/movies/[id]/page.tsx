@@ -1,37 +1,26 @@
-// import { fetchMovieById } from "@/lib/tmdb";
+export const revalidate = 3600;
 
-// export default async function MoviePage({ params }: { params: { id: string } }) {
-//   const movie = await fetchMovieById(params.id);
-
-//   return (
-//     <div className="p-6">
-//       <h1 className="text-3xl font-bold">{movie.title}</h1>
-//       <img className="w-64 mt-4" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-//       <p className="mt-4 text-gray-700">{movie.overview}</p>
-//     </div>
-//   );
-// }
-
-
-import { fetchMovieById, fetchMovieTrailers } from '@/lib/tmdb';
+import { fetchMovieById, fetchMovieTrailers, fetchMovieReviews, fetchMovieCast } from '@/lib/tmdb';
 import MovRev from '@/app/components/sections/MovRev';
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-const Page = async ({ params }: PageProps) => {
-  const movieData = await fetchMovieById(params.id);
-  const trailers = await fetchMovieTrailers(params.id);
+export default async function Page({ params }: PageProps) {
+  const { id } = await params;
+
+  const [movieData, trailers] = await Promise.all([fetchMovieById(id), fetchMovieTrailers(id)]);
+
+  const [castResult, reviewsResult] = await Promise.allSettled([
+    fetchMovieCast(id),
+    fetchMovieReviews(id),
+  ]);
+
+  const cast = castResult.status === 'fulfilled' ? castResult.value : [];
+  const reviews = reviewsResult.status === 'fulfilled' ? reviewsResult.value : [];
 
   return (
-    <MovRev
-      movieData={movieData}
-      cast={[]} // אפשר להוסיף fetchCast אם יש צורך
-      reviews={[]} // גם כאן תוכל להוסיף fetch של ביקורות
-      description={movieData.overview}
-    />
+    <MovRev movieData={movieData} reviews={reviews} cast={cast} description={movieData.overview} />
   );
-};
-
-export default Page;
+}
