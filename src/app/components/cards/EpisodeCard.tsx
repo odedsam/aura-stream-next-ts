@@ -1,10 +1,14 @@
 'use client';
 import type { EpisodeCardProps } from '@/types/components';
-import Image from 'next/image';
 import { Play, Clock } from 'lucide-react';
 import { Tag } from '@/app/components/ui/Tags';
+import Image from 'next/image';
 
-export const EpisodeCard = ({ episode, seasonId, onPlay }: EpisodeCardProps) => {
+export const EpisodeCard = ({
+  episode,
+  seasonId,
+  onPlay,
+}: EpisodeCardProps) => {
   return (
     <div className="bg-sec rounded-lg border-2 border-quinary overflow-hidden hover:bg-gray-800/70 transition-colors group">
       <div className="flex flex-col sm:flex-row">
@@ -14,7 +18,7 @@ export const EpisodeCard = ({ episode, seasonId, onPlay }: EpisodeCardProps) => 
             alt={episode.title}
             width={50}
             height={50}
-            className="w-full h-full object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
             <button

@@ -1,7 +1,9 @@
-import { fetchMovieTrailers, fetchPopularMovies, Movie, Trailer } from "@/lib/tmdb";
-import HeroSliderClient from "./HeroSliderClient";
+import { fetchMovieTrailers, fetchPopularMovies, Movie, Trailer } from '@/lib/tmdb';
+import HeroSliderClient from './HeroSliderClient';
 
-type MovieWithTrailers = Movie & { trailers: Trailer[] };
+type MovieWithTrailers = Movie & {
+  trailers: Trailer[];
+};
 
 type MovieClient = {
   id: number;
@@ -17,7 +19,7 @@ const getMoviesWithTrailers = async (): Promise<MovieWithTrailers[]> => {
     movies.map(async (movie) => ({
       ...movie,
       trailers: await fetchMovieTrailers(movie.id.toString()),
-    }))
+    })),
   );
 };
 
@@ -26,11 +28,11 @@ const HeroSliderServer = async () => {
 
   const moviesForClient: MovieClient[] = movies.map((movie) => ({
     id: movie.id,
-    title: movie.title || movie.name || "Untitled",
+    title: movie.title || movie.name || 'Untitled',
     description: movie.overview,
-    image: movie.poster_path
-      ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
-      : "/placeholder.png",
+    image: movie.backdrop_path
+      ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+      : '/placeholder.png',
     trailerKey: movie.trailers[0]?.key || null,
   }));
 

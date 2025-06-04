@@ -1,7 +1,7 @@
 import { fetchMovieById, fetchMovieTrailers } from '@/lib/tmdb';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(
+export default async function GET(
   request: NextRequest,
   { params }: { params: { id: string } },
 ): Promise<NextResponse> {

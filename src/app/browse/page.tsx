@@ -1,14 +1,14 @@
 import { fetchPopularMovies, fetchPopularShows } from '@/lib/tmdb';
 import Image from 'next/image';
 import CallToAction from '../layouts/CallToAction';
-import HomeHero from '../components/sections/HomeHero';
+import HeroSliderServer from '../components/common/HeroSliderServer';
 
 export default async function BrowsePage() {
   const [movies, shows] = await Promise.all([fetchPopularMovies(), fetchPopularShows()]);
 
   return (
     <div>
-      <HomeHero />
+      <HeroSliderServer />
       <div className="p-6 space-y-10">
         <section>
           <h2 className="text-2xl font-bold mb-4">Popular Movies</h2>
@@ -20,9 +20,7 @@ export default async function BrowsePage() {
                 alt={m.title || ''}
                 width={500}
                 height={750}
-                className="w-auto h-auto"
-                style={{ width: '100%', height: 'auto' }}
-                priority={true}
+                priority
               />
             ))}
           </div>
@@ -38,9 +36,7 @@ export default async function BrowsePage() {
                 alt={s.title || ''}
                 width={500}
                 height={750}
-                className="w-auto h-auto"
-                style={{ width: '100%', height: 'auto' }}
-                priority={true}
+                priority
               />
             ))}
           </div>

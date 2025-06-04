@@ -4,11 +4,10 @@ import { GenreCarousel } from './components/sliders/carousels';
 import { OurGenres, TopTen } from '@/config/categories';
 
 import AuraStreamFAQs from './components/sections/FaqsSection';
-import HomeHero from '@/app/components/sections/HomeHero';
 import AuraStreamPricing from './components/sections/pricing/PricingSection';
 import CallToAction from './layouts/CallToAction';
 import DeviceSection from './components/sections/DeviceSection';
-import TestHero from './components/sections/HomeHero';
+import HomeHero from './components/sections/HomeHero';
 
 export default function Page() {
   const handleSlideChange = (index: number) => {
@@ -17,7 +16,7 @@ export default function Page() {
 
   return (
     <main className="layout">
-      <TestHero />
+      <HomeHero />
       <BrowseContainer categoryName="Comedy" className="p-4 rounded-lg">
         <GenreCarousel
           title="Explore Movie Genres"

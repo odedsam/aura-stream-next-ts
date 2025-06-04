@@ -1,11 +1,10 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import { Search, Bell, Menu, X, Play, Plus, Volume2, ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
-import { sampleMovies } from "@/config/mock";
+import { useState, useEffect } from 'react';
+import { Play, Plus, Volume2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
-// Types
 export interface Movie {
   id: number;
   title: string;
@@ -23,13 +22,12 @@ interface HeroSliderProps {
   className?: string;
 }
 
-// Hero Slider Component
-export const HeroSlider: React.FC<HeroSliderProps> = ({
+export const HeroSlider = ({
   movies,
   autoPlay = true,
   autoPlayInterval = 5000,
-  className = "",
-}) => {
+  className,
+}: HeroSliderProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
 
@@ -60,12 +58,17 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
   const currentMovie = movies[currentSlide];
 
   return (
-    <div className={`relative w-full ${className}`}>
-      {/* Main Hero Container */}
+    <div className={cn('relative w-full', className)}>
       <div className="relative h-[60vh] sm:h-[70vh] lg:h-[80vh] xl:h-[90vh] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <Image src={currentMovie.image} alt={currentMovie.title || "hey"} fill className="object-cover" priority />
+          <Image
+            src={currentMovie.image}
+            alt={currentMovie.title || 'hey'}
+            fill
+            className="object-cover"
+            priority
+          />
           {/* Gradient Overlays */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -111,15 +114,13 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
           <>
             <button
               onClick={prevSlide}
-              className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm"
-            >
+              className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm">
               <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
 
             <button
               onClick={nextSlide}
-              className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm"
-            >
+              className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm">
               <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
           </>
@@ -133,7 +134,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-2 h-2 lg:w-3 lg:h-3 rounded-full transition-all duration-200 ${
-                  index === currentSlide ? "bg-red-600 w-6 lg:w-8" : "bg-white/50 hover:bg-white/70"
+                  index === currentSlide ? 'bg-red-600 w-6 lg:w-8' : 'bg-white/50 hover:bg-white/70'
                 }`}
               />
             ))}
@@ -144,8 +145,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
         {movies.length > 1 && (
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="absolute bottom-6 right-4 lg:hidden w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm"
-          >
+            className="absolute bottom-6 right-4 lg:hidden w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm">
             {isPlaying ? (
               <div className="w-3 h-3 flex gap-0.5">
                 <div className="w-1 h-3 bg-white"></div>

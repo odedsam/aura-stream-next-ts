@@ -7,7 +7,9 @@ export default function ImageGrid({ images }: ImageGridProps) {
   return (
     <div className="inline-grid grid-cols-2 gap-2">
       {images?.slice(0, 4).map((image, index) => (
-        <div key={index} className="rounded-lg bg-quaternary">
+        <div
+          key={index}
+          className="w-full aspect-[4/5] overflow-hidden rounded-lg bg-quaternary">
           <Image
             src={image}
             alt="genre-image"
