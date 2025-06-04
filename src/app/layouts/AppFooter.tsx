@@ -1,5 +1,3 @@
-import React from "react";
-import CallToAction from "./CallToAction";
 import { footerData, socialLinks, legalLinks } from "@/config";
 import Link from "next/link";
 import Image from "next/image";
@@ -34,7 +32,7 @@ const AppFooter = () => {
                   className="w-10 h-10 bg-quaternary rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors border border-quinary"
                   aria-label={social.name}
                 >
-                  <Image src={social.icon} alt={'social-icon'} width={24} height={24} className="w-auto h-auto" />
+                  <Image src={social.icon} alt={'social-icon'} width={24} height={24}  />
                 </Link>
               ))}
             </div>
@@ -86,10 +84,10 @@ const AppFooter = () => {
                   <Link
                     key={index}
                     href={social.href}
-                    className="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-600 transition-colors"
+                    className="w-10 h-10 content-block-gray rounded-lg flex items-center justify-center hover:bg-gray-600 transition-colors"
                     aria-label={social.name}
                   >
-                    <Image src={social.icon} alt={'social-icon'} width={20} height={20} className="w-5 h-5" />
+                    <Image src={social.icon} alt={'social-icon'} width={20} height={20}  />
                   </Link>
                 ))}
               </div>
