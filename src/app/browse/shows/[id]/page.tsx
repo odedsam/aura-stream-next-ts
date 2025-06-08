@@ -1,81 +1,87 @@
-import MovieReview from '@/app/components/sections/MovieReview';
-import { env } from '@/config/env';
-import { CastMember } from '@/types/tmdb';
-
-export type Movie = {
-  id: number;
-  title?: string;
-  name?: string;
-  overview: string;
-  poster_path?: string | null;
-};
-
-export type Review = {
-  id: string;
-  author: string;
-  content: string;
-  url: string;
-};
-
-const BASE_URL = 'https://api.themoviedb.org/3';
-
-const headers = {
-  Authorization: `Bearer ${env.IMDB_ACCESS_TOKEN}`,
-};
-
-async function fetchShowById(id: string): Promise<Movie> {
-  const res = await fetch(`${BASE_URL}/tv/${id}?language=en-US`, {
-    headers,
-    next: { revalidate: 3600 },
-  });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch show with id: ${id}`);
-  }
-  return res.json();
-}
-
-async function fetchShowCast(id: string): Promise<CastMember[]> {
-  const res = await fetch(`${BASE_URL}/tv/${id}/credits`, {
-    headers,
-    next: { revalidate: 3600 },
-  });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch cast for show ${id}`);
-  }
-  const data = await res.json();
-  return data.cast;
-}
-
-async function fetchShowReviews(id: string): Promise<Review[]> {
-  const res = await fetch(`${BASE_URL}/tv/${id}/reviews?language=en-US`, {
-    headers,
-    next: { revalidate: 3600 },
-  });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch reviews for show ${id}`);
-  }
-  const data = await res.json();
-  return data.results;
-}
+import ShowDetailsClient from '@/features/details/ShowDetailsClient';
+import SingleMovieHero from '@/features/SingleMovieHero';
+import { fetchShowById, fetchShowTrailers, fetchShowCast, fetchShowSeasons } from '@/lib/tmdb';
 
 interface PageProps {
   params: { id: string };
 }
 
+const fetchSeasonDetails = async (showId: string, seasonNumber: number) => {
+  const res = await fetch(`https://api.themoviedb.org/3/tv/${showId}/season/${seasonNumber}`, {
+    headers: {
+      Authorization: `Bearer ${process.env.IMDB_ACCESS_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch season ${seasonNumber}`);
+  }
+  return res.json();
+};
+
+const formatSeasonsData = async (showId: string, seasonsData: any[]) => {
+  const validSeasons = seasonsData.filter((s) => s.season_number > 0);
+
+  const detailedSeasons = await Promise.all(
+    validSeasons.map(async (season) => {
+      const seasonDetails = await fetchSeasonDetails(showId, season.season_number);
+      return {
+        id: season.id.toString(),
+        name: season.name,
+        title: season.name,
+        number: season.season_number,
+        seasonNumber: season.season_number,
+        episodeCount: season.episode_count,
+        overview: season.overview,
+        posterPath: season.poster_path,
+        airDate: season.air_date,
+        episodes: seasonDetails.episodes || [],
+      };
+    }),
+  );
+
+  return detailedSeasons;
+};
+
 const Page = async ({ params }: PageProps) => {
-  const [movieData, cast, reviews] = await Promise.all([
-    fetchShowById(params.id),
-    fetchShowCast(params.id),
-    fetchShowReviews(params.id),
+  const { id } = await params;
+
+  const [showData, trailers, cast, seasonsData] = await Promise.all([
+    fetchShowById(id),
+    fetchShowTrailers(id),
+    fetchShowCast(id),
+    fetchShowSeasons(id),
   ]);
 
+  const formattedSeasons = await formatSeasonsData(id, seasonsData);
+console.log("trailers",showData);
+  const trailerKey =
+    trailers?.find((t: any) => t.type === 'Trailer' && t.site === 'YouTube')?.key || null;
+     console.log("trailerKey : ",trailerKey);
   return (
-    <MovieReview
-      movieData={movieData}
-      cast={cast}
-      reviews={reviews}
-      description={movieData.overview}
-    />
+    <div>
+      <SingleMovieHero
+        id={id}
+        title={showData.title || ''}
+        name={showData.name}
+        overview={showData.overview}
+        backdrop_path={showData.backdrop_path || ''}
+        trailerKey={trailerKey}
+      />
+
+      <ShowDetailsClient
+        seasons={formattedSeasons}
+        currentSeason={1}
+        showId={id}
+        release_date={showData.release_date}
+        spoken_languages={showData.spoken_languages}
+        genres={showData.genres}
+        vote_average={showData.vote_average}
+        personas={showData.moviePersonas}
+      />
+    </div>
   );
 };
 

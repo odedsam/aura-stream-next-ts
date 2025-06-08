@@ -12,6 +12,11 @@ const headers = {
 };
 
 export type Movie = {
+  release_date: string | undefined;
+  spoken_languages: { name: string }[] | undefined;
+  genres: { id: number; name: string }[] | undefined;
+  vote_average: number | undefined;
+  moviePersonas: any[] | undefined;
   id: number;
   title?: string;
   name?: string;
@@ -40,6 +45,12 @@ interface TmdbReview {
     avatar_path: string | null;
   };
 }
+
+// _______________________________________________________________
+
+/*   -------------- MOVIES FUNCTIONS ---------------------  */
+
+// _______________________________________________________________
 
 export const fetchMovieReviews = async (id: string): Promise<TmdbReview[]> => {
   const res = await fetch(`${BASE_URL}/movie/${id}/reviews?language=en-US`, {
@@ -96,13 +107,52 @@ export async function fetchMovieCredits(id: string) {
     headers: {
       Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
     },
-    next: { revalidate: 60 * 60 * 6 }, // every 6 hours
+    next: { revalidate: 60 * 60 * 6 },
   });
 
   if (!res.ok) throw new Error('Failed to fetch movie credits');
 
   return res.json(); // contains { id, cast, crew }
 }
+export const fetchMovieCast = async (id: string): Promise<CastMember[]> => {
+  const res = await fetch(`${BASE_URL}/movie/${id}/credits?language=en-US`, {
+    headers,
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) {
+    console.warn(`Failed to fetch cast for movie ${id}`);
+    return [];
+  }
+
+  const data = await res.json();
+  return data.cast || [];
+};
+
+export const fetchMovieTrailers = async (movieId: string): Promise<Trailer[]> => {
+  const res = await fetch(`${BASE_URL}/movie/${movieId}/videos?language=en-US`, {
+    headers,
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) throw new Error(`Failed to fetch trailers for movie ${movieId}`);
+
+  const data = await res.json();
+  return data.results.filter(
+    (video: Trailer) => video.site === 'YouTube' && video.type === 'Trailer',
+  );
+};
+
+// _______________________________________________________________
+
+/*   -------------- SHOWS FUNCTIONS ---------------------  */
+
+// _______________________________________________________________
+
+
+
+
+
 
 
 
@@ -128,19 +178,7 @@ export const fetchShowById = async (id: string): Promise<Movie> => {
   return res.json();
 };
 
-export const fetchMovieTrailers = async (movieId: string): Promise<Trailer[]> => {
-  const res = await fetch(`${BASE_URL}/movie/${movieId}/videos?language=en-US`, {
-    headers,
-    next: { revalidate: 3600 },
-  });
 
-  if (!res.ok) throw new Error(`Failed to fetch trailers for movie ${movieId}`);
-
-  const data = await res.json();
-  return data.results.filter(
-    (video: Trailer) => video.site === 'YouTube' && video.type === 'Trailer',
-  );
-};
 
 export const fetchShowTrailers = async (showId: string): Promise<Trailer[]> => {
   const res = await fetch(`${BASE_URL}/tv/${showId}/videos?language=en-US`, {
@@ -168,17 +206,25 @@ export const fetchShowCast = async (id: string): Promise<CastMember[]> => {
   return data.cast;
 };
 
-export const fetchMovieCast = async (id: string): Promise<CastMember[]> => {
-  const res = await fetch(`${BASE_URL}/movie/${id}/credits?language=en-US`, {
+export const fetchShowSeasons = async (showId: string): Promise<any[]> => {
+  const res = await fetch(`${BASE_URL}/tv/${showId}?language=en-US`, {
     headers,
     next: { revalidate: 3600 },
   });
 
-  if (!res.ok) {
-    console.warn(`Failed to fetch cast for movie ${id}`);
-    return [];
-  }
+  if (!res.ok) throw new Error(`Failed to fetch show seasons for ${showId}`);
 
   const data = await res.json();
-  return data.cast || [];
+  return data.seasons || [];
+};
+
+export const fetchSeasonDetails = async (showId: string, seasonNumber: number): Promise<any> => {
+  const res = await fetch(`${BASE_URL}/tv/${showId}/season/${seasonNumber}?language=en-US`, {
+    headers,
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) throw new Error(`Failed to fetch season ${seasonNumber} for show ${showId}`);
+
+  return res.json();
 };

@@ -1,23 +1,9 @@
-'use client';
-
-import type { Persona } from '@/app/components/cards/PersonaCard';
-import { useState, useEffect } from 'react';
 import { Calendar, Globe, Star, Grid2X2 } from 'lucide-react';
 import { Tag } from '@/app/components/ui/Tags';
 import { IconLabel } from '@/app/components/ui/Labels';
 import { RatingBlock } from '@/app/components/ui/Blocks';
 import { PersonaCard } from '@/app/components/cards/PersonaCard';
-
-// type CrewMemeber = {
-//   adult: boolean;
-//   credit_id: string;
-//   department: string;
-//   job: string;
-//   known_for_department: string;
-//   popularity: number;
-//   original_name?: string;
-//   profile_path?: string;
-// };
+import { Persona } from '@/types/components';
 
 export type MovieGenres = {
   id: number;
@@ -26,8 +12,6 @@ export type MovieGenres = {
 export type MovieLanguages = {
   name: string;
 };
-
-
 
 export type GenreCreditsProps = {
   release_date: string;
@@ -44,7 +28,7 @@ const GenreCredits = ({
   vote_average,
   personas = [],
 }: GenreCreditsProps) => {
-  const mockVoteAverage = vote_average  ?? Math.floor(Math.random() * 5) + 5;
+  const mockVoteAverage = vote_average ?? Math.floor(Math.random() * 5) + 5;
   const ratingPlatforms = [
     { platform: 'IMDb', vote_average: mockVoteAverage },
     { platform: 'AuraStream', vote_average: Math.max(1, mockVoteAverage - 0.5) }, // Slightly lower but not below 1

@@ -15,7 +15,7 @@ export type ReviewAuthor = {
   updated_at: string;
   url: string;
 };
-export type CastMember= {
+export type CastMember = {
   id: number;
   cast_id: number;
   gender: number;
@@ -27,7 +27,6 @@ export type CastMember= {
   original_name: string;
   profile_path?: string;
 };
-
 
 export interface MovieData {
   releaseYear: number;
@@ -51,13 +50,7 @@ export type CrewMember = {
   profile_path?: string;
 };
 
-
-
 // CastMember Partial
-
-
-
-
 
 export interface CrewPerson {
   job: CrewMember['job'];
@@ -125,13 +118,15 @@ export interface QuickActionsProps {
 }
 
 export interface Episode {
-  id: string;
-  number: number;
-  title: string;
-  description: string;
-  duration: string;
-  thumbnail: string;
+  id: number;
+  episode_number: number;
+  name: string;
+  overview: string;
+  runtime: string | number;
+  still_path: string;
   releaseDate?: string;
+  trailerKey?:string;
+  poster_path?:string;
 }
 
 export interface SeasonMock {
@@ -144,8 +139,20 @@ export interface SeasonMock {
 }
 
 export interface SeasonsEpisodesProps {
-  seasons: SeasonMock[];
+  seasons: {
+    id: string;
+    name: string;
+    title: string;
+    number: number;
+    seasonNumber: number;
+    episodeCount: number;
+    overview: string;
+    posterPath: string;
+    airDate: string;
+    episodes: any[];
+  }[];
   currentSeason?: number;
+  showId: string;
   onEpisodePlay?: (seasonId: string, episodeId: string) => void;
 }
 
