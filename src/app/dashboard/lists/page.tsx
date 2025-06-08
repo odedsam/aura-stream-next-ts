@@ -1,5 +1,3 @@
-'use client';
-
 import FullList from '@/features/lists/FullList';
 
 export default function ListsPage() {

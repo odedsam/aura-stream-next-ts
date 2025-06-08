@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
-    const { email, password, name } = await req.json();
+    const { email, password, firstName } = await req.json();
 
     const existingUser = await prisma.user.findUnique({ where: { email } });
     if (existingUser) {
@@ -16,13 +16,13 @@ export async function POST(req: Request) {
     const user = await prisma.user.create({
       data: {
         email,
-        name,
-        password: hashedPassword,
+        firstName,
+        hashedPassword,
       },
     });
 
     return NextResponse.json(
-      { user: { id: user.id, email: user.email, name: user.name } },
+      { user: { id: user.id, email: user.email, name: user.firstName } },
       { status: 201 },
     );
   } catch (err) {

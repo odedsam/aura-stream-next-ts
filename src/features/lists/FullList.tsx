@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import { ContentItem, SectionType } from '@/types';
 import { SHOWS, MOVIES, MUSIC, STORAGE_KEYS } from '@/data/content';
@@ -27,23 +28,19 @@ const FullList: React.FC = () => {
     setActiveSection(section);
   };
 
-  // Wrapper functions to ensure correct type signature
   const handleToggleSaved = (item: ContentItem): void => {
-    toggleSaved(item); // toggleItem expects the full item
+    toggleSaved(item);
   };
 
   const handleToggleLiked = (item: ContentItem): void => {
-    toggleLiked(item); // toggleItem expects the full item
+    toggleLiked(item);
   };
 
-  // Clear all functions
   const handleClearAllSaved = (): void => {
-    // Clear all saved items by removing each one
     savedItems.forEach((item) => removeSaved(item.id));
   };
 
   const handleClearAllLiked = (): void => {
-    // Clear all liked items by removing each one
     likedItems.forEach((item) => removeLiked(item.id));
   };
 
