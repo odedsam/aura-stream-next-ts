@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import StreamLoader from '@/app/components/loaders/AppLoader';
-import AltAppLoader from './components/loaders/AltAppLoader';
 
 interface StreamLoaderWrapperProps {
   children: React.ReactNode;
