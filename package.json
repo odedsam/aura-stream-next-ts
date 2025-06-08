@@ -6,7 +6,6 @@
     "clean": "rimraf node_modules .next pnpm-lock.yaml",
     "dev": "next dev --turbopack",
     "generate": "prisma generate",
-    "prebuild": "pnpm run clean",
     "build": "pnpm run generate && next build",
     "start": "next start",
     "lint": "next lint",
