@@ -2,10 +2,11 @@
   "name": "stream-vibe",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+   "scripts": {
     "clean": "rimraf node_modules .next pnpm-lock.yaml",
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "generate": "prisma generate",
+    "build": "pnpm run generate && next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write ."
