@@ -16,6 +16,7 @@ const GenreCarouselInner = ({
   titleClassName,
   itemClassName,
   showControls = true,
+  onClick,
 }: GenreCarouselProps) => {
   const { currentIndex, setCurrentIndex, totalSlides, setTotalSlides } = usePagination();
 
@@ -45,7 +46,7 @@ const GenreCarouselInner = ({
         titleClassName={titleClassName}
       />
 
-      <GenreCarouselPanel className="grid">
+      <GenreCarouselPanel className="grid" onClick={onClick}>
         {currentItems.map((item: GenreCardProps, index) => (
           <GenreCard key={item.id || `item-${currentIndex}-${index}`} {...item} className={cn('grid gap-4', itemClassName)} />
         ))}

@@ -11,15 +11,14 @@ export default async function BrowsePage() {
     <div>
       <HeroSliderServer />
       <div className="p-6 space-y-10">
-        <section>ƒ
+        <section>
           <h2 className="text-2xl font-bold mb-4">Popular Movies</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {movies.map((m) => (
               <Link
                 key={m.id}
                 href={`/browse/movies/${m.id}`}
-                className="block hover:opacity-80 transition"
-              >
+                className="block hover:opacity-80 transition">
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${m.poster_path}`}
                   alt={m.title || ''}
@@ -39,8 +38,7 @@ export default async function BrowsePage() {
               <Link
                 key={s.id}
                 href={`/browse/shows/${s.id}`}
-                className="block hover:opacity-80 transition"
-              >
+                className="block hover:opacity-80 transition">
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${s.poster_path}`}
                   alt={s.name || ''}

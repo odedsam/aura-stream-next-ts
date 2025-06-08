@@ -1,12 +1,12 @@
-// app/store/uiStore.ts
 import { create } from 'zustand';
 
 interface Notification {
   id: string;
   message: string;
+  title?: string;
   isRead: boolean;
-  type?: 'info' | 'success' | 'error' | 'warning'; // Optional: define types of notifications
-  timestamp?: Date; // Optional: when the notification was created
+  type?: 'info' | 'success' | 'error' | 'warning';
+  timestamp?: Date;
 }
 
 interface UiState {
@@ -48,9 +48,7 @@ export const useUiStore = create<UiState>()((set, get) => ({
     })),
   markAsRead: (id) =>
     set((state) => ({
-      notifications: state.notifications.map((n) =>
-        n.id === id ? { ...n, isRead: true } : n
-      ),
+      notifications: state.notifications.map((n) => (n.id === id ? { ...n, isRead: true } : n)),
       unreadCount: state.unreadCount > 0 ? state.unreadCount - 1 : 0,
     })),
 
@@ -61,7 +59,6 @@ export const useUiStore = create<UiState>()((set, get) => ({
   toggleNotifications: () => set((state) => ({ isNotificationsOpen: !state.isNotificationsOpen })),
 }));
 
-// Focused hooks for components
 export const useMobileMenuOpen = () => useUiStore((state) => state.isMobileMenuOpen);
 export const useToggleMobileMenu = () => useUiStore((state) => state.toggleMobileMenu);
 

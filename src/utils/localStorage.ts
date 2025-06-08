@@ -1,10 +1,6 @@
 export class LocalStorageUtils {
   static getItem<T>(key: string): T[] {
     try {
-      // In Claude.ai environment, return empty array
-      // In real environment, uncomment the following lines:
-      // const item = localStorage.getItem(key);
-      // return item ? JSON.parse(item) : [];
       return [];
     } catch (error) {
       console.error(`Error getting ${key} from localStorage:`, error);
@@ -14,9 +10,6 @@ export class LocalStorageUtils {
 
   static setItem<T>(key: string, value: T[]): void {
     try {
-      // In Claude.ai environment, this is a no-op
-      // In real environment, uncomment the following line:
-      // localStorage.setItem(key, JSON.stringify(value));
       console.log(`Would save to localStorage: ${key}`, value);
     } catch (error) {
       console.error(`Error setting ${key} in localStorage:`, error);
@@ -25,7 +18,7 @@ export class LocalStorageUtils {
 
   static addToList<T extends { id: number }>(key: string, item: T): T[] {
     const currentList = this.getItem<T>(key);
-    const isAlreadyInList = currentList.some(existing => existing.id === item.id);
+    const isAlreadyInList = currentList.some((existing) => existing.id === item.id);
 
     if (!isAlreadyInList) {
       const newList = [...currentList, item];
@@ -38,14 +31,17 @@ export class LocalStorageUtils {
 
   static removeFromList<T extends { id: number }>(key: string, itemId: number): T[] {
     const currentList = this.getItem<T>(key);
-    const newList = currentList.filter(item => item.id !== itemId);
+    const newList = currentList.filter((item) => item.id !== itemId);
     this.setItem(key, newList);
     return newList;
   }
 
-  static toggleInList<T extends { id: number }>(key: string, item: T): { list: T[], isAdded: boolean } {
+  static toggleInList<T extends { id: number }>(
+    key: string,
+    item: T,
+  ): { list: T[]; isAdded: boolean } {
     const currentList = this.getItem<T>(key);
-    const isAlreadyInList = currentList.some(existing => existing.id === item.id);
+    const isAlreadyInList = currentList.some((existing) => existing.id === item.id);
 
     if (isAlreadyInList) {
       const newList = this.removeFromList<T>(key, item.id);

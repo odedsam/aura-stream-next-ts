@@ -84,8 +84,6 @@ export interface SeasonMock {
   description?: string;
 }
 
-
-
 export interface PlanFeatures {
   content: string;
   devices: string;

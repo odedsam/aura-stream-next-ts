@@ -8,21 +8,11 @@ import {
   fetchMovieCredits,
 } from '@/lib/tmdb';
 
-interface PageProps {
-  params: { id: string };
-}
-type Trailer = {
-  id: number;
-  results: {
-    key: string;
-    name: string;
-    site: 'YouTube' | string;
-    type: string;
-  }[];
-};
+type Params = Promise<{ id: string }>;
 
-export default async function Page({ params }: PageProps) {
-  const { id } = await params;
+export default async function Page(props: { params: Params }) {
+  const params = await props.params;
+  const id = params.id;
   const [movieData, trailers] = await Promise.all([fetchMovieById(id), fetchMovieTrailers(id)]);
 
   const [castResult, reviewsResult, creditsResult] = await Promise.allSettled([
@@ -35,7 +25,6 @@ export default async function Page({ params }: PageProps) {
   const reviews = reviewsResult.status === 'fulfilled' ? reviewsResult.value : [];
   const credits = creditsResult.status === 'fulfilled' ? creditsResult.value : null;
   const youtubeTrailer = trailers?.find((vid) => vid.site === 'YouTube' && vid.type === 'Trailer');
-  console.log(youtubeTrailer);
   return (
     <>
       <SingleMovieHero

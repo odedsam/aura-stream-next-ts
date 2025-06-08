@@ -2,7 +2,13 @@
 
 import { Bell, X, Check, Trash2 } from 'lucide-react';
 import { useEffect, useRef } from 'react';
-import { useNotifications, useUnreadCount, useIsNotificationsOpen, useToggleNotifications, useMarkAsRead } from '@/app/store/uiStore';
+import {
+  useNotifications,
+  useUnreadCount,
+  useIsNotificationsOpen,
+  useToggleNotifications,
+  useMarkAsRead,
+} from '@/app/store/uiStore';
 
 interface Notification {
   id: string;
@@ -13,7 +19,7 @@ interface Notification {
   isRead: boolean;
 }
 
-const NotificationComponent: React.FC = () => {
+const NotificationComponent = () => {
   const notifications = useNotifications();
   const unreadCount = useUnreadCount();
   const isNotificationsOpen = useIsNotificationsOpen();
@@ -75,7 +81,9 @@ const NotificationComponent: React.FC = () => {
         className="p-2 text-gray-300 hover:text-white transition-colors duration-200 relative"
         aria-label="Open notifications">
         <Bell className="w-5 h-5" />
-        {unreadCount > 0 && <span className="absolute top-1 right-1 w-2 h-2 bg-red-600 rounded-full"></span>}
+        {unreadCount > 0 && (
+          <span className="absolute top-1 right-1 w-2 h-2 bg-red-600 rounded-full"></span>
+        )}
         {unreadCount > 0 && (
           <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center font-medium">
             {unreadCount > 9 ? '9+' : unreadCount}
@@ -89,7 +97,9 @@ const NotificationComponent: React.FC = () => {
           <div className="p-4 border-b border-gray-700">
             <div className="flex items-center justify-between">
               <h3 className="text-white font-semibold">Notifications</h3>
-              {unreadCount > 0 && <span className="text-sm text-gray-def">{unreadCount} unread</span>}
+              {unreadCount > 0 && (
+                <span className="text-sm text-gray-def">{unreadCount} unread</span>
+              )}
             </div>
           </div>
 
@@ -101,22 +111,29 @@ const NotificationComponent: React.FC = () => {
               </div>
             ) : (
               <div className="divide-y divide-gray-700">
-                {notifications.map((notification: Notification) => (
+                {notifications.map((notification) => (
                   <div
                     key={notification.id}
-                    onClick={() => handleNotificationClick(notification.id)}
+                    onClick={() => handleNotificationClick(notification.id!)}
                     className={`p-4 hover:bg-gray-800 transition-colors cursor-pointer ${!notification.isRead ? 'bg-gray-800/50' : ''}`}>
                     <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 mt-1">{getNotificationIcon(notification.type)}</div>
+                      <div className="flex-shrink-0 mt-1">
+                        {getNotificationIcon(notification.type ?? 'Untitled')}
+                      </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between">
-                          <p className={`text-sm font-medium ${notification.isRead ? 'text-gray-300' : 'text-white'}`}>
+                          <p
+                            className={`text-sm font-medium ${notification.isRead ? 'text-gray-300' : 'text-white'}`}>
                             {notification.title}
                           </p>
-                          {!notification.isRead && <div className="w-2 h-2 bg-red-600 rounded-full flex-shrink-0"></div>}
+                          {!notification.isRead && (
+                            <div className="w-2 h-2 bg-red-600 rounded-full flex-shrink-0"></div>
+                          )}
                         </div>
                         <p className="text-sm text-gray-def mt-1">{notification.message}</p>
-                        <p className="text-xs text-gray-500 mt-2">{formatTime(notification.timestamp)}</p>
+                        <p className="text-xs text-gray-500 mt-2">
+                          {notification.timestamp ? formatTime(notification.timestamp) : 'Unknown'}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -127,7 +144,9 @@ const NotificationComponent: React.FC = () => {
 
           {notifications.length > 0 && (
             <div className="p-3 border-t border-gray-700">
-              <button className="w-full text-sm text-gray-def hover:text-white transition-colors">Mark all as read</button>
+              <button className="w-full text-sm text-gray-def hover:text-white transition-colors">
+                Mark all as read
+              </button>
             </div>
           )}
         </div>

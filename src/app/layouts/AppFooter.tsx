@@ -1,6 +1,5 @@
 import { footerData, socialLinks, legalLinks } from '@/config';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const AppFooter = () => {
   return (
@@ -40,9 +39,7 @@ const AppFooter = () => {
           </div>
         </div>
 
-        {/* Mobile Layout (sm and below) */}
         <div className="md:hidden grid grid-cols-2 gap-8">
-          {/* Left Column */}
           <div className="space-y-8">
             {[footerData[0], footerData[2], footerData[4]].map((section, index) => (
               <div key={index}>
@@ -62,7 +59,6 @@ const AppFooter = () => {
             ))}
           </div>
 
-          {/* Right Column */}
           <div className="space-y-8">
             {[footerData[1], footerData[3]].map((section, index) => (
               <div key={index}>
@@ -81,7 +77,6 @@ const AppFooter = () => {
               </div>
             ))}
 
-            {/* Connect With Us */}
             <div>
               <h3 className="text-white font-semibold text-lg mb-4">Connect With Us</h3>
               <div className="flex space-x-4">
@@ -104,7 +99,18 @@ const AppFooter = () => {
       <div className="border-t border-quinary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-def text-sm">©2023 streamvib, All Rights Reserved</div>
+            <p>
+              This site uses information from{' '}
+              <a
+                href="https://www.imdb.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary">
+                IMDb
+              </a>{' '}
+              for educational and entertainment purposes only. No monetization is involved.
+            </p>
+
             <div className="flex flex-wrap justify-center md:justify-end space-x-6 text-sm">
               {legalLinks.map((link, index) => (
                 <Link

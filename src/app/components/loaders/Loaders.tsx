@@ -1,6 +1,5 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-// Types
 interface UILoaderProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ripple';

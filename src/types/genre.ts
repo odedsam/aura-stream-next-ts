@@ -26,13 +26,14 @@ export type GenreCardProps = {
   title: string;
   images: string[];
   description?: string;
-  isTopTen?:boolean;
+  isTopTen?: boolean;
   onClick?: () => void;
   [key: string]: any;
 };
 
 export interface GenreCarouselProps {
   onSlide?: (index: number) => void;
+  onClick: () => void;
   title: string;
   items: GenreCardProps[];
   itemsPerSlide?: number;

@@ -33,7 +33,6 @@ export interface SearchResult {
   episode?: number;
 }
 
-// Cache data in memory for better performance
 let showsCache: Show[] | null = null;
 let episodesCache: Episode[] | null = null;
 let searchIndex: Map<string, Set<string>> | null = null;
@@ -75,13 +74,14 @@ function buildSearchIndex() {
 
   // Index shows - only if we have valid data
   if (shows && shows.length > 0) {
-    shows.forEach(show => {
+    shows.forEach((show) => {
       if (!show || !show.title) return; // Skip invalid entries
 
-      const searchableText = `${show.title} ${show.description || ''} ${show.genres?.join(' ') || ''}`.toLowerCase();
+      const searchableText =
+        `${show.title} ${show.description || ''} ${show.genres?.join(' ') || ''}`.toLowerCase();
       const words = searchableText.split(/\s+/);
 
-      words.forEach(word => {
+      words.forEach((word) => {
         const cleanWord = word.replace(/[^\w]/g, '');
         if (cleanWord.length > 2) {
           if (!searchIndex!.has(cleanWord)) {
@@ -95,13 +95,13 @@ function buildSearchIndex() {
 
   // Index episodes - only if we have valid data
   if (episodes && episodes.length > 0) {
-    episodes.forEach(episode => {
+    episodes.forEach((episode) => {
       if (!episode || !episode.title) return; // Skip invalid entries
 
       const searchableText = `${episode.title} ${episode.description || ''}`.toLowerCase();
       const words = searchableText.split(/\s+/);
 
-      words.forEach(word => {
+      words.forEach((word) => {
         const cleanWord = word.replace(/[^\w]/g, '');
         if (cleanWord.length > 2) {
           if (!searchIndex!.has(cleanWord)) {
@@ -114,7 +114,11 @@ function buildSearchIndex() {
   }
 }
 
-function calculateRelevanceScore(item: Show | Episode, query: string, type: 'show' | 'episode'): number {
+function calculateRelevanceScore(
+  item: Show | Episode,
+  query: string,
+  type: 'show' | 'episode',
+): number {
   const queryLower = query.toLowerCase();
   let score = 0;
 
@@ -133,7 +137,7 @@ function calculateRelevanceScore(item: Show | Episode, query: string, type: 'sho
   if (type === 'show') {
     const show = item as Show;
     // Genre match
-    if (show.genres?.some(genre => genre.toLowerCase().includes(queryLower))) score += 30;
+    if (show.genres?.some((genre) => genre.toLowerCase().includes(queryLower))) score += 30;
 
     // Boost popular shows (based on rating)
     if (show.rating && typeof show.rating === 'number') score += show.rating * 2;
@@ -142,12 +146,19 @@ function calculateRelevanceScore(item: Show | Episode, query: string, type: 'sho
   return score;
 }
 
-export async function performSearch(query: string, type: string = 'all', limit: number = 10): Promise<SearchResult[]> {
+export async function performSearch(
+  query: string,
+  type: string = 'all',
+  limit: number = 10,
+): Promise<SearchResult[]> {
   buildSearchIndex();
 
   const shows = loadShows();
   const episodes = loadEpisodes();
-  const searchTerms = query.toLowerCase().split(/\s+/).filter(term => term.length > 0);
+  const searchTerms = query
+    .toLowerCase()
+    .split(/\s+/)
+    .filter((term) => term.length > 0);
   const results: SearchResult[] = [];
 
   // If no valid search terms, return empty results
@@ -158,17 +169,17 @@ export async function performSearch(query: string, type: string = 'all', limit: 
   // Fast index-based search
   const candidateIds = new Set<string>();
 
-  searchTerms.forEach(term => {
+  searchTerms.forEach((term) => {
     searchIndex?.forEach((ids, indexedWord) => {
       if (indexedWord.includes(term)) {
-        ids.forEach(id => candidateIds.add(id));
+        ids.forEach((id) => candidateIds.add(id));
       }
     });
   });
 
   // Process shows
   if ((type === 'all' || type === 'shows') && shows.length > 0) {
-    shows.forEach(show => {
+    shows.forEach((show) => {
       if (!show || !show.id) return; // Skip invalid entries
 
       if (candidateIds.has(`show_${show.id}`)) {
@@ -182,7 +193,7 @@ export async function performSearch(query: string, type: string = 'all', limit: 
             score,
             genres: show.genres || [],
             year: show.year,
-            rating: show.rating
+            rating: show.rating,
           });
         }
       }
@@ -191,7 +202,7 @@ export async function performSearch(query: string, type: string = 'all', limit: 
 
   // Process episodes
   if ((type === 'all' || type === 'episodes') && episodes.length > 0) {
-    episodes.forEach(episode => {
+    episodes.forEach((episode) => {
       if (!episode || !episode.id) return; // Skip invalid entries
 
       if (candidateIds.has(`episode_${episode.id}`)) {
@@ -204,16 +215,14 @@ export async function performSearch(query: string, type: string = 'all', limit: 
             description: episode.description || '',
             score,
             season: episode.season,
-            episode: episode.episode
+            episode: episode.episode,
           });
         }
       }
     });
   }
 
-  return results
-    .sort((a, b) => b.score - a.score)
-    .slice(0, limit);
+  return results.sort((a, b) => b.score - a.score).slice(0, limit);
 }
 
 // Additional search functions
@@ -231,7 +240,7 @@ export async function getPopularShows(limit: number = 10): Promise<SearchResult[
   return shows
     .sort((a, b) => (b.rating || 0) - (a.rating || 0))
     .slice(0, limit)
-    .map(show => ({
+    .map((show) => ({
       type: 'show' as const,
       id: show.id,
       title: show.title,
@@ -239,6 +248,6 @@ export async function getPopularShows(limit: number = 10): Promise<SearchResult[
       score: show.rating || 0,
       genres: show.genres,
       year: show.year,
-      rating: show.rating
+      rating: show.rating,
     }));
 }

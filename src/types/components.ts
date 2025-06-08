@@ -125,8 +125,8 @@ export interface Episode {
   runtime: string | number;
   still_path: string;
   releaseDate?: string;
-  trailerKey?:string;
-  poster_path?:string;
+  trailerKey?: string;
+  poster_path?: string;
 }
 
 export interface SeasonMock {

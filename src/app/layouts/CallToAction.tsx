@@ -20,6 +20,7 @@ export default function CallToAction() {
       <div className="z-10">
         <Button
           variant="red"
+          href='/subscriptions'
           className="relative group px-8 py-4 text-sm font-medium uppercase tracking-wide transition duration-300 bg-red-def hover:bg-red-45 border-none rounded-md">
           <span className="relative z-10">Start Free Trial</span>
         </Button>

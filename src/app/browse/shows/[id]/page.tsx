@@ -2,9 +2,7 @@ import ShowDetailsClient from '@/features/details/ShowDetailsClient';
 import SingleMovieHero from '@/features/SingleMovieHero';
 import { fetchShowById, fetchShowTrailers, fetchShowCast, fetchShowSeasons } from '@/lib/tmdb';
 
-interface PageProps {
-  params: { id: string };
-}
+type Params = Promise<{ id: string }>;
 
 const fetchSeasonDetails = async (showId: string, seasonNumber: number) => {
   const res = await fetch(`https://api.themoviedb.org/3/tv/${showId}/season/${seasonNumber}`, {
@@ -45,8 +43,9 @@ const formatSeasonsData = async (showId: string, seasonsData: any[]) => {
   return detailedSeasons;
 };
 
-const Page = async ({ params }: PageProps) => {
-  const { id } = await params;
+const Page = async (props: { params: Params }) => {
+  const params = await props.params;
+  const id = params.id;
 
   const [showData, trailers, cast, seasonsData] = await Promise.all([
     fetchShowById(id),
@@ -56,10 +55,10 @@ const Page = async ({ params }: PageProps) => {
   ]);
 
   const formattedSeasons = await formatSeasonsData(id, seasonsData);
-console.log("trailers",showData);
+  console.log('trailers', showData);
   const trailerKey =
     trailers?.find((t: any) => t.type === 'Trailer' && t.site === 'YouTube')?.key || null;
-     console.log("trailerKey : ",trailerKey);
+  console.log('trailerKey : ', trailerKey);
   return (
     <div>
       <SingleMovieHero

@@ -16,7 +16,8 @@ export const PaginationProvider = ({ children }: { children: ReactNode }) => {
   const [totalSlides, setTotalSlides] = useState(0);
 
   return (
-    <PaginationContext.Provider value={{ currentIndex, setCurrentIndex, totalSlides, setTotalSlides }}>
+    <PaginationContext.Provider
+      value={{ currentIndex, setCurrentIndex, totalSlides, setTotalSlides }}>
       {children}
     </PaginationContext.Provider>
   );

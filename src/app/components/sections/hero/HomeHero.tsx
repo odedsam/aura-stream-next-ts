@@ -11,7 +11,6 @@ const HomeHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const timeRef = useRef(0);
 
-  // Mouse tracking
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const x = e.clientX / window.innerWidth;

@@ -1,8 +1,8 @@
-import { ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ChevronRight } from 'lucide-react';
 import { GenreCardProps } from '@/types';
+import { Badge } from '@/app/components/ui/Badge';
 import ImageGrid from '@/app/components/images/ImageGrid';
-import { Badge } from '../ui/Badge';
 
 export const GenreCard = ({ className, title, isTopTen, images, onClick }: GenreCardProps) => {
   return (
