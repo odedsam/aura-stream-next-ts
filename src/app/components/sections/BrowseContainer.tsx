@@ -3,14 +3,25 @@ import { cn } from '@/lib/utils';
 type BrowseProps = {
   children?: React.ReactNode;
   className?: string;
-  categoryName: string;
+  categoryName?: string;
   categoryClassName?: string;
   showCategory?: boolean;
 };
 
-export const BrowseContainer = ({ categoryName, children, className, categoryClassName, showCategory = true }: BrowseProps) => {
+export const BrowseContainer = ({
+  categoryName,
+  children,
+  className,
+  categoryClassName,
+  showCategory = false,
+}: BrowseProps) => {
   return (
-    <div className={cn('relative bg-primary border-2 border-quinary w-[90%] my-24 mx-auto', className)}>
+    <div
+      className={cn(
+        `relative bg-primary w-[90%] my-24 mx-auto`,
+        className,
+        !showCategory && categoryName ? 'border-2 border-quinary' : ''
+      )}>
       {showCategory && (
         <div
           className={cn(

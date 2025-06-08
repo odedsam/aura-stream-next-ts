@@ -42,9 +42,9 @@ export const LikedList: React.FC<LikedListProps> = ({
         </div>
 
         <div className="text-center py-12">
-          <Heart className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-          <p className="text-gray-400 text-lg mb-2">No liked content yet</p>
-          <p className="text-gray-500">
+          <Heart className="w-16 h-16 text-red-def mx-auto mb-4" />
+          <p className="text-white text-lg mb-2">No liked content yet</p>
+          <p className="text-white">
             Start liking some shows, movies, or music to see them here!
           </p>
         </div>

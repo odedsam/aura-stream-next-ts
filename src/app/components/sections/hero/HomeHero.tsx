@@ -3,7 +3,6 @@ import { Play } from 'lucide-react';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
 
-
 const HomeHero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -64,15 +63,9 @@ const HomeHero = () => {
 
         for (let i = 0; i <= points; i++) {
           const angle = (i / points) * Math.PI * 2;
-          const wave1 =
-            Math.sin(timeRef.current * 0.02 * layer.speed + angle * 2 + index) *
-            0.3;
-          const wave2 =
-            Math.cos(
-              timeRef.current * 0.015 * layer.speed + angle * 3 + index,
-            ) * 0.2;
-          const mouseInfluence =
-            (mousePos.x - 0.5) * 0.4 + (mousePos.y - 0.5) * 0.3;
+          const wave1 = Math.sin(timeRef.current * 0.02 * layer.speed + angle * 2 + index) * 0.3;
+          const wave2 = Math.cos(timeRef.current * 0.015 * layer.speed + angle * 3 + index) * 0.2;
+          const mouseInfluence = (mousePos.x - 0.5) * 0.4 + (mousePos.y - 0.5) * 0.3;
 
           const radius = baseRadius * (1 + wave1 + wave2 + mouseInfluence);
           const x = centerX + Math.cos(angle) * radius;
@@ -84,11 +77,7 @@ const HomeHero = () => {
             const prevAngle = ((i - 1) / points) * Math.PI * 2;
             const prevRadius =
               baseRadius *
-              (1 +
-                Math.sin(
-                  timeRef.current * 0.02 * layer.speed + prevAngle * 2 + index,
-                ) *
-                  0.3);
+              (1 + Math.sin(timeRef.current * 0.02 * layer.speed + prevAngle * 2 + index) * 0.3);
             const prevX = centerX + Math.cos(prevAngle) * prevRadius;
             const prevY = centerY + Math.sin(prevAngle) * prevRadius;
 
@@ -172,23 +161,24 @@ const HomeHero = () => {
           Aura Stream
         </h1>
         <p className="text-sm md:text-base text-pink-200 max-w-sm drop-shadow-md mx-auto italic">
-          Streaming evolved. A new dimension of cinematic experience. Experience
-          quantum-stitched realities in real time.
+          Streaming evolved. A new dimension of cinematic experience. Experience quantum-stitched
+          realities in real time.
         </p>
       </div>
 
       <div className="absolute bottom-8 w-full flex justify-center z-10">
-        <button
-          className="group relative cursor-pointer px-8 py-3 border border-red-600/30 text-white font-light uppercase tracking-widest text-sm transition-all duration-500 hover:border-red-600 hover:bg-red-600/5"
-          style={{
-            clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%)',
-          }}>
-          <Play className="w-4 h-4 inline-block mr-2" />
-          <span className="relative z-10">Start Watching</span>
-          <Link href="/browse" className="">
+        <Link href="/browse" className="">
+          <button
+            className="group relative cursor-pointer px-8 py-3 border border-red-600/30 text-white font-light uppercase tracking-widest text-sm transition-all duration-500 hover:border-red-600 hover:bg-red-600/5"
+            style={{
+              clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%)',
+            }}>
+            <Play className="w-4 h-4 inline-block mr-2" />
+            <span className="relative z-10">Start Watching</span>
+
             <div className="absolute inset-0 bg-red-600/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     </div>
   );

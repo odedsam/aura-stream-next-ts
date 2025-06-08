@@ -40,3 +40,5 @@ pnpm-lock.yaml
 # Miscellaneous backups and temporary files
 *.bak
 *.tmp
+
+/src/generated/prisma

@@ -224,7 +224,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'After a young boy vanishes, his mother, a police chief and his friends must confront terrifying supernatural forces in order to get him back.',
         duration: '47 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_Ratio0.6716_AL_.jpg',
         releaseDate: '2016-07-15',
       },
       {
@@ -234,7 +235,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'Lucas, Mike and Dustin try to talk to the girl they found in the woods. Hopper questions an anxious Joyce about an unsettling phone call.',
         duration: '55 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-1-3',
@@ -243,7 +245,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'An increasingly concerned Nancy looks for Barb and finds out what Jonathan has been up to. Joyce is convinced Will is trying to talk to her.',
         duration: '52 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMTI3NTQyMzU5M15BMl5BanBnXkFtZTcwMTM2MjgyMQ@@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BMTI3NTQyMzU5M15BMl5BanBnXkFtZTcwMTM2MjgyMQ@@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-1-4',
@@ -252,13 +255,9 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'Refusing to believe Will is dead, Joyce and Hopper team up to investigate what happened to him. Hopper breaks into the lab.',
         duration: '50 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6716_AL_.jpg',
       },
-
-
-
-
-
 
       {
         id: 'ep-1-5',
@@ -266,7 +265,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Five: The Flea and the Acrobat',
         description: '...',
         duration: '51 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BOTJiNDEzOWYtMTVjOC00ZjlmLWE0NGMtZmE1OWVmZDQ2OWJhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BOTJiNDEzOWYtMTVjOC00ZjlmLWE0NGMtZmE1OWVmZDQ2OWJhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-1-6',
@@ -274,7 +274,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Six: The Monster',
         description: '...',
         duration: '51 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-1-7',
@@ -282,7 +283,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Seven: The Bathtub',
         description: '...',
         duration: '47 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNDBjMWUxNTUtNjZiNi00YzJhLTgzNzUtMTRiY2FkZmMzYTNjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BNDBjMWUxNTUtNjZiNi00YzJhLTgzNzUtMTRiY2FkZmMzYTNjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-1-8',
@@ -290,7 +292,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Eight: The Upside Down',
         description: '...',
         duration: '53 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMzkzMmU0YTYtOWM3My00YzBmLWI0YzctOGYyNTkwMWE5MTJkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BMzkzMmU0YTYtOWM3My00YzBmLWI0YzctOGYyNTkwMWE5MTJkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_Ratio0.6716_AL_.jpg',
       },
     ],
   },
@@ -309,7 +312,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'As the town preps for Halloween, a high-scoring rival shakes things up in the arcade, and a skeptical Hopper inspects a field of rotting pumpkins.',
         duration: '48 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGdeQXVyODIxMzk5NjA@._V1_Ratio0.7015_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGdeQXVyODIxMzk5NjA@._V1_Ratio0.7015_AL_.jpg',
       },
       {
         id: 'ep-2-2',
@@ -318,7 +322,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           'After Will sees something terrible on his trick-or-treat Halloween night, Mike wonders whether Eleven is still out there. Nancy wrestles with the truth about Barb.',
         duration: '53 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNWJlNzUzNGMtYTAwMS00ZjI2LWFmNWQtODcxNWUxODA5YmU1XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BNWJlNzUzNGMtYTAwMS00ZjI2LWFmNWQtODcxNWUxODA5YmU1XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-2-3',
@@ -326,7 +331,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Three: The Pollywog',
         description: '...',
         duration: '51 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BOTI4NTNhZDMtMWNkZi00MTRmLWJmZDQtMmJkMGVmZTEzODlhXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BOTI4NTNhZDMtMWNkZi00MTRmLWJmZDQtMmJkMGVmZTEzODlhXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-2-4',
@@ -334,7 +340,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Four: Will the Wise',
         description: '...',
         duration: '55 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNTkyOGVjMGEtNmQzZi00NzFlLTlhOWQtODYyMDc2ZGJmYzFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_Ratio0.7015_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BNTkyOGVjMGEtNmQzZi00NzFlLTlhOWQtODYyMDc2ZGJmYzFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_Ratio0.7015_AL_.jpg',
       },
       {
         id: 'ep-2-5',
@@ -342,12 +349,9 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Five: Dig Dug',
         description: '...',
         duration: '53 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BOTdiNzJlOWUtNWMwNS00NmFlLWI0YTEtZmI3YjIzZWUyY2Y3XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BOTdiNzJlOWUtNWMwNS00NmFlLWI0YTEtZmI3YjIzZWUyY2Y3XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_Ratio0.6716_AL_.jpg',
       },
-
-
-
-
 
       {
         id: 'ep-2-6',
@@ -355,7 +359,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Six: The Spy',
         description: '...',
         duration: '57 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMmExNzU2ZWMtYzUwYi00YmM2LTkxZTQtNmVhNjY0NTMyMWI2XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BMmExNzU2ZWMtYzUwYi00YmM2LTkxZTQtNmVhNjY0NTMyMWI2XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-2-7',
@@ -364,12 +369,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description: '...',
         duration: '50 min',
         thumbnail:
-'https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_Ratio0.6716_AL_.jpg',
+          'https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_Ratio0.6716_AL_.jpg',
       },
-
-
-
-
 
       {
         id: 'ep-2-8',
@@ -377,7 +378,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Eight: The Mind Flayer',
         description: '...',
         duration: '52 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-2-9',
@@ -385,8 +387,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Nine: The Gate',
         description: '...',
         duration: '62 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_Ratio0.6716_AL_.jpg',
-
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_Ratio0.6716_AL_.jpg',
       },
     ],
   },
@@ -405,7 +407,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         description:
           "Summer brings new jobs and budding romance. But the mood shifts when Dustin's radio picks up a Russian broadcast, and Will senses something is wrong.",
         duration: '50 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-3-2',
@@ -413,7 +416,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Two: The Mall Rats',
         description: '...',
         duration: '59 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_Ratio0.7015_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_Ratio0.7015_AL_.jpg',
       },
       {
         id: 'ep-3-3',
@@ -421,14 +425,9 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Three: The Case of the Missing Lifeguard',
         description: '...',
         duration: '49 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BOTI0MzcxMTYtZDVkMy00NjY1LTgyMTYtZmUxN2M3NmQ2NWJhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BOTI0MzcxMTYtZDVkMy00NjY1LTgyMTYtZmUxN2M3NmQ2NWJhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.6716_AL_.jpg',
       },
-
-
-
-
-
-
 
       {
         id: 'ep-3-4',
@@ -436,7 +435,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Four: The Sauna Test',
         description: '...',
         duration: '52 min',
-        thumbnail:'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-3-5',
@@ -444,7 +444,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Five: The Flayed',
         description: '...',
         duration: '50 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNTBmZWJkNjctNDhiNC00MGE2LWEwOTctZTk5OGVhMWMyNmVhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BNTBmZWJkNjctNDhiNC00MGE2LWEwOTctZTk5OGVhMWMyNmVhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-3-6',
@@ -452,7 +453,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Six: E Pluribus Unum',
         description: '...',
         duration: '59 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-3-7',
@@ -460,7 +462,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Seven: The Bite',
         description: '...',
         duration: '55 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BMTI3NTQyMzU5M15BMl5BanBnXkFtZTcwMTM2MjgyMQ@@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BMTI3NTQyMzU5M15BMl5BanBnXkFtZTcwMTM2MjgyMQ@@._V1_Ratio0.6716_AL_.jpg',
       },
       {
         id: 'ep-3-8',
@@ -468,7 +471,8 @@ export const seasonsEpisodesMock: SeasonMock[] = [
         title: 'Chapter Eight: The Battle of Starcourt',
         description: '...',
         duration: '77 min',
-        thumbnail: 'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6716_AL_.jpg',
+        thumbnail:
+          'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6716_AL_.jpg',
       },
     ],
   },

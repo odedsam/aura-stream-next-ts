@@ -113,6 +113,12 @@ body {
   .content-block-black {
     @apply bg-sec rounded-lg border-2 border-quinary;
   }
+  .gradient-red {
+    @apply bg-gradient-to-r from-[#ff1a1a] via-[#cc0000] to-[#990000] text-white hover:brightness-110 transition-all duration-200 ease-in-out shadow-md hover:shadow-red-500/30;
+  }
+  .gradient-black {
+    @apply bg-gradient-to-r from-[#1a1a1a] via-[#2a2a2a] to-[#000000] text-white hover:brightness-110 transition-all duration-200 ease-in-out shadow-md hover:shadow-gray-500/20;
+  }
 }
 
 .cta-background {

@@ -1,17 +1,33 @@
 import type { QuickAction } from '@/app/components/common/QuickActions';
 
-export interface RatingData {
-  platform: string;
-  rating: number;
-  maxRating?: number;
-}
 export interface RatingBlockProps extends RatingData {}
 
-interface CastMember {
-  name: string;
-  country: string;
-  image?: string | null;
-}
+export type ReviewAuthor = {
+  id: string;
+  author: string;
+  author_details: {
+    avatar_path?: string | null;
+    name: string;
+    rating: number;
+    username: string;
+  };
+  content: string;
+  updated_at: string;
+  url: string;
+};
+export type CastMember= {
+  id: number;
+  cast_id: number;
+  gender: number;
+  order: number;
+  popularity: number;
+  adult: boolean;
+  character: string;
+  known_for_department: string;
+  original_name: string;
+  profile_path?: string;
+};
+
 
 export interface MovieData {
   releaseYear: number;
@@ -22,6 +38,44 @@ export interface MovieData {
   music: CastMember[];
 }
 
+export type CrewMember = {
+  adult: boolean;
+  credit_id: string;
+  department: string;
+  gender: number;
+  job: string;
+  name: string;
+  known_for_department: string;
+  popularity: number;
+  original_name?: string;
+  profile_path?: string;
+};
+
+
+
+// CastMember Partial
+
+
+
+
+
+export interface CrewPerson {
+  job: CrewMember['job'];
+  name: CrewMember['name'];
+  profile_path: CrewMember['profile_path'];
+}
+
+export type Persona = {
+  job: string;
+  name: string;
+  profile_path?: string;
+};
+
+export type MovieLanguages = {
+  name: string;
+};
+
+export type OptionalCrewMember = Partial<CrewMember>;
 export type IconComponent = React.ComponentType<{ className?: string }>;
 
 export interface IconLabelProps {
@@ -39,6 +93,12 @@ export interface CastBlockProps {
 export interface NavigationBlockProps {
   className?: string;
   children?: React.ReactNode;
+}
+
+export interface RatingData {
+  platform: string;
+  rating: number;
+  maxRating?: number;
 }
 
 export interface NavigationBlockProps {
@@ -101,23 +161,6 @@ export type EpisodeCardProps = {
   seasonId: string;
   onPlay?: (seasonId: string, episodeId: string) => void;
 };
-export interface MovieCastMember {
-  id: number;
-  name: string;
-  image: string;
-}
-
-export interface Review {
-  id: number;
-  name: string;
-  location: string;
-  rating: number;
-  content: string;
-}
-
-export interface ReviewCardProps {
-  review: Review;
-}
 
 export interface SkeletonProps {
   className?: string;

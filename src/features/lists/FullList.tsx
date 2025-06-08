@@ -106,7 +106,7 @@ const FullList: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen my-24 content-block-black text-white">
       <Navigation
         activeSection={activeSection}
         savedCount={savedItems.length}
@@ -122,25 +122,6 @@ const FullList: React.FC = () => {
         onVolumeChange={globalVolumeControl.handleVolumeChange}
         onToggleMute={globalVolumeControl.toggleMute}
       />
-
-      <style jsx>{`
-        .slider::-webkit-slider-thumb {
-          appearance: none;
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background: #3b82f6;
-          cursor: pointer;
-        }
-        .slider::-moz-range-thumb {
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background: #3b82f6;
-          cursor: pointer;
-          border: none;
-        }
-      `}</style>
     </div>
   );
 };

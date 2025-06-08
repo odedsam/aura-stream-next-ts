@@ -1,9 +1,9 @@
 'use client';
-import type { CastBlockProps, NavigationBlockComponentProps, NavigationBlockProps, RatingBlockProps } from '@/types/components';
-import { ChevronLeft, ChevronRight, User } from 'lucide-react';
-import { Button } from '@/app/components/ui/Buttons';
-import { IconLabel } from '@/app/components/ui/Labels';
+
+import type { NavigationBlockComponentProps, NavigationBlockProps, RatingBlockProps } from '@/types/components';
 import { cn, formatRating } from '@/lib/utils';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '@/app/components/ui/Buttons';
 import { StarRating } from '@/app/components/common/StarRating';
 
 export const RatingBlock = ({ platform, rating, maxRating = 5 }: RatingBlockProps) => {
@@ -18,33 +18,6 @@ export const RatingBlock = ({ platform, rating, maxRating = 5 }: RatingBlockProp
   );
 };
 
-export const CastBlock = ({ title, members, icon: Icon }: CastBlockProps) => (
-  <div className="space-y-3">
-    <IconLabel icon={Icon} label={title} />
-    <div className="space-y-3">
-      {members.map((member, index) => (
-        <div
-          key={index}
-          className="flex items-center gap-3 bg-primary p-4 rounded-lg border-2 border-quinary">
-          <div className="w-12 h-12 rounded-full bg-gray-700 overflow-hidden flex-shrink-0">
-            {member.image ? (
-              <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center">
-                <User className="w-6 h-6 text-gray-500" />
-              </div>
-            )}
-          </div>
-          <div>
-            <h4 className="text-white font-medium">{member.name}</h4>
-            <p className="text-gray-def text-sm">From {member.country}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
 export function NavigationBlock({ className, children }: NavigationBlockProps) {
   return (
     <div className={cn('inline-flex bg-sec border-2 border-teriary rounded-lg p-1', className)}>
@@ -52,6 +25,7 @@ export function NavigationBlock({ className, children }: NavigationBlockProps) {
     </div>
   );
 }
+
 
 export default function NavigationBlockComponent({
   currentIndex = 0,

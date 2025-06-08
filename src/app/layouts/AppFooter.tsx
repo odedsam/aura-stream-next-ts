@@ -33,13 +33,7 @@ const AppFooter = () => {
                   href={social.href}
                   className="w-10 h-10 bg-quaternary rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors border border-quinary"
                   aria-label={social.name}>
-                  <Image
-                    src={social.icon}
-                    alt={'social-icon'}
-                    width={24}
-                    height={24}
-                    style={{ width: 'auto', height: 'auto' }}
-                  />
+                  <img src={social.icon} alt={social.name} className="w-6 h-6" />
                 </Link>
               ))}
             </div>
@@ -97,13 +91,7 @@ const AppFooter = () => {
                     href={social.href}
                     className="w-10 h-10 content-block-gray rounded-lg flex items-center justify-center hover:bg-gray-600 transition-colors"
                     aria-label={social.name}>
-                    <Image
-                      src={social.icon}
-                      alt={'social-icon'}
-                      width={20}
-                      height={20}
-                      style={{ width: 'auto', height: 'auto' }}
-                    />
+                    <img src={social.icon} className="w-5 h-5 " alt={social.name} />
                   </Link>
                 ))}
               </div>
@@ -119,12 +107,12 @@ const AppFooter = () => {
             <div className="text-gray-def text-sm">©2023 streamvib, All Rights Reserved</div>
             <div className="flex flex-wrap justify-center md:justify-end space-x-6 text-sm">
               {legalLinks.map((link, index) => (
-                <a
+                <Link
                   key={index}
                   href={link.href}
                   className="text-gray-def hover:text-white transition-colors">
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

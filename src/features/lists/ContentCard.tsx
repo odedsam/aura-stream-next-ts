@@ -21,7 +21,7 @@ export const ContentCard: React.FC<ContentCardProps> = ({
   };
 
   return (
-    <div className="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors">
+    <div className="content-block-gray rounded-lg p-4 hover:bg-gray-700 transition-colors">
       <div className="flex justify-between items-start mb-3">
         <div className="flex-1">
           <h3 className="text-white font-semibold text-lg">{item.title}</h3>

@@ -27,35 +27,7 @@ const nextConfig: NextConfig = {
 
   experimental: {},
   compress: true,
-  headers: async () => [
-    {
-      source: '/api/search',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, s-maxage=300, stale-while-revalidate=600',
-        },
-      ],
-    },
-    {
-      source: '/api/shows/:path*',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, s-maxage=600, stale-while-revalidate=1200',
-        },
-      ],
-    },
-    {
-      source: '/api/episodes/:path*',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, s-maxage=600, stale-while-revalidate=1200',
-        },
-      ],
-    },
-  ],
+
   eslint: {
     ignoreDuringBuilds: true,
   },

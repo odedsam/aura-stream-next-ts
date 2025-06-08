@@ -25,7 +25,7 @@ export const GenreCarouselFooter = ({ currentIndex, itemsPerSlide, totalItems }:
   if (totalItems <= itemsPerSlide) return null;
 
   return (
-    <div className="flex justify-center items-center space-x-2 text-sm text-gray-500">
+    <div className="flex justify-center items-center space-x-2 text-xl text-gray-500 py-6">
       <ResultsSummary from={from} to={to} total={totalItems} />
     </div>
   );

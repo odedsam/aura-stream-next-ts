@@ -11,7 +11,7 @@ export default async function BrowsePage() {
     <div>
       <HeroSliderServer />
       <div className="p-6 space-y-10">
-        <section>
+        <section>ƒ
           <h2 className="text-2xl font-bold mb-4">Popular Movies</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {movies.map((m) => (

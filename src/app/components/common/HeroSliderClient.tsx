@@ -1,7 +1,16 @@
 'use client';
-
 import { useState, useEffect } from 'react';
-import { Play, ChevronLeft, ChevronRight, Plus, Volume2 } from 'lucide-react';
+import {
+  Play,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  PlayCircle,
+  Bookmark,
+  Heart,
+  Pause,
+} from 'lucide-react';
+import { Button } from '../ui/Buttons';
 import Image from 'next/image';
 
 export interface Movie {
@@ -29,18 +38,31 @@ const HeroSliderClient: React.FC<HeroSliderProps> = ({
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const [isTrailerPlaying, setIsTrailerPlaying] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {
-    if (!isPlaying || movies.length <= 1) return;
+    if (!isPlaying || movies.length <= 1 || isTrailerPlaying) return;
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % movies.length);
     }, autoPlayInterval);
     return () => clearInterval(interval);
-  }, [isPlaying, movies.length, autoPlayInterval]);
+  }, [isPlaying, movies.length, autoPlayInterval, isTrailerPlaying]);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % movies.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + movies.length) % movies.length);
   const goToSlide = (index: number) => setCurrentSlide(index);
+
+  const playTrailer = () => {
+    if (currentMovie.trailerKey) {
+      setIsTrailerPlaying(true);
+    }
+  };
+
+  const closeTrailer = () => {
+    setIsTrailerPlaying(false);
+  };
 
   if (!movies.length) return null;
   const currentMovie = movies[currentSlide];
@@ -48,13 +70,31 @@ const HeroSliderClient: React.FC<HeroSliderProps> = ({
   return (
     <div className={`relative w-full ${className}`}>
       <div className="relative h-[60vh] sm:h-[70vh] lg:h-[80vh] xl:h-[90vh] overflow-hidden">
-        <div className="absolute inset-0">
+        {isTrailerPlaying && currentMovie.trailerKey && (
+          <div className="absolute inset-0 z-50 bg-black">
+            <button
+              onClick={closeTrailer}
+              className="absolute top-4 right-4 z-10 w-12 h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200">
+              <X className="w-6 h-6" />
+            </button>
+            <iframe
+              src={`https://www.youtube.com/embed/${currentMovie.trailerKey}?autoplay=1&controls=1`}
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+        )}
+
+        <div className="absolute inset-0" style={{ display: isTrailerPlaying ? 'none' : 'block' }}>
           <Image src={currentMovie.image} alt={currentMovie.title} fill priority />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
 
-        <div className="relative h-full flex items-center">
+        <div
+          className="relative h-full flex items-center"
+          style={{ display: isTrailerPlaying ? 'none' : 'flex' }}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl lg:max-w-3xl space-y-6 text-white">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
@@ -63,51 +103,48 @@ const HeroSliderClient: React.FC<HeroSliderProps> = ({
               <p className="text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
                 {currentMovie.description}
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
-                <button
-                  onClick={() => currentMovie.trailerKey && onPlay?.(currentMovie)}
-                  className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-semibold transition-colors duration-200 text-sm lg:text-base"
-                  disabled={!currentMovie.trailerKey}
-                >
-                  <Play className="w-4 h-4 lg:w-5 lg:h-5 fill-white" />
+              <div className="flex gap-2">
+                <Button
+                  onClick={playTrailer}
+                  variant="red"
+                  icon={<PlayCircle className="w-5 h-5" />}>
                   Play Trailer
-                </button>
-
-                <button className="flex items-center justify-center gap-2 bg-gray-800/80 hover:bg-gray-700/80 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-semibold transition-colors duration-200 text-sm lg:text-base backdrop-blur-sm">
-                  <Plus className="w-4 h-4 lg:w-5 lg:h-5" />
-                  Add to List
-                </button>
-
-                <button className="flex items-center justify-center gap-2 bg-gray-800/80 hover:bg-gray-700/80 text-white px-4 lg:px-6 py-3 lg:py-4 rounded-lg font-semibold transition-colors duration-200 backdrop-blur-sm">
-                  <Volume2 className="w-4 h-4 lg:w-5 lg:h-5" />
-                </button>
+                </Button>
+                <Button
+                  variant={isSaved ? 'saved' : 'ghost'}
+                  size="icon"
+                  onClick={() => setIsSaved(!isSaved)}
+                  icon={<Bookmark className="w-5 h-5" />}
+                  disabled={!currentMovie.trailerKey}
+                />
+                <Button
+                  variant={isFavorited ? 'favorite' : 'ghost'}
+                  size="icon"
+                  onClick={() => setIsFavorited(!isFavorited)}
+                  icon={<Heart className="w-5 h-5" />}
+                />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Arrows */}
-        {movies.length > 1 && (
+        {movies.length > 1 && !isTrailerPlaying && (
           <>
             <button
               onClick={prevSlide}
-              className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm"
-            >
+              className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm">
               <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
 
             <button
               onClick={nextSlide}
-              className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm"
-            >
+              className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm">
               <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
           </>
         )}
 
-        {/* Dots */}
-        {movies.length > 1 && (
+        {movies.length > 1 && !isTrailerPlaying && (
           <div className="absolute bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
             {movies.map((_, index) => (
               <button
@@ -121,31 +158,17 @@ const HeroSliderClient: React.FC<HeroSliderProps> = ({
           </div>
         )}
 
-        {/* Mobile Play/Pause */}
-        {movies.length > 1 && (
+        {movies.length > 1 && !isTrailerPlaying && (
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             className="absolute bottom-6 right-4 lg:hidden w-10 h-10 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white transition-colors duration-200"
-            aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'}
-          >
-            {isPlaying ? <PauseIcon /> : <PlayIcon />}
+            aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'}>
+            {isPlaying ? <Pause /> : <Play />}
           </button>
         )}
       </div>
     </div>
   );
 };
-
-const PauseIcon = () => (
-  <svg fill="white" stroke="none" viewBox="0 0 24 24" width="20" height="20">
-    <rect x="6" y="5" width="4" height="14" />
-    <rect x="14" y="5" width="4" height="14" />
-  </svg>
-);
-const PlayIcon = () => (
-  <svg fill="white" stroke="none" viewBox="0 0 24 24" width="20" height="20">
-    <path d="M8 5v14l11-7z" />
-  </svg>
-);
 
 export default HeroSliderClient;

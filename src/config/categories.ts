@@ -44,20 +44,23 @@ https://m.media-amazon.com/images/M/MV5BYTZiZjk1MDAtNzM3ZS00NThlLTkxY2YtNjU1NjAz
  https://m.media-amazon.com/images/M/MV5BMTU2MjYxMDgwMl5BMl5BanBnXkFtZTgwOTU0MjYyOTE@._V1_Ratio1.3200_AL_.jpg
 */
 
+
 export const comedyImages = {
   genre: [
-    'https://m.media-amazon.com/images/M/MV5BMTkyMTY2MzYyMl5BMl5BanBnXkFtZTcwMzU2NzIwNw@@._V1_Ratio1.0000_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMTk3MjM5NDg1Ml5BMl5BanBnXkFtZTYwMTQ2ODU2._V1_Ratio1.3400_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMjEzNzg3OTM5Ml5BMl5BanBnXkFtZTcwNTkyMDMzNA@@._V1_Ratio1.2800_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BYTZiZjk1MDAtNzM3ZS00NThlLTkxY2YtNjU1NjAzNzc1ODRjXkEyXkFqcGdeQXVyODc0OTEyNDU@._V1_Ratio1.3800_AL_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMTkyMTY2MzYyMl5BMl5BanBnXkFtZTcwMzU2NzIwNw@@._V1_UY1500_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMTk3MjM5NDg1Ml5BMl5BanBnXkFtZTgwMTQ2ODU2._V1_UY1500_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMjEzNzg3OTM5Ml5BMl5BanBnXkFtZTcwNTkyMDMzNA@@._V1_UY1500_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BYTZiZjk1MDAtNzM3ZS00NThlLTkxY2YtNjU1NjAzNzc1ODRjXkEyXkFqcGdeQXVyODc0OTEyNDU@._V1_UY1500_.jpg',
   ],
   top_ten: [
-    'https://m.media-amazon.com/images/M/MV5BMjI3MTkzMjQwOF5BMl5BanBnXkFtZTgwNTk0NzU0NzE@._V1_Ratio1.0000_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BNzQ3ODYzNDMwN15BMl5BanBnXkFtZTgwNzg4OTA4NDM@._V1_Ratio1.7800_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMTgzMDU2ODA0OV5BMl5BanBnXkFtZTgwMjE3MDcyOTE@._V1_Ratio1.3200_AL_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMTU2MjYxMDgwMl5BMl5BanBnXkFtZTgwOTU0MjYyOTE@._V1_Ratio1.3200_AL_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMjI3MTkzMjQwOF5BMl5BanBnXkFtZTgwNTk0NzU0NzE@._V1_UY1500_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BNzQ3ODYzNDMwN15BMl5BanBnXkFtZTgwNzg4OTA4NDM@._V1_UY1500_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMTgzMDU2ODA0OV5BMl5BanBnXkFtZTgwMjE3MDcyOTE@._V1_UY1500_.jpg',
+    'https://m.media-amazon.com/images/M/MV5BMTU2MjYxMDgwMl5BMl5BanBnXkFtZTgwOTU0MjYyOTE@._V1_UY1500_.jpg',
   ],
 };
+
+
 export const dramaImages = {
   genre: [
     'https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_Ratio0.6716_AL_.jpg',
@@ -141,7 +144,6 @@ MOVIES DONE
 export const OurGenres: any[] = [
   { id: 1, title: 'Action', images: actionImages.genre, description: 'High-octane thrills and excitement' },
   { id: 4, title: 'Adventures', images: adventureImages.genre, description: 'Explore the unknown' },
-  { id: 2, title: 'Comedy', images: comedyImages.genre, description: 'Laugh-out-loud entertainment' },
   { id: 3, title: 'Drama', images: dramaImages.genre, description: 'Emotional storytelling at its best' },
   { id: 5, title: 'Horror', images: horrorImages.genre, description: 'Spine-chilling experiences' },
 ];

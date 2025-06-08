@@ -12,15 +12,15 @@ export const VolumeControl: React.FC<VolumeControlProps> = ({
 }) => {
   return (
     <div className={cn('flex items-center space-x-2', className)}>
-      {showLabel && <span className="text-sm text-gray-400">Volume</span>}
+      {showLabel && <span className="text-sm font-semibold text-white">Volume</span>}
       <button
         onClick={onToggleMute}
-        className="p-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
+        className="p-2 bg-gray-def rounded-lg hover:bg-gray-def transition-colors"
         title={isMuted ? 'Unmute' : 'Mute'}>
         {isMuted || volume === 0 ? (
-          <VolumeX className="w-5 h-5 text-gray-300" />
+          <VolumeX className="w-5 h-5 text-black" />
         ) : (
-          <Volume2 className="w-5 h-5 text-gray-300" />
+          <Volume2 className="w-5 h-5 text-white" />
         )}
       </button>
       <input
@@ -29,9 +29,11 @@ export const VolumeControl: React.FC<VolumeControlProps> = ({
         max="100"
         value={isMuted ? 0 : volume}
         onChange={onVolumeChange}
-        className="w-16 h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
+        className="w-16 h-2 bg-gray-100 text-gray-100 rounded-lg appearance-none cursor-pointer slider"
       />
-      {showLabel && <span className="text-sm text-gray-400 w-8">{isMuted ? 0 : volume}%</span>}
+      {showLabel && (
+        <span className="text-sm font-semibold text-gray-def w-8">{isMuted ? 0 : volume}%</span>
+      )}
     </div>
   );
 };

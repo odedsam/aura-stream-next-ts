@@ -1,4 +1,3 @@
-import { Review } from '@/app/browse/shows/[id]/page';
 import { CastMember } from '@/app/components/cards/CastCard';
 import { env } from '@/config/env';
 
@@ -29,7 +28,6 @@ export type Trailer = {
   type: string;
 };
 
-
 interface TmdbReview {
   id: string;
   author: string;
@@ -57,17 +55,6 @@ export const fetchMovieReviews = async (id: string): Promise<TmdbReview[]> => {
   const data = await res.json();
   return data.results || [];
 };
-
-
-
-
-
-
-
-
-
-
-
 
 export const fetchPopularMovies = async (): Promise<Movie[]> => {
   const res = await fetch(`${BASE_URL}/movie/popular?language=en-US&page=1`, {
@@ -103,6 +90,32 @@ export const fetchMovieById = async (id: string): Promise<Movie> => {
 
   return res.json();
 };
+
+export async function fetchMovieCredits(id: string) {
+  const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, {
+    headers: {
+      Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
+    },
+    next: { revalidate: 60 * 60 * 6 }, // every 6 hours
+  });
+
+  if (!res.ok) throw new Error('Failed to fetch movie credits');
+
+  return res.json(); // contains { id, cast, crew }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const fetchShowById = async (id: string): Promise<Movie> => {
   const res = await fetch(`${BASE_URL}/tv/${id}?language=en-US`, {
@@ -155,13 +168,6 @@ export const fetchShowCast = async (id: string): Promise<CastMember[]> => {
   return data.cast;
 };
 
-
-
-
-
-
-
-
 export const fetchMovieCast = async (id: string): Promise<CastMember[]> => {
   const res = await fetch(`${BASE_URL}/movie/${id}/credits?language=en-US`, {
     headers,
@@ -176,4 +182,3 @@ export const fetchMovieCast = async (id: string): Promise<CastMember[]> => {
   const data = await res.json();
   return data.cast || [];
 };
-

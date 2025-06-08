@@ -1,5 +1,6 @@
-import MovRev from '@/app/components/sections/MovRev';
+import MovieReview from '@/app/components/sections/MovieReview';
 import { env } from '@/config/env';
+import { CastMember } from '@/types/tmdb';
 
 export type Movie = {
   id: number;
@@ -9,20 +10,12 @@ export type Movie = {
   poster_path?: string | null;
 };
 
-export type CastMember = {
-  id: number;
-  name: string;
-  character: string;
-  profile_path?: string | null;
-};
-
 export type Review = {
   id: string;
   author: string;
   content: string;
   url: string;
 };
-
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -77,7 +70,12 @@ const Page = async ({ params }: PageProps) => {
   ]);
 
   return (
-    <MovRev movieData={movieData} cast={cast} reviews={reviews} description={movieData.overview} />
+    <MovieReview
+      movieData={movieData}
+      cast={cast}
+      reviews={reviews}
+      description={movieData.overview}
+    />
   );
 };
 

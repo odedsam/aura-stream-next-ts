@@ -8,7 +8,7 @@ export const GlobalVolumeControl: React.FC<GlobalVolumeControlProps> = ({
   onToggleMute,
 }) => {
   return (
-    <div className="fixed bottom-4 right-4 bg-gray-800 p-4 rounded-lg border border-gray-700 shadow-lg">
+    <div className="fixed bottom-4 right-4 bg-red-def text-white p-4 rounded-lg border border-gray-def shadow-lg">
       <VolumeControl
         volume={volume}
         isMuted={isMuted}

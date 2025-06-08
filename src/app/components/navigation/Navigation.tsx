@@ -21,14 +21,14 @@ export const Navigation: React.FC<NavigationProps> = ({
   ];
 
   return (
-    <nav className="bg-gray-800 p-4 border-b border-gray-700">
+    <nav className="content-block-gray p-4 border-b border-gray-700">
       <div className="flex space-x-6">
         {navItems.map(({ id, label, icon: Icon }) => (
           <button
             key={id}
             onClick={() => onSectionChange(id)}
             className={`px-4 py-2 rounded-lg transition-colors flex items-center ${
-              activeSection === id ? 'bg-blue-600' : 'hover:bg-gray-700'
+              activeSection === id ? 'bg-red-def' : 'hover:bg-gray-700'
             }`}>
             {Icon && <Icon className="w-4 h-4 mr-2" />}
             {label}

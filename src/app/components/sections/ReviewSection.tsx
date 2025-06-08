@@ -1,33 +1,31 @@
 'use client';
 
-import { Plus } from 'lucide-react';
+import type { ReviewAuthor } from '../cards/ReviewCard';
 import { cn } from '@/lib/utils';
+import { Plus } from 'lucide-react';
 import { Button, CarouselButton } from '../ui/Buttons';
 import { useSlider } from '@/hooks/useSlider';
 import { SliderIndicator } from '../sliders/SliderIndicator';
 import ReviewCard from '../cards/ReviewCard';
 
-interface Review {
-  id: number;
-  name: string;
-  location: string;
-  rating: number;
-  content: string;
-}
-
 interface ReviewsSectionProps {
-  reviews: Review[];
+  reviews: ReviewAuthor[];
   perPage?: number;
   onAddReview?: () => void;
   className?: string;
 }
 
-export const RevSec = ({ reviews, perPage = 2, onAddReview, className }: ReviewsSectionProps) => {
+export const ReviewSection = ({
+  reviews,
+  perPage = 2,
+  onAddReview,
+  className,
+}: ReviewsSectionProps) => {
   const { index, next, prev, goTo } = useSlider(reviews.length, perPage, true);
 
   if (!reviews.length) {
     return (
-      <section className={cn("content-block-gray p-6", className)}>
+      <section className={cn('content-block-gray p-6', className)}>
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-semibold text-gray-def">Reviews</h2>
           <Button icon={<Plus />} variant="black" className="border-1" onClick={onAddReview}>
@@ -45,7 +43,7 @@ export const RevSec = ({ reviews, perPage = 2, onAddReview, className }: Reviews
   }
 
   return (
-    <section className={cn("content-block-gray p-6", className)}>
+    <section className={cn('content-block-gray p-6', className)}>
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-semibold text-gray-def">Reviews</h2>
         <Button icon={<Plus />} variant="black" className="border-1" onClick={onAddReview}>
@@ -54,8 +52,8 @@ export const RevSec = ({ reviews, perPage = 2, onAddReview, className }: Reviews
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-h-[200px]">
-        {visible.map((review, i) => (
-          <ReviewCard key={`${review.id}-${index}-${i}`} review={review} />
+        {visible.map((review: ReviewAuthor, idx) => (
+          <ReviewCard key={review.id || idx} review={review} />
         ))}
       </div>
 

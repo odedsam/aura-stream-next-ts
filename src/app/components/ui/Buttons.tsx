@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Link from 'next/link';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center gap-2 whitespace-nowrap font-manrope font-semibold rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
@@ -15,10 +15,16 @@ const buttonVariants = cva(
         red: 'bg-red-def text-white hover:bg-[#cc0000] font-semibold hover:text-gray-100 transition-all duration-200 ease-in-out hover:shadow-lg hover:shadow-red-500/25',
         darker:
           'bg-[#141414] text-white hover:bg-[#242424] hover:text-gray-100 transition-all duration-200 ease-in-out hover:shadow-lg hover:scale-105',
-          transparent:
+        transparent:
           'bg-transparent text-white border-2 border-quinary hover:bg-[#2a2a2a] hover:text-gray-100 transition-all duration-200 ease-in-out hover:shadow-lg',
         bordered:
           'bg-[#141414] text-white hover:bg-[#242424] border-3 border-quinary hover:text-gray-100 transition-all duration-200 ease-in-out hover:shadow-lg hover:scale-105',
+         ghost:
+          'bg-transparent text-white hover:bg-[#2a2a2a] border border-white/10 transition-all duration-200 ease-in-out hover:shadow-md',
+        favorite:
+          'bg-red-600 text-white hover:bg-red-700 transition-all duration-200 ease-in-out hover:shadow-red-500/30 hover:shadow-lg',
+        saved:
+          'bg-green-600 text-white hover:bg-green-700 transition-all duration-200 ease-in-out hover:shadow-green-500/30 hover:shadow-lg',
       },
       size: {
         default: 'h-12 px-8 py-4',
@@ -39,7 +45,9 @@ const buttonVariants = cva(
   },
 );
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   href?: string;
@@ -48,7 +56,21 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const Button = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
-  ({ className, variant, size, icon, iconPosition = 'left', children, href, target, full = false, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      icon,
+      iconPosition = 'left',
+      children,
+      href,
+      target,
+      full = false,
+      ...props
+    },
+    ref,
+  ) => {
     const content = icon ? (
       iconPosition === 'right' ? (
         <>
@@ -87,7 +109,6 @@ Button.displayName = 'Button';
 
 export { Button, buttonVariants };
 
-
 interface CarouselButtonProps {
   direction: 'prev' | 'next';
   onClick: () => void;
@@ -95,29 +116,25 @@ interface CarouselButtonProps {
   className?: string;
 }
 
-export const CarouselButton = ({ direction, onClick, disabled, className }: CarouselButtonProps) => (
+export const CarouselButton = ({
+  direction,
+  onClick,
+  disabled,
+  className,
+}: CarouselButtonProps) => (
   <Button
     className={cn(
-      "p-2 rounded-full bg-primary text-gray-def hover:bg-gray-700 transition-colors h-auto",
-      className
+      'p-2 rounded-full bg-primary text-gray-def hover:bg-gray-700 transition-colors h-auto',
+      className,
     )}
     disabled={disabled}
     onClick={onClick}
-    icon={direction === 'prev' ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+    icon={
+      direction === 'prev' ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />
+    }
     aria-label={`${direction === 'prev' ? 'Previous' : 'Next'} items`}
   />
 );
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 //  Click action

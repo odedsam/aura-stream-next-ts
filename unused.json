@@ -1,0 +1,1007 @@
+[
+  {
+    "file": "next.config.ts",
+    "line": 40,
+    "name": "default"
+  },
+  {
+    "file": "src/app/layout.tsx",
+    "line": 9,
+    "name": "default"
+  },
+  {
+    "file": "src/app/layout.tsx",
+    "line": 7,
+    "name": "metadata"
+  },
+  {
+    "file": "src/app/page.tsx",
+    "line": 12,
+    "name": "default"
+  },
+  {
+    "file": "src/config/categories.ts",
+    "line": 1,
+    "name": "actionImages (used in module)"
+  },
+  {
+    "file": "src/config/categories.ts",
+    "line": 19,
+    "name": "adventureImages (used in module)"
+  },
+  {
+    "file": "src/config/categories.ts",
+    "line": 47,
+    "name": "comedyImages (used in module)"
+  },
+  {
+    "file": "src/config/categories.ts",
+    "line": 61,
+    "name": "dramaImages (used in module)"
+  },
+  {
+    "file": "src/config/categories.ts",
+    "line": 75,
+    "name": "horrorImages (used in module)"
+  },
+  {
+    "file": "src/config/index.ts",
+    "line": 4,
+    "name": "geistSans"
+  },
+  {
+    "file": "src/config/index.ts",
+    "line": 9,
+    "name": "geistMono"
+  },
+  {
+    "file": "src/config/index.ts",
+    "line": 15,
+    "name": "manrope"
+  },
+  {
+    "file": "src/config/index.ts",
+    "line": 21,
+    "name": "appMetaData"
+  },
+  {
+    "file": "src/config/index.ts",
+    "line": 1,
+    "name": "navLinks"
+  },
+  {
+    "file": "src/config/index.ts",
+    "line": 8,
+    "name": "footerData"
+  },
+  {
+    "file": "src/config/index.ts",
+    "line": 49,
+    "name": "socialLinks"
+  },
+  {
+    "file": "src/config/index.ts",
+    "line": 67,
+    "name": "legalLinks"
+  },
+  {
+    "file": "src/config/mock.ts",
+    "line": 57,
+    "name": "sampleMovies"
+  },
+  {
+    "file": "src/config/mock.ts",
+    "line": 188,
+    "name": "moviesCatalog"
+  },
+  {
+    "file": "src/config/mock.ts",
+    "line": 211,
+    "name": "seasonsEpisodesMock"
+  },
+  {
+    "file": "src/hooks/usePagination.ts",
+    "line": 3,
+    "name": "usePagination"
+  },
+  {
+    "file": "src/lib/api.ts",
+    "line": 48,
+    "name": "getTrendingMovies"
+  },
+  {
+    "file": "src/lib/api.ts",
+    "line": 53,
+    "name": "getTrendingShows"
+  },
+  {
+    "file": "src/lib/api.ts",
+    "line": 58,
+    "name": "getMovieById"
+  },
+  {
+    "file": "src/lib/api.ts",
+    "line": 62,
+    "name": "getShowById"
+  },
+  {
+    "file": "src/lib/collections.ts",
+    "line": 3,
+    "name": "MovieDetailsAPI"
+  },
+  {
+    "file": "src/lib/collections.ts",
+    "line": 15,
+    "name": "castMembers"
+  },
+  {
+    "file": "src/lib/collections.ts",
+    "line": 26,
+    "name": "reviews"
+  },
+  {
+    "file": "src/lib/search.ts",
+    "line": 220,
+    "name": "searchShows"
+  },
+  {
+    "file": "src/lib/search.ts",
+    "line": 224,
+    "name": "searchEpisodes"
+  },
+  {
+    "file": "src/lib/search.ts",
+    "line": 228,
+    "name": "getPopularShows"
+  },
+  {
+    "file": "src/lib/search.ts",
+    "line": 23,
+    "name": "SearchResult (used in module)"
+  },
+  {
+    "file": "src/lib/tmdb.ts",
+    "line": 43,
+    "name": "TmdbReview (used in module)"
+  },
+  {
+    "file": "src/lib/tmdb.ts",
+    "line": 85,
+    "name": "searchMovies"
+  },
+  {
+    "file": "src/lib/tmdb.ts",
+    "line": 93,
+    "name": "fetchFullMovieData"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "line": 21,
+    "name": "addItemToArray (used in module)"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "line": 25,
+    "name": "removeItemFromArray"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "line": 29,
+    "name": "safeParseInt"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "line": 34,
+    "name": "incrementNumber"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "line": 38,
+    "name": "isValidMovieYear"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "line": 43,
+    "name": "addLanguageToMovie"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "line": 53,
+    "name": "addGenreToMovie"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "line": 60,
+    "name": "formatDuration"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "line": 69,
+    "name": "getMovieAge"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "line": 73,
+    "name": "createQuickAction (used in module)"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "line": 85,
+    "name": "QuickActionCreators"
+  },
+  {
+    "file": "src/types/components.ts",
+    "line": 3,
+    "name": "RatingData (used in module)"
+  },
+  {
+    "file": "src/types/components.ts",
+    "line": 16,
+    "name": "MovieData"
+  },
+  {
+    "file": "src/types/components.ts",
+    "line": 25,
+    "name": "IconComponent (used in module)"
+  },
+  {
+    "file": "src/types/components.ts",
+    "line": 67,
+    "name": "Episode (used in module)"
+  },
+  {
+    "file": "src/types/components.ts",
+    "line": 77,
+    "name": "SeasonMock (used in module)"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 1,
+    "name": "PricingPlan"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 11,
+    "name": "PricingCardProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 18,
+    "name": "PricingSectionProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 26,
+    "name": "DeviceData"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 32,
+    "name": "Movie"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 42,
+    "name": "MovieCatalog"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 49,
+    "name": "FAQItem"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 54,
+    "name": "FAQCardProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 62,
+    "name": "FaqHeaderProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 68,
+    "name": "Episode"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 78,
+    "name": "SeasonMock"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 89,
+    "name": "PlanFeatures"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 101,
+    "name": "Plan"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 108,
+    "name": "Country"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 1,
+    "name": "SliderIndicatorProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 11,
+    "name": "SliderControlProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 24,
+    "name": "GenreCardProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 34,
+    "name": "GenreCarouselProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 44,
+    "name": "GenreCarouselHeaderProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 52,
+    "name": "GenreCarouselFooterProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 58,
+    "name": "GenreCarouselPanelProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 1,
+    "name": "ContentType"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 2,
+    "name": "SectionType"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 4,
+    "name": "ContentItem"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 13,
+    "name": "ContentSectionProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 23,
+    "name": "ContentCardProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 31,
+    "name": "VolumeControlProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 39,
+    "name": "GlobalVolumeControlProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 46,
+    "name": "LikedListProps"
+  },
+  {
+    "file": "src/types/index.ts",
+    "line": 54,
+    "name": "LikedListStatsProps"
+  },
+  {
+    "file": "src/types/tmdb.ts",
+    "line": 1,
+    "name": "SpokenLanguage (used in module)"
+  },
+  {
+    "file": "src/types/tmdb.ts",
+    "line": 5,
+    "name": "Genre (used in module)"
+  },
+  {
+    "file": "src/types/tmdb.ts",
+    "line": 10,
+    "name": "CrewMember (used in module)"
+  },
+  {
+    "file": "src/types/tmdb.ts",
+    "line": 23,
+    "name": "Review"
+  },
+  {
+    "file": "src/types/tmdb.ts",
+    "line": 30,
+    "name": "Movie"
+  },
+  {
+    "file": "src/utils/index.ts",
+    "line": 1,
+    "name": "LocalStorageUtils"
+  },
+  {
+    "file": "src/app/browse/page.tsx",
+    "line": 7,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/AsyncComponent.tsx",
+    "line": 5,
+    "name": "default"
+  },
+  {
+    "file": "src/app/dashboard/layout.tsx",
+    "line": 9,
+    "name": "default"
+  },
+  {
+    "file": "src/app/dashboard/layout.tsx",
+    "line": 4,
+    "name": "metadata"
+  },
+  {
+    "file": "src/app/dashboard/page.tsx",
+    "line": 5,
+    "name": "default"
+  },
+  {
+    "file": "src/app/store/notificationStore.ts",
+    "line": 14,
+    "name": "useNotificationStore (used in module)"
+  },
+  {
+    "file": "src/app/store/notificationStore.ts",
+    "line": 27,
+    "name": "useNotifications"
+  },
+  {
+    "file": "src/app/store/notificationStore.ts",
+    "line": 28,
+    "name": "useAddNotification"
+  },
+  {
+    "file": "src/app/store/notificationStore.ts",
+    "line": 29,
+    "name": "useMarkAsRead"
+  },
+  {
+    "file": "src/app/store/notificationStore.ts",
+    "line": 30,
+    "name": "useUnreadCount"
+  },
+  {
+    "file": "src/app/store/notificationStore.ts",
+    "line": 31,
+    "name": "useSetUnreadCount"
+  },
+  {
+    "file": "src/app/store/notificationStore.ts",
+    "line": 32,
+    "name": "useIsNotificationsOpen"
+  },
+  {
+    "file": "src/app/store/notificationStore.ts",
+    "line": 33,
+    "name": "useToggleNotifications"
+  },
+  {
+    "file": "src/app/store/searchStore.ts",
+    "line": 11,
+    "name": "useSearchStore (used in module)"
+  },
+  {
+    "file": "src/app/store/searchStore.ts",
+    "line": 18,
+    "name": "useSearchTerm"
+  },
+  {
+    "file": "src/app/store/searchStore.ts",
+    "line": 19,
+    "name": "useSetSearchTerm"
+  },
+  {
+    "file": "src/app/store/searchStore.ts",
+    "line": 20,
+    "name": "useIsSearchOpen"
+  },
+  {
+    "file": "src/app/store/searchStore.ts",
+    "line": 21,
+    "name": "useToggleSearch"
+  },
+  {
+    "file": "src/app/store/uiStore.ts",
+    "line": 33,
+    "name": "useUiStore (used in module)"
+  },
+  {
+    "file": "src/app/store/uiStore.ts",
+    "line": 74,
+    "name": "useAddNotification"
+  },
+  {
+    "file": "src/app/store/uiStore.ts",
+    "line": 78,
+    "name": "useSetUnreadCount"
+  },
+  {
+    "file": "src/app/subscriptions/page.tsx",
+    "line": 5,
+    "name": "default"
+  },
+  {
+    "file": "src/app/support/page.tsx",
+    "line": 5,
+    "name": "default"
+  },
+  {
+    "file": "src/app/test/page.tsx",
+    "line": 4,
+    "name": "default"
+  },
+  {
+    "file": "src/features/details/GenreDetailsSidebar.tsx",
+    "line": 11,
+    "name": "GenreDetailsSidebarProps (used in module)"
+  },
+  {
+    "file": "src/features/details/GenreDetailsSidebar.tsx",
+    "line": 15,
+    "name": "MovieData (used in module)"
+  },
+  {
+    "file": "src/features/details/GenreDetailsSidebar.tsx",
+    "line": 88,
+    "name": "default"
+  },
+  {
+    "file": "src/features/details/ShowDetails.tsx",
+    "line": 57,
+    "name": "default"
+  },
+  {
+    "file": "src/app/(auth)/login/page.tsx",
+    "line": 9,
+    "name": "default"
+  },
+  {
+    "file": "src/app/(auth)/register/page.tsx",
+    "line": 25,
+    "name": "default"
+  },
+  {
+    "file": "src/app/api/browse/route.ts",
+    "line": 45,
+    "name": "GET"
+  },
+  {
+    "file": "src/app/api/login/route.ts",
+    "line": 5,
+    "name": "POST"
+  },
+  {
+    "file": "src/app/api/register/route.ts",
+    "line": 5,
+    "name": "POST"
+  },
+  {
+    "file": "src/app/api/search/route.ts",
+    "line": 4,
+    "name": "GET"
+  },
+  {
+    "file": "src/app/api/search/route.ts",
+    "line": 54,
+    "name": "POST"
+  },
+  {
+    "file": "src/app/components/arbitrage/AbouSection.tsx",
+    "line": 3,
+    "name": "Movie"
+  },
+  {
+    "file": "src/app/components/arbitrage/AbouSection.tsx",
+    "line": 13,
+    "name": "AuraStreamApp (used in module)"
+  },
+  {
+    "file": "src/app/components/arbitrage/AbouSection.tsx",
+    "line": 46,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/arbitrage/HomeCategories.tsx",
+    "line": 43,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/arbitrage/SearchBar.tsx",
+    "line": 13,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/cards/ContentCard.tsx",
+    "line": 42,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/cards/DeviceCard.tsx",
+    "line": 11,
+    "name": "DeviceCard (used in module)"
+  },
+  {
+    "file": "src/app/components/cards/ReleasedYearCard.tsx",
+    "line": 1,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/common/HeroSliderClient.tsx",
+    "line": 7,
+    "name": "Movie (used in module)"
+  },
+  {
+    "file": "src/app/components/common/QuickActions.tsx",
+    "line": 44,
+    "name": "ActionButton (used in module)"
+  },
+  {
+    "file": "src/app/components/common/QuickActions.tsx",
+    "line": 77,
+    "name": "QuickActions"
+  },
+  {
+    "file": "src/app/components/common/ResultsSummary.tsx",
+    "line": 3,
+    "name": "ResultsSummaryProps (used in module)"
+  },
+  {
+    "file": "src/app/components/common/SliderContainer.tsx",
+    "line": 29,
+    "name": "SliderControls (used in module)"
+  },
+  {
+    "file": "src/app/components/common/SliderContainer.tsx",
+    "line": 38,
+    "name": "ResponsiveSliderContainer (used in module)"
+  },
+  {
+    "file": "src/app/components/common/SliderContainer.tsx",
+    "line": 159,
+    "name": "useSliderControls"
+  },
+  {
+    "file": "src/app/components/images/PosterImage.tsx",
+    "line": 38,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/loaders/AltSuspense.tsx",
+    "line": 22,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/loaders/ClientLoader.tsx",
+    "line": 12,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/loaders/DataLoader.tsx",
+    "line": 13,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/loaders/Demo.tsx",
+    "line": 393,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/loaders/index.ts",
+    "line": 2,
+    "name": "NetflixLoader"
+  },
+  {
+    "file": "src/app/components/loaders/index.ts",
+    "line": 6,
+    "name": "Skeleton"
+  },
+  {
+    "file": "src/app/components/loaders/index.ts",
+    "line": 7,
+    "name": "SkeletonText"
+  },
+  {
+    "file": "src/app/components/loaders/index.ts",
+    "line": 8,
+    "name": "SkeletonCard"
+  },
+  {
+    "file": "src/app/components/loaders/index.ts",
+    "line": 9,
+    "name": "SkeletonList"
+  },
+  {
+    "file": "src/app/components/loaders/index.ts",
+    "line": 10,
+    "name": "SkeletonTable"
+  },
+  {
+    "file": "src/app/components/loaders/index.ts",
+    "line": 11,
+    "name": "SkeletonLoaders"
+  },
+  {
+    "file": "src/app/components/loaders/index.ts",
+    "line": 15,
+    "name": "SkeletonComponents"
+  },
+  {
+    "file": "src/app/components/loaders/Loaders.tsx",
+    "line": 420,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/loaders/Loaders.tsx",
+    "line": 421,
+    "name": "UILoaders (used in module)"
+  },
+  {
+    "file": "src/app/components/loaders/SuspenseLoader.tsx",
+    "line": 70,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/sections/index.ts",
+    "line": 13,
+    "name": "CastSection"
+  },
+  {
+    "file": "src/app/components/sections/index.ts",
+    "line": 288,
+    "name": "ContentSection"
+  },
+  {
+    "file": "src/app/components/sections/index.ts",
+    "line": 288,
+    "name": "NavigationControls"
+  },
+  {
+    "file": "src/app/components/sections/index.ts",
+    "line": 288,
+    "name": "SliderContainer"
+  },
+  {
+    "file": "src/app/components/sections/index.ts",
+    "line": 288,
+    "name": "ArrowButton"
+  },
+  {
+    "file": "src/app/components/sections/index.ts",
+    "line": 288,
+    "name": "GenreCard"
+  },
+  {
+    "file": "src/app/components/sections/index.ts",
+    "line": 289,
+    "name": "ContentSectionProps"
+  },
+  {
+    "file": "src/app/components/sections/index.ts",
+    "line": 289,
+    "name": "NavigationControlsProps"
+  },
+  {
+    "file": "src/app/components/sections/index.ts",
+    "line": 289,
+    "name": "SliderContainerProps"
+  },
+  {
+    "file": "src/app/components/sections/index.ts",
+    "line": 25,
+    "name": "ReviewSection"
+  },
+  {
+    "file": "src/app/components/sections/index.ts",
+    "line": 16,
+    "name": "FAQSection"
+  },
+  {
+    "file": "src/app/components/ui/Arrow.tsx",
+    "line": 85,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/ui/AuraButton.tsx",
+    "line": 131,
+    "name": "buttonVariants (used in module)"
+  },
+  {
+    "file": "src/app/components/ui/Blocks.tsx",
+    "line": 56,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/ui/Buttons.tsx",
+    "line": 42,
+    "name": "ButtonProps (used in module)"
+  },
+  {
+    "file": "src/app/components/ui/Buttons.tsx",
+    "line": 88,
+    "name": "buttonVariants (used in module)"
+  },
+  {
+    "file": "src/app/components/ui/Dropdown.tsx",
+    "line": 7,
+    "name": "DropdownItem (used in module)"
+  },
+  {
+    "file": "src/app/components/ui/Dropdown.tsx",
+    "line": 228,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/ui/ExpandView.tsx",
+    "line": 92,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/ui/Feedback.tsx",
+    "line": 9,
+    "name": "Loading"
+  },
+  {
+    "file": "src/app/components/ui/Feedback.tsx",
+    "line": 33,
+    "name": "Error"
+  },
+  {
+    "file": "src/app/components/ui/Logo.tsx",
+    "line": 8,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 51,
+    "name": "Img"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 55,
+    "name": "Section"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 63,
+    "name": "Article"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 72,
+    "name": "Main"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 80,
+    "name": "Dialog"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 88,
+    "name": "Aside"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 96,
+    "name": "Header"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 104,
+    "name": "Nav"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 112,
+    "name": "Footer"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 120,
+    "name": "Container"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 135,
+    "name": "Paragraph"
+  },
+  {
+    "file": "src/app/components/ui/Semantic.tsx",
+    "line": 152,
+    "name": "Heading"
+  },
+  {
+    "file": "src/app/components/ui/Tags.tsx",
+    "line": 41,
+    "name": "LanguageTag"
+  },
+  {
+    "file": "src/app/dashboard/liked/page.tsx",
+    "line": 22,
+    "name": "default"
+  },
+  {
+    "file": "src/app/dashboard/lists/page.tsx",
+    "line": 5,
+    "name": "default"
+  },
+  {
+    "file": "src/app/dashboard/lists/page.tsx",
+    "line": 9,
+    "name": "metadata"
+  },
+  {
+    "file": "src/app/dashboard/saved/page.tsx",
+    "line": 19,
+    "name": "default"
+  },
+  {
+    "file": "src/app/browse/movies/[id]/page.tsx",
+    "line": 7,
+    "name": "default"
+  },
+  {
+    "file": "src/app/browse/shows/[id]/page.tsx",
+    "line": 5,
+    "name": "Movie (used in module)"
+  },
+  {
+    "file": "src/app/browse/shows/[id]/page.tsx",
+    "line": 13,
+    "name": "Review (used in module)"
+  },
+  {
+    "file": "src/app/browse/shows/[id]/page.tsx",
+    "line": 82,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/sections/hero/MovieHero.tsx",
+    "line": 62,
+    "name": "default"
+  },
+  {
+    "file": "src/app/components/sections/pricing/MobilePricingTable.tsx",
+    "line": 12,
+    "name": "MobilePricingCard (used in module)"
+  },
+  {
+    "file": "src/app/components/sections/pricing/PricingSection.tsx",
+    "line": 17,
+    "name": "PricingSection (used in module)"
+  },
+  {
+    "file": "src/app/components/sliders/carousels/index.ts",
+    "line": 59,
+    "name": "GenreCarousel"
+  },
+  {
+    "file": "src/app/api/browse/movies/[id]/route.ts",
+    "line": 4,
+    "name": "GET"
+  }
+]

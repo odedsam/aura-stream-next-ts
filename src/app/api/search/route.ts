@@ -1,83 +1,36 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { performSearch } from '@/lib/search';
+import { NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const query = searchParams.get('q');
-  const type = searchParams.get('type') || 'all'; // shows, episodes, all
-  const limit = parseInt(searchParams.get('limit') || '10');
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const query = searchParams.get('query');
 
-  // Validate query parameter
-  if (!query || query.trim().length === 0) {
-    return NextResponse.json(
-      { error: 'Query parameter is required' },
-      { status: 400 }
-    );
-  }
-
-  // Validate limit
-  if (limit < 1 || limit > 100) {
-    return NextResponse.json(
-      { error: 'Limit must be between 1 and 100' },
-      { status: 400 }
-    );
+  if (!query) {
+    return NextResponse.json({ error: 'Query parameter is required' }, { status: 400 });
   }
 
   try {
-    const results = await performSearch(query.trim(), type, limit);
-
-    return NextResponse.json({
-      query: query.trim(),
-      type,
-      results,
-      total: results.length,
-      timestamp: new Date().toISOString()
-    }, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
-        'Content-Type': 'application/json'
-      }
-    });
-  } catch (error) {
-    console.error('Search error:', error);
-    return NextResponse.json(
+    const response = await fetch(
+      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.TMDB_API_KEY}&query=${encodeURIComponent(query)}&include_adult=false`,
       {
-        error: 'Search failed',
-        message: error instanceof Error ? error.message : 'Unknown error'
+        headers: {
+          'Content-Type': 'application/json',
+        },
       },
-      { status: 500 }
     );
-  }
-}
 
-// Optional: Add POST method for complex search queries
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json();
-    const { query, type = 'all', limit = 10, filters = {} } = body;
-
-    if (!query || query.trim().length === 0) {
-      return NextResponse.json(
-        { error: 'Query is required' },
-        { status: 400 }
-      );
+    if (!response.ok) {
+      throw new Error(`TMDB API error: ${response.status}`);
     }
 
-    const results = await performSearch(query.trim(), type, limit);
+    const data = await response.json();
 
-    return NextResponse.json({
-      query: query.trim(),
-      type,
-      filters,
-      results,
-      total: results.length,
-      timestamp: new Date().toISOString()
-    });
-  } catch (error) {
-    console.error('Search POST error:', error);
-    return NextResponse.json(
-      { error: 'Search failed' },
-      { status: 500 }
+    const filteredResults = data.results.filter(
+      (item: any) => item.media_type === 'movie' || item.media_type === 'tv',
     );
+
+    return NextResponse.json({ results: filteredResults });
+  } catch (error) {
+    console.error('Error searching TMDB:', error);
+    return NextResponse.json({ error: 'Failed to search for movies and shows' }, { status: 500 });
   }
 }

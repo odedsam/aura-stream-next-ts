@@ -1,26 +1,485 @@
-generator client {
-  provider = "prisma-client-js"
-}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model TvShow {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String?
-  createdAt   DateTime @default(now())
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
 }
 
+// ============================================================================
+// MEDIA MODELS
+// ============================================================================
+
+model Movie {
+  id                   Int                    @id @default(autoincrement())
+  tmdb_id              String                 @unique
+  title                String
+  overview             String
+  poster_path          String?
+  backdrop_path        String?
+  release_date         DateTime
+  runtime              Int
+  popularity           Float
+  vote_average         Float
+  vote_count           Int
+  budget               BigInt?
+  revenue              BigInt?
+  tagline              String?
+  status               String                 @default("Released") // Released, Post Production, etc.
+  original_language    String                 @default("en")
+  adult                Boolean                @default(false)
+  created_at           DateTime               @default(now())
+  updated_at           DateTime               @updatedAt
+
+  // Relations
+  trailers             Trailer[]
+  cast_members         CastMember[]
+  crew_members         CrewMember[]
+  reviews              Review[]
+  user_ratings         UserRating[]
+  genres               MovieGenre[]
+  production_companies MovieProductionCompany[]
+  collections          MovieCollection[]
+  watchlist_items      WatchlistItem[]
+  favorite_items       FavoriteItem[]
+
+  @@index([title])
+  @@index([release_date])
+  @@index([popularity])
+  @@index([vote_average])
+  @@index([tmdb_id])
+  @@index([status])
+  @@index([original_language])
+}
+
+model Show {
+  id                   Int                   @id @default(autoincrement())
+  tmdb_id              String                @unique
+  name                 String
+  overview             String?
+  poster_path          String?
+  backdrop_path        String?
+  first_air_date       DateTime?
+  last_air_date        DateTime?
+  number_of_seasons    Int?
+  number_of_episodes   Int?
+  popularity           Float?
+  vote_average         Float?
+  vote_count           Int?
+  status               String?               // Returning Series, Ended, etc.
+  type                 String?               // Scripted, Reality, Documentary, etc.
+  original_language    String                @default("en")
+  adult                Boolean               @default(false)
+  created_at           DateTime              @default(now())
+  updated_at           DateTime              @updatedAt
+
+  // Relations
+  episodes             Episode[]
+  user_ratings         UserRating[]
+  genres               ShowGenre[]
+  production_companies ShowProductionCompany[]
+  networks             ShowNetwork[]
+  watchlist_items      WatchlistItem[]
+  favorite_items       FavoriteItem[]
+
+  @@index([name])
+  @@index([first_air_date])
+  @@index([popularity])
+  @@index([vote_average])
+  @@index([tmdb_id])
+  @@index([status])
+  @@index([original_language])
+}
+
+model Episode {
+  id             Int      @id @default(autoincrement())
+  showId         Int
+  season_number  Int
+  episode_number Int
+  name           String
+  overview       String?
+  air_date       DateTime?
+  still_path     String?
+  vote_average   Float?
+  vote_count     Int?
+  runtime        Int?
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+
+  // Relations
+  show           Show     @relation(fields: [showId], references: [id], onDelete: Cascade)
+
+  @@unique([showId, season_number, episode_number])
+  @@index([name])
+  @@index([air_date])
+  @@index([season_number, episode_number])
+  @@index([showId])
+}
+
+// ============================================================================
+// NORMALIZED REFERENCE DATA
+// ============================================================================
+
+model Genre {
+  id     Int          @id @default(autoincrement())
+  name   String       @unique
+  tmdb_id Int?        @unique
+
+  // Relations
+  movies MovieGenre[]
+  shows  ShowGenre[]
+
+  @@index([name])
+}
+
+model ProductionCompany {
+  id          Int                        @id @default(autoincrement())
+  name        String                     @unique
+  tmdb_id     Int?                       @unique
+  logo_path   String?
+  origin_country String?
+
+  // Relations
+  movies      MovieProductionCompany[]
+  shows       ShowProductionCompany[]
+
+  @@index([name])
+  @@index([origin_country])
+}
+
+model Network {
+  id            Int           @id @default(autoincrement())
+  name          String        @unique
+  tmdb_id       Int?          @unique
+  logo_path     String?
+  origin_country String?
+
+  // Relations
+  shows         ShowNetwork[]
+
+  @@index([name])
+  @@index([origin_country])
+}
+
+model Collection {
+  id            Int               @id @default(autoincrement())
+  name          String
+  tmdb_id       Int?              @unique
+  overview      String?
+  poster_path   String?
+  backdrop_path String?
+
+  // Relations
+  movies        MovieCollection[]
+
+  @@index([name])
+}
+
+// ============================================================================
+// JUNCTION TABLES FOR MANY-TO-MANY RELATIONSHIPS
+// ============================================================================
+
+model MovieGenre {
+  movieId Int
+  genreId Int
+
+  movie   Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  genre   Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+  @@id([movieId, genreId])
+  @@index([movieId])
+  @@index([genreId])
+}
+
+model ShowGenre {
+  showId  Int
+  genreId Int
+
+  show    Show  @relation(fields: [showId], references: [id], onDelete: Cascade)
+  genre   Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+  @@id([showId, genreId])
+  @@index([showId])
+  @@index([genreId])
+}
+
+model MovieProductionCompany {
+  movieId             Int
+  productionCompanyId Int
+
+  movie               Movie             @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  productionCompany   ProductionCompany @relation(fields: [productionCompanyId], references: [id], onDelete: Cascade)
+
+  @@id([movieId, productionCompanyId])
+  @@index([movieId])
+  @@index([productionCompanyId])
+}
+
+model ShowProductionCompany {
+  showId              Int
+  productionCompanyId Int
+
+  show                Show              @relation(fields: [showId], references: [id], onDelete: Cascade)
+  productionCompany   ProductionCompany @relation(fields: [productionCompanyId], references: [id], onDelete: Cascade)
+
+  @@id([showId, productionCompanyId])
+  @@index([showId])
+  @@index([productionCompanyId])
+}
+
+model ShowNetwork {
+  showId    Int
+  networkId Int
+
+  show      Show    @relation(fields: [showId], references: [id], onDelete: Cascade)
+  network   Network @relation(fields: [networkId], references: [id], onDelete: Cascade)
+
+  @@id([showId, networkId])
+  @@index([showId])
+  @@index([networkId])
+}
+
+model MovieCollection {
+  movieId      Int
+  collectionId Int
+
+  movie        Movie      @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+
+  @@id([movieId, collectionId])
+  @@index([movieId])
+  @@index([collectionId])
+}
+
+// ============================================================================
+// CAST & CREW
+// ============================================================================
+
+model Person {
+  id               Int            @id @default(autoincrement())
+  tmdb_id          Int?           @unique
+  name             String
+  biography        String?
+  birthday         DateTime?
+  deathday         DateTime?
+  place_of_birth   String?
+  profile_path     String?
+  adult            Boolean        @default(false)
+  popularity       Float?
+  known_for_department String?
+  created_at       DateTime       @default(now())
+  updated_at       DateTime       @updatedAt
+
+  // Relations
+  cast_roles       CastMember[]
+  crew_roles       CrewMember[]
+
+  @@index([name])
+  @@index([popularity])
+  @@index([known_for_department])
+}
+
+model CastMember {
+  id           Int     @id @default(autoincrement())
+  movieId      Int
+  personId     Int
+  character    String
+  order        Int?    // Order of appearance in credits
+
+  movie        Movie   @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  person       Person  @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@index([movieId])
+  @@index([personId])
+  @@index([order])
+}
+
+model CrewMember {
+  id           Int     @id @default(autoincrement())
+  movieId      Int
+  personId     Int
+  job          String  // Director, Producer, Writer, etc.
+  department   String  // Directing, Production, Writing, etc.
+
+  movie        Movie   @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  person       Person  @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@index([movieId])
+  @@index([personId])
+  @@index([job])
+  @@index([department])
+}
+
+// ============================================================================
+// MEDIA CONTENT
+// ============================================================================
+
+model Trailer {
+  id      String @id @default(cuid())
+  movieId Int
+  key     String
+  name    String
+  site    String
+  type    String // Trailer, Teaser, Clip, etc.
+  size    Int?   // Video resolution
+  official Boolean @default(false)
+
+  movie   Movie  @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+  @@index([movieId])
+  @@index([type])
+}
+
+model Review {
+  id          String   @id @default(cuid())
+  movieId     Int
+  author      String
+  content     String
+  rating      Float?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  avatar_path String?
+  url         String?  // Link to full review
+
+  movie       Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+  @@index([movieId])
+  @@index([rating])
+  @@index([created_at])
+}
+
+// ============================================================================
+// USER SYSTEM
+// ============================================================================
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String
-  password  String
-  avatar    String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             String    @id @default(cuid())
+  email          String    @unique
+  username       String?   @unique
+  hashedPassword String
+  firstName      String?
+  lastName       String?
+  avatar_path    String?
+  bio            String?
+  is_verified    Boolean   @default(false)
+  is_active      Boolean   @default(true)
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+
+  // Relations
+  sessions       Session[]
+  ratings        UserRating[]
+  watchlists     Watchlist[]
+  watchlist_items WatchlistItem[]
+  favorite_items FavoriteItem[]
+
+  @@index([email])
+  @@index([username])
+  @@index([is_active])
+}
+
+model Session {
+  id         String   @id @default(cuid())
+  userId     String
+  created_at DateTime @default(now())
+  expires_at DateTime
+  user_agent String?
+  ip_address String?
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expires_at])
+}
+
+// ============================================================================
+// USER INTERACTIONS
+// ============================================================================
+
+model UserRating {
+  id         String   @id @default(cuid())
+  userId     String
+  movieId    Int?
+  showId     Int?
+  rating     Float    // 1-10 scale
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  movie      Movie?   @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  show       Show?    @relation(fields: [showId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, movieId])
+  @@unique([userId, showId])
+  @@index([userId])
+  @@index([movieId])
+  @@index([showId])
+  @@index([rating])
+}
+
+model Watchlist {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  description String?
+  is_public   Boolean  @default(false)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items       WatchlistItem[]
+
+  @@index([userId])
+  @@index([is_public])
+  @@index([name])
+}
+
+model WatchlistItem {
+  id           String    @id @default(cuid())
+  userId       String
+  watchlistId  String?   // Optional: can belong to a specific watchlist or default
+  movieId      Int?
+  showId       Int?
+  added_at     DateTime  @default(now())
+  watched_at   DateTime?
+  is_watched   Boolean   @default(false)
+  notes        String?
+
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  watchlist    Watchlist? @relation(fields: [watchlistId], references: [id], onDelete: Cascade)
+  movie        Movie?     @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  show         Show?      @relation(fields: [showId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, movieId]) // User can only have one watchlist entry per movie
+  @@unique([userId, showId])  // User can only have one watchlist entry per show
+  @@index([userId])
+  @@index([watchlistId])
+  @@index([movieId])
+  @@index([showId])
+  @@index([is_watched])
+  @@index([added_at])
+}
+
+model FavoriteItem {
+  id         String   @id @default(cuid())
+  userId     String
+  movieId    Int?
+  showId     Int?
+  created_at DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  movie      Movie?   @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  show       Show?    @relation(fields: [showId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, movieId]) // User can only favorite a movie once
+  @@unique([userId, showId])  // User can only favorite a show once
+  @@index([userId])
+  @@index([movieId])
+  @@index([showId])
+  @@index([created_at])
 }

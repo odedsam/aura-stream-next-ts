@@ -14,7 +14,7 @@ export async function GET(
       fetchMovieCast(id),
       fetchMovieReviews(id),
     ]);
-
+  console.log("logs :",{ movie, trailers, cast, reviews });
     return NextResponse.json({ movie, trailers, cast, reviews });
   } catch (error) {
     console.error('Error in movies/[id]/route.ts:', error);

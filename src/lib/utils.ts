@@ -14,9 +14,29 @@ export const formatPrice = (price: number): string => {
   }).format(price);
 };
 
+export const formatResults = <T>(items: T[]): T[] => {
+  return items.slice(0, 10);
+};
+// usage : <ListSliderServer title="Popular Top 10 in Movies" items={formatResults(moviePopular.results)} />
+
 export const formatRating = (rating: number): string => {
   return rating % 1 === 0 ? rating.toString() : rating.toFixed(1);
 };
+export const formatShowMore = (
+  content: string,
+  showFull: boolean,
+  wordLimit = 50
+): { isLong: boolean; displayed: string } => {
+  const words = content.trim().split(/\s+/);
+  const isLong = words.length > wordLimit;
+
+  const displayed = showFull || !isLong
+    ? content
+    : words.slice(0, wordLimit).join(' ') + '...';
+
+  return { isLong, displayed };
+};
+
 
 export const addItemToArray = <T>(array: T[], newItem: T): T[] => {
   return [...array, newItem];
@@ -106,4 +126,14 @@ export const QuickActionCreators = {
       variant: 'primary',
       icon,
     }),
+};
+
+
+export const logger = {
+  info: (message: string, data?: any) => {
+    console.log(`[INFO] ${new Date().toISOString()}: ${message}`, data);
+  },
+  error: (message: string, error?: any) => {
+    console.error(`[ERROR] ${new Date().toISOString()}: ${message}`, error);
+  }
 };

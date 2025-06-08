@@ -1,17 +1,21 @@
-import { fetchShowById, fetchShowTrailers, fetchShowCast } from '@/lib/tmdb';
+import { fetchMovieById, fetchMovieTrailers, fetchMovieCast, fetchMovieReviews } from '@/lib/tmdb';
 import { NextRequest, NextResponse } from 'next/server';
 
-async function GET(
+export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } },
 ): Promise<NextResponse> {
   const { id } = params;
-  try {
-    const movie = await fetchShowById(id);
-    const trailers = await fetchShowTrailers(id);
-    const showCast = await fetchShowCast(id);
 
-    return NextResponse.json({ movie, trailers, showCast });
+  try {
+    const [movie, trailers, cast, reviews] = await Promise.allSettled([
+      fetchMovieById(id),
+      fetchMovieTrailers(id),
+      fetchMovieCast(id),
+      fetchMovieReviews(id),
+    ]);
+    console.log('logs :', { movie, trailers, cast, reviews });
+    return NextResponse.json({ movie, trailers, cast, reviews });
   } catch (error) {
     console.error('Error in movies/[id]/route.ts:', error);
     return NextResponse.json({ error: 'Failed to fetch movie data' }, { status: 500 });

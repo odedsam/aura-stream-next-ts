@@ -1,11 +1,11 @@
-const DescriptionCard = ({description}:{description:string}) => {
-  return (
-    <section className="content-block-gray">
-      <h2 className="text-xl font-semibold mb-4 text-gray-def">Description</h2>
-      <p className="text-gray-def leading-relaxed max-w-4xl">
+import { cn } from '@/lib/utils';
+type Props = {
+  children: React.ReactNode;
+  className?: string;
+};
 
-      </p>
-    </section>
-  );
+
+const DescriptionCard = ({ children, className }: Props) => {
+  return <section className={cn('content-block-gray', className)}>{children}</section>;
 };
 export default DescriptionCard;

@@ -13,8 +13,8 @@ export default function ImageGrid({ images }: ImageGridProps) {
           <Image
             src={image}
             alt="genre-image"
-            width={122}
-            height={122}
+            width={240}
+            height={240}
             className="w-auto h-auto rounded-lg"
             style={{ width: '100%', height: 'auto' }}
             priority={index === 0}

@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
 import type { GenreCarouselProps, GenreCardProps } from '@/types';
+import { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { GenreCarouselHeader, GenreCarouselPanel, GenreCarouselFooter } from '@/app/components/sliders/carousels/Partials';
 import { GenreCard } from '@/app/components/cards/GenreCard';
@@ -45,7 +45,7 @@ const GenreCarouselInner = ({
         titleClassName={titleClassName}
       />
 
-      <GenreCarouselPanel className="">
+      <GenreCarouselPanel className="grid">
         {currentItems.map((item: GenreCardProps, index) => (
           <GenreCard key={item.id || `item-${currentIndex}-${index}`} {...item} className={cn('grid gap-4', itemClassName)} />
         ))}
