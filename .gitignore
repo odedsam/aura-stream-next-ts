@@ -27,9 +27,6 @@ Thumbs.db
 # IDE files
 
 
-# Package manager lock file
-pnpm-lock.yaml
-
 # System files
 /private
 

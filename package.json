@@ -8,8 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write .",
-    "fetch-movies": "ts-node src/scripts/fetchMovies.ts"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
