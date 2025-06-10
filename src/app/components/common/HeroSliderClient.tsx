@@ -64,7 +64,7 @@ const HeroSliderClient = ({
 
   return (
     <div className={cn('relative w-full', className)}>
-      <div className="relative h-[100dvh] overflow-hidden">
+      <div className="relative h-[100vh] overflow-hidden">
         {isTrailerPlaying && currentMovie.trailerKey && (
           <div className="absolute inset-0 z-50 bg-black">
             <button
@@ -94,7 +94,7 @@ const HeroSliderClient = ({
         </div>
 
         <div
-          className="relative h-full top-52 flex items-center justify-center"
+          className="relative h-full top-36 flex items-center justify-center"
           style={{ display: isTrailerPlaying ? 'none' : 'flex' }}>
           <div className=" mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl lg:max-w-3xl mt-18 space-y-6 text-white">
