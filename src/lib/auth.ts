@@ -34,7 +34,7 @@ export const createSession = async (userId: string) => {
     data: {
       id: randomUUID(),
       userId,
-      expires_at: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     },
   });
 
@@ -60,7 +60,7 @@ export const getSessionUser = async () => {
     include: { user: true },
   });
 
-  if (!session || session.expires_at < new Date()) return null;
+  if (!session || session.expiresAt < new Date()) return null;
 
   return session.user;
 };
