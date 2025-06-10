@@ -18,14 +18,14 @@ export const BrowseSection = ({
   return (
     <div
       className={cn(
-        `relative bg-primary w-[90%] my-24 mx-auto`,
+        `relative bg-primary w-[95%] my-24 mx-auto`,
         className,
         showCategory && categoryName ? 'border-2 border-quinary' : '',
       )}>
       {showCategory && (
         <div
           className={cn(
-            'absolute -top-6 left-6 bg-red-def text-white px-5 py-3 text-base font-manrope font-semibold rounded-md shadow-md z-10',
+            'absolute -top-6 left-6 bg-red-def text-white px-3 text-base font-manrope font-semibold rounded-md shadow-md z-10',
             categoryClassName,
           )}>
           <p>{categoryName}</p>

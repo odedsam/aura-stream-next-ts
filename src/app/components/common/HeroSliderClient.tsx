@@ -82,15 +82,21 @@ const HeroSliderClient = ({
         )}
 
         <div className="absolute inset-0" style={{ display: isTrailerPlaying ? 'none' : 'block' }}>
-          <Image src={currentMovie.image} alt={currentMovie.title} fill priority />
+          <Image
+            src={currentMovie.image}
+            alt={currentMovie.title}
+            fill
+            priority
+            className="max-md:object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
 
         <div
-          className="relative h-full flex items-center justify-center"
+          className="relative h-full top-52 flex items-center justify-center"
           style={{ display: isTrailerPlaying ? 'none' : 'flex' }}>
-          <div className="mt-auto mb-36 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className=" mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl lg:max-w-3xl mt-18 space-y-6 text-white">
               <h1 className="text-center text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 {currentMovie.title}
