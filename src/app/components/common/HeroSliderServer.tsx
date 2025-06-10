@@ -35,7 +35,6 @@ const HeroSliderServer = async () => {
       : '/placeholder.png',
     trailerKey: movie.trailers[0]?.key || null,
   }));
-  console.log("moviesForClient : ",moviesForClient);
 
   return <HeroSliderClient movies={moviesForClient} />;
 };

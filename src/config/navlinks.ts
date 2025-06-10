@@ -3,6 +3,7 @@ export const navLinks = [
   { label: 'Movies & Shows ', href: '/browse' },
   { label: 'Support ', href: '/support' },
   { label: 'Subscriptions', href: '/subscriptions' },
+  { label: 'Login', href: '/auth/login' },
 ];
 
 export const footerData = [

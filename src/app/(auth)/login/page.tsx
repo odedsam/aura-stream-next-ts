@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/store/useAuth';
 import { AuraButton } from '@/app/components/ui/AuraButton';
+import { toast } from '@/lib/toast';
 import Link from 'next/link';
 
 export default function LoginPage() {
@@ -16,10 +17,13 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    toast.error(
+      'Login functionality will be temporarily unavailable for the next two days. We apologize for the inconvenience.',
+    );
 
     try {
       await login(email, password);
-      router.push('/dashboard');
+      // router.push('/dashboard');
     } catch (err) {
       setError('Invalid credentials. Please try again.');
     }

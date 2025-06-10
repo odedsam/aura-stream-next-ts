@@ -6,6 +6,7 @@ import { AuraButton } from '@/app/components/ui/AuraButton';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from '@/lib/toast';
 import Link from 'next/link';
 
 const registerSchema = z
@@ -37,7 +38,11 @@ export default function RegisterPage() {
   const onSubmit = async (data: RegisterFormData) => {
     try {
       await registerUser(data.email, data.password, data.name);
-      router.push('/dashboard');
+      toast.error(
+        'Sign-Up functionality will be temporarily unavailable for the next two days. We apologize for the inconvenience.',
+      );
+
+      // router.push('/dashboard');
     } catch (err) {
       console.error(err);
     }
