@@ -1,8 +1,8 @@
 import { prisma } from '../prisma';
 
 type CollectionResponse = {
-  favorites: number[];
-  saved: number[];
+  favorites: any[];
+  saved: any[];
 };
 
 export async function getCollections(userId: string): Promise<CollectionResponse> {

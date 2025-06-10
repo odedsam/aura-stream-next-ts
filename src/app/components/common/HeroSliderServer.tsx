@@ -1,11 +1,11 @@
 import { fetchMovieTrailers, fetchPopularMovies, Movie, Trailer } from '@/lib/tmdb';
 import HeroSliderClient from './HeroSliderClient';
 
-type MovieWithTrailers = Movie & {
+export type MovieWithTrailers = Movie & {
   trailers: Trailer[];
 };
 
-type MovieClient = {
+export type MovieClient = {
   id: number;
   title: string;
   description: string;
@@ -35,6 +35,7 @@ const HeroSliderServer = async () => {
       : '/placeholder.png',
     trailerKey: movie.trailers[0]?.key || null,
   }));
+  console.log("moviesForClient : ",moviesForClient);
 
   return <HeroSliderClient movies={moviesForClient} />;
 };

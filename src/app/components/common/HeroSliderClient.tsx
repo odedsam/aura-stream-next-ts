@@ -6,6 +6,8 @@ import { Button } from '@/app/components/ui/Buttons';
 import { formatText } from '@/utils';
 import { toast } from '@/lib/toast';
 import Image from 'next/image';
+import { useCollectionActions } from '@/hooks/useCollectionActions';
+import { useAddNotification } from '@/app/store/notificationStore';
 
 export interface Movie {
   id: number;
@@ -18,34 +20,71 @@ export interface Movie {
 interface HeroSliderProps {
   movies: Movie[];
   onPlay?: (movie: Movie) => void;
-  autoPlay?: boolean;
-  autoPlayInterval?: number;
+  autoSlide?: boolean;
+  autoSlideInterval?: number;
   className?: string;
 }
 
 const HeroSliderClient = ({
   movies,
-  autoPlay = true,
-  autoPlayInterval = 5000,
+  autoSlide = true,
+  autoSlideInterval = 5000,
   className,
 }: HeroSliderProps) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [isTrailerPlaying, setIsTrailerPlaying] = useState(false);
-  const [isSaved, setIsSaved] = useState(false);
-  const [isFavorited, setIsFavorited] = useState(false);
+  const [isAutoSliding, setIsAutoSliding] = useState(autoSlide);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isSaved, setIsSaved] = useState<Record<number, boolean>>({});
+  const [isFavorited, setIsFavorited] = useState<Record<number, boolean>>({});
+  const addNotification = useAddNotification();
+  const {
+    favorites,
+    saved,
+    addFavorite,
+    removeFavorite,
+    addSaved,
+    removeSaved,
+    loadCollections,
+    syncCollections,
+  } = useCollectionActions();
 
-  useEffect(() => {
-    if (!isPlaying || movies.length <= 1 || isTrailerPlaying) return;
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % movies.length);
-    }, autoPlayInterval);
-    return () => clearInterval(interval);
-  }, [isPlaying, movies.length, autoPlayInterval, isTrailerPlaying]);
+  const handleSaveToSavedList = (movie: Movie) => {
+    addSaved(movie);
+    setIsSaved((prev) => ({ ...prev, [movie.id]: !prev[movie.id] }));
+    addNotification({
+      id: crypto.randomUUID(),
+      title: 'Saved',
+      message: `Movie "${movie.title}" was added to saved list.`,
+      isRead: false,
+      timestamp: new Date(),
+    });
+  };
+
+  const handleSaveToFavoritesList = (movie: Movie) => {
+    addFavorite(movie);
+    setIsFavorited((prev) => ({ ...prev, [movie.id]: true }));
+    addNotification({
+      id: crypto.randomUUID(),
+      title: 'Added to Favorites',
+      message: `Movie "${movie.title}" was added to Favories list.`,
+      isRead: false,
+      timestamp: new Date(),
+    });
+  };
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % movies.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + movies.length) % movies.length);
   const goToSlide = (index: number) => setCurrentSlide(index);
+
+  useEffect(() => {
+    if (!isAutoSliding || movies.length <= 1 || isTrailerPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % movies.length);
+    }, autoSlideInterval);
+
+    return () => clearInterval(interval);
+  }, [isAutoSliding, movies.length, autoSlideInterval, isTrailerPlaying]);
 
   const playTrailer = () => {
     if (currentMovie.trailerKey) {
@@ -113,18 +152,18 @@ const HeroSliderClient = ({
                   Play Trailer
                 </Button>
                 <Button
-                  variant={isSaved ? 'saved' : 'ghost'}
+                  variant={isSaved[currentMovie.id] ? 'saved' : 'ghost'}
                   size="icon"
                   className="cursor-pointer"
-                  onClick={() => setIsSaved(!isSaved)}
+                  onClick={() => handleSaveToSavedList(currentMovie)}
                   icon={<Bookmark className="w-5 h-5" />}
                   disabled={!currentMovie.trailerKey}
                 />
                 <Button
-                  variant={isFavorited ? 'favorite' : 'ghost'}
+                  variant={isFavorited[currentMovie.id] ? 'red' : 'ghost'}
                   size="icon"
                   className="cursor-pointer"
-                  onClick={() => setIsFavorited(!isFavorited)}
+                  onClick={() => handleSaveToFavoritesList(currentMovie)}
                   icon={<Heart className="w-5 h-5" />}
                 />
               </div>

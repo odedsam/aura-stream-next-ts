@@ -1,3 +1,4 @@
+import type { Movie } from '@/app/store/useCollectionStore';
 import { useCollectionStore } from '@/app/store/useCollectionStore';
 import { api } from '@/lib/db/api';
 
@@ -15,29 +16,38 @@ export const useCollectionActions = () => {
 
   const loadCollections = async (userId: string | null) => {
     if (!userId) {
-      // Load from localStorage guest
-      const fav = localStorage.getItem('favorites');
-      const saved = localStorage.getItem('saved');
-      setFavorites(fav ? JSON.parse(fav) : []);
-      setSaved(saved ? JSON.parse(saved) : []);
+      const localFavorites = localStorage.getItem('favorites');
+      const localSaved = localStorage.getItem('saved');
+
+      setFavorites(localFavorites ? (JSON.parse(localFavorites) as Movie[]) : []);
+      setSaved(localSaved ? (JSON.parse(localSaved) as Movie[]) : []);
       return;
     }
-    // Load from DB
-    const { favorites, saved } = await api.getCollections(userId);
-    setFavorites(favorites);
-    setSaved(saved);
+
+    try {
+      const { favorites: dbFavorites, saved: dbSaved } = await api.getCollections(userId);
+      setFavorites(dbFavorites);
+      setSaved(dbSaved);
+    } catch (error) {
+      console.error('Failed to load collections:', error);
+    }
   };
 
   const syncCollections = async (userId: string | null) => {
     if (!userId) {
-      // Save to localStorage guest
       localStorage.setItem('favorites', JSON.stringify(favorites));
       localStorage.setItem('saved', JSON.stringify(saved));
       return;
     }
-    // Save to DB
-    await api.updateFavorites(userId, favorites);
-    await api.updateSaved(userId, saved);
+
+    try {
+      await Promise.all([
+        api.updateFavorites(userId, favorites as any[]),
+        api.updateSaved(userId, saved as any[]),
+      ]);
+    } catch (error) {
+      console.error('Failed to sync collections:', error);
+    }
   };
 
   return {

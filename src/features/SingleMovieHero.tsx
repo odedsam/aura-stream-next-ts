@@ -35,7 +35,7 @@ const SingleMovieHero = ({
     trailerKey: trailerKey,
   };
 
-  return <HeroSliderClient movies={[movieForClient]} autoPlay={false} />;
+  return <HeroSliderClient movies={[movieForClient]} autoSlide={false} />;
 };
 
 export default SingleMovieHero;

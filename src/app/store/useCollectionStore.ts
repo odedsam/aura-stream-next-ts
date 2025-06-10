@@ -1,13 +1,21 @@
 import { create } from "zustand";
 
+export interface Movie {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  trailerKey: string | null;
+}
+
 export interface CollectionState {
-  favorites: number[]; // movieId or showId
-  saved: number[];     // movieId or showId
-  setFavorites: (items: number[]) => void;
-  setSaved: (items: number[]) => void;
-  addFavorite: (id: number) => void;
+  favorites: Movie[];
+  saved: Movie[];
+  setFavorites: (items: Movie[]) => void;
+  setSaved: (items: Movie[]) => void;
+  addFavorite: (movie: Movie) => void;
   removeFavorite: (id: number) => void;
-  addSaved: (id: number) => void;
+  addSaved: (movie: Movie) => void;
   removeSaved: (id: number) => void;
 }
 
@@ -18,20 +26,25 @@ export const useCollectionStore = create<CollectionState>((set) => ({
   setFavorites: (items) => set(() => ({ favorites: items })),
   setSaved: (items) => set(() => ({ saved: items })),
 
-  addFavorite: (id) =>
+  addFavorite: (movie) =>
     set((state) => ({
-      favorites: state.favorites.includes(id) ? state.favorites : [...state.favorites, id],
+      favorites: state.favorites.find((m) => m.id === movie.id)
+        ? state.favorites
+        : [...state.favorites, movie],
     })),
   removeFavorite: (id) =>
     set((state) => ({
-      favorites: state.favorites.filter((fav) => fav !== id),
+      favorites: state.favorites.filter((m) => m.id !== id),
     })),
-  addSaved: (id) =>
+
+  addSaved: (movie) =>
     set((state) => ({
-      saved: state.saved.includes(id) ? state.saved : [...state.saved, id],
+      saved: state.saved.find((m) => m.id === movie.id)
+        ? state.saved
+        : [...state.saved, movie],
     })),
   removeSaved: (id) =>
     set((state) => ({
-      saved: state.saved.filter((s) => s !== id),
+      saved: state.saved.filter((m) => m.id !== id),
     })),
 }));

@@ -9,7 +9,8 @@ import {
   useIsNotificationsOpen,
   useToggleNotifications,
   useMarkAsRead,
-} from '@/app/store/uiStore';
+  useClearAll,
+} from '@/app/store/notificationStore';
 import AlertBadge from '@/app/components/ui/Badge';
 
 interface Notification {
@@ -26,7 +27,8 @@ const NotificationComponent = () => {
   const unreadCount = useUnreadCount();
   const isNotificationsOpen = useIsNotificationsOpen();
   const toggleNotifications = useToggleNotifications();
-  const markAsRead = useMarkAsRead();
+  const clearAllNotifications = useClearAll();
+  const clearNotification = useMarkAsRead();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -43,7 +45,7 @@ const NotificationComponent = () => {
   }, [isNotificationsOpen, toggleNotifications]);
 
   const handleNotificationClick = (notificationId: string) => {
-    markAsRead(notificationId);
+    clearNotification(notificationId);
   };
 
   const getNotificationIcon = (type: string) => {
@@ -69,7 +71,6 @@ const NotificationComponent = () => {
         {unreadCount > 0 && <AlertBadge count={unreadCount} maxCount={9} className="bg-red-def" />}
       </button>
 
-      {/* Notifications Dropdown */}
       {isNotificationsOpen && (
         <div className="absolute right-0 top-full mt-2 w-80 bg-gray-900 border border-gray-700 rounded-lg shadow-xl z-50">
           <div className="p-4 border-b border-gray-700">
@@ -122,8 +123,11 @@ const NotificationComponent = () => {
 
           {notifications.length > 0 && (
             <div className="p-3 border-t border-gray-700">
-              <button className="w-full text-sm text-gray-def hover:text-white transition-colors">
-                Mark all as read
+              <button
+                className="cursor-pointer font-manrope w-full flex justify-center items-center gap-3 text-sm text-gray-def hover:text-white transition-colors"
+                onClick={clearAllNotifications}>
+                <span>Mark all as read </span>
+                <Trash2 className="w-5 h-5 " />
               </button>
             </div>
           )}
