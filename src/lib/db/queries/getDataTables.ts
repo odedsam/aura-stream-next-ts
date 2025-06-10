@@ -1,4 +1,3 @@
-// src/lib/db/queries/getDataTables.ts
 
 import { prisma } from '@/lib/prisma';
 

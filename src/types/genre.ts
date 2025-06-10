@@ -33,14 +33,15 @@ export type GenreCardProps = {
 
 export interface GenreCarouselProps {
   onSlide?: (index: number) => void;
-  onClick: () => void;
+  onClick?: () => void;
   title: string;
-  items: GenreCardProps[];
+  items: GenreCardProps[] | any[];
   itemsPerSlide?: number;
   className?: string;
   titleClassName?: string;
-  itemClassName?: string;
+  bodyClassName?: string;
   showControls?: boolean;
+  children?:React.ReactNode;
 }
 export type GenreCarouselHeaderProps = {
   title: string;

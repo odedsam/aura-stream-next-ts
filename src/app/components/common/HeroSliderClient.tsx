@@ -23,13 +23,12 @@ interface HeroSliderProps {
   className?: string;
 }
 
-const HeroSliderClient: React.FC<HeroSliderProps> = ({
+const HeroSliderClient = ({
   movies,
-  onPlay,
   autoPlay = true,
   autoPlayInterval = 5000,
   className,
-}) => {
+}: HeroSliderProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [isTrailerPlaying, setIsTrailerPlaying] = useState(false);
@@ -91,15 +90,15 @@ const HeroSliderClient: React.FC<HeroSliderProps> = ({
         <div
           className="relative h-full flex items-center justify-center"
           style={{ display: isTrailerPlaying ? 'none' : 'flex' }}>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mt-auto mb-36 mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl lg:max-w-3xl mt-18 space-y-6 text-white">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
+              <h1 className="text-center text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 {currentMovie.title}
               </h1>
-              <p className="text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
+              <p className="text-center text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
                 {formatText(currentMovie.description, 150)}
               </p>
-              <div className="flex gap-2">
+              <div className="flex gap-2 justify-center items-center">
                 <Button
                   onClick={playTrailer}
                   variant="red"

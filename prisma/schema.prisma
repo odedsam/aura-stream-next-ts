@@ -1,5 +1,3 @@
-// Prisma schema: Authentication + Watchlist + Favorites only
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -17,36 +15,37 @@ model User {
   hashedPassword String
   firstName      String?
   lastName       String?
-  avatar_path    String?
+  avatarPath     String?
   bio            String?
-  is_verified    Boolean  @default(false)
-  is_active      Boolean  @default(true)
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  isVerified     Boolean  @default(false)
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   // Relations
   sessions       Session[]
   favorites      FavoriteItem[]
+  savedItems     SavedItem[]
   watchlists     Watchlist[]
   watchlistItems WatchlistItem[]
 
-  @@index([email])
-  @@index([username])
-  @@index([is_active])
+  @@index([email], name: "idx_user_email")
+  @@index([username], name: "idx_user_username")
+  @@index([isActive], name: "idx_user_is_active")
 }
 
 model Session {
   id         String   @id @default(cuid())
   userId     String
-  created_at DateTime @default(now())
-  expires_at DateTime
-  user_agent String?
-  ip_address String?
+  createdAt  DateTime @default(now())
+  expiresAt  DateTime
+  userAgent  String?
+  ipAddress  String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([userId])
-  @@index([expires_at])
+  @@index([userId], name: "idx_session_user")
+  @@index([expiresAt], name: "idx_session_expires_at")
 }
 
 model Watchlist {
@@ -54,16 +53,16 @@ model Watchlist {
   userId      String
   name        String
   description String?
-  is_public   Boolean  @default(false)
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
+  isPublic    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   user  User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   items WatchlistItem[]
 
-  @@index([userId])
-  @@index([is_public])
-  @@index([name])
+  @@index([userId], name: "idx_watchlist_user")
+  @@index([isPublic], name: "idx_watchlist_is_public")
+  @@index([name], name: "idx_watchlist_name")
 }
 
 model WatchlistItem {
@@ -72,22 +71,22 @@ model WatchlistItem {
   watchlistId String?
   movieId     Int?
   showId      Int?
-  added_at    DateTime  @default(now())
-  watched_at  DateTime?
-  is_watched  Boolean   @default(false)
+  addedAt     DateTime  @default(now())
+  watchedAt   DateTime?
+  isWatched   Boolean   @default(false)
   notes       String?
 
   user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   watchlist Watchlist? @relation(fields: [watchlistId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, movieId])
-  @@unique([userId, showId])
-  @@index([userId])
-  @@index([watchlistId])
-  @@index([movieId])
-  @@index([showId])
-  @@index([is_watched])
-  @@index([added_at])
+  @@unique([userId, movieId], name: "unique_watchlist_movie_per_user")
+  @@unique([userId, showId], name: "unique_watchlist_show_per_user")
+  @@index([userId], name: "idx_watchlistitem_user")
+  @@index([watchlistId], name: "idx_watchlistitem_watchlist")
+  @@index([movieId], name: "idx_watchlistitem_movie")
+  @@index([showId], name: "idx_watchlistitem_show")
+  @@index([isWatched], name: "idx_watchlistitem_is_watched")
+  @@index([addedAt], name: "idx_watchlistitem_added_at")
 }
 
 model FavoriteItem {
@@ -95,14 +94,30 @@ model FavoriteItem {
   userId     String
   movieId    Int?
   showId     Int?
-  created_at DateTime @default(now())
+  createdAt  DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, movieId])
-  @@unique([userId, showId])
-  @@index([userId])
-  @@index([movieId])
-  @@index([showId])
-  @@index([created_at])
+  @@unique([userId, movieId], name: "unique_favorite_movie_per_user")
+  @@unique([userId, showId], name: "unique_favorite_show_per_user")
+  @@index([userId], name: "idx_favorite_user")
+  @@index([movieId], name: "idx_favorite_movie")
+  @@index([showId], name: "idx_favorite_show")
+  @@index([createdAt], name: "idx_favorite_created_at")
+}
+
+model SavedItem {
+  id         String   @id @default(cuid())
+  userId     String
+  movieId    Int?
+  showId     Int?
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, movieId], name: "unique_saved_movie_per_user")
+  @@unique([userId, showId], name: "unique_saved_show_per_user")
+  @@index([userId], name: "idx_saved_user")
+  @@index([movieId], name: "idx_saved_movie")
+  @@index([showId], name: "idx_saved_show")
 }

@@ -26,21 +26,26 @@ export const Badge = ({ text, color = 'red', className }: BadgeProps) => {
   );
 };
 
-interface AlertBadgeProps {
-  count?: number;
+type AlertBadgeProps = {
+  count?: number | string;
+  maxCount?: number;
   className?: string;
-}
+};
 
-const AlertBadge = ({ count = 1, className }: AlertBadgeProps) => {
-  if (count < 1) return null;
+const AlertBadge = ({ count = 0, maxCount = 9, className }: AlertBadgeProps) => {
+  if (!count || (typeof count === 'number' && count < 1)) return null;
+
+  const displayCount = typeof count === 'number' && count > maxCount ? `${maxCount}+` : count;
 
   return (
     <span
+      role="status"
+      aria-live="polite"
       className={cn(
-        'absolute -top-1 -right-1 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full cursor-pointer -z-10',
+        'absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full cursor-pointer',
         className,
       )}>
-      +{count}
+      {displayCount}
     </span>
   );
 };

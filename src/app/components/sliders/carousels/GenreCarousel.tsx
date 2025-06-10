@@ -3,10 +3,11 @@
 import type { GenreCarouselProps, GenreCardProps } from '@/types';
 import { useEffect, useMemo } from 'react';
 import { cn } from '@/utils';
-import { GenreCarouselHeader, GenreCarouselPanel, GenreCarouselFooter} from '@/app/components/sliders/carousels/Partials';
-
-
-
+import {
+  GenreCarouselHeader,
+  GenreCarouselPanel,
+  GenreCarouselFooter,
+} from '@/app/components/sliders/carousels/Partials';
 
 import { GenreCard } from '@/app/components/cards/GenreCard';
 import { PaginationProvider, usePagination } from '@/providers/PaginationProvider';
@@ -15,11 +16,12 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 const GenreCarouselInner = ({
   title,
   items,
-  itemsPerSlide = 3,
   className,
   titleClassName,
-  itemClassName,
+  bodyClassName,
+  itemsPerSlide = 3,
   showControls = true,
+  children,
   onSlide,
   onClick,
 }: GenreCarouselProps) => {
@@ -47,15 +49,16 @@ const GenreCarouselInner = ({
         onSlideChange={setCurrentIndex}
         titleClassName={titleClassName}
       />
-
-      <GenreCarouselPanel className="grid" onClick={onClick}>
-        {currentItems.map((item: GenreCardProps, index) => (
-          <GenreCard
-            key={item.id || `item-${currentIndex}-${index}`}
-            {...item}
-            className={cn('grid gap-4', itemClassName)}
-          />
-        ))}
+      <GenreCarouselPanel className={cn('grid', bodyClassName)} onClick={onClick}>
+        {children ?
+           children
+          : currentItems.map((item: GenreCardProps, index) => (
+              <GenreCard
+                key={item.id || `item-${currentIndex}-${index}`}
+                {...item}
+                className={cn('grid gap-4', bodyClassName)}
+              />
+            ))}
       </GenreCarouselPanel>
 
       <GenreCarouselFooter

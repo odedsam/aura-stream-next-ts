@@ -13,26 +13,6 @@ export const EpisodeCard = ({ episode, seasonId, onPlay }: EpisodeCardProps) => 
     <div className="bg-sec rounded-lg border-2 border-quinary overflow-hidden hover:bg-gray-800/70 transition-colors group">
       <div className="flex flex-col sm:flex-row">
         <div className="relative w-full sm:w-32 h-20 sm:h-24 flex-shrink-0">
-          <img
-            src={
-              episode.still_path
-                ? `https://image.tmdb.org/t/p/w300${episode.poster_path}`
-                : '/android-chrome-192x192.png'
-            }
-            alt={episode.name}
-            className="rounded-md w-full h-auto object-cover"
-          />
-
-          <img
-            src={
-              episode.still_path
-                ? `https://image.tmdb.org/t/p/w300${episode.still_path}`
-                : '/android-chrome-192x192.png'
-            }
-            alt={episode.name}
-            className="rounded-md w-full h-auto object-cover"
-          />
-
           {episode.trailerKey ? (
             <div className="aspect-video w-full rounded overflow-hidden">
               <iframe
@@ -43,7 +23,15 @@ export const EpisodeCard = ({ episode, seasonId, onPlay }: EpisodeCardProps) => 
                 className="w-full h-full"></iframe>
             </div>
           ) : (
-            <p className="text-sm text-gray-500">Trailer not available.</p>
+            <img
+              src={
+                episode.still_path
+                  ? `https://image.tmdb.org/t/p/w300${episode.poster_path}`
+                  : '/android-chrome-192x192.png'
+              }
+              alt={episode.name}
+              className="rounded-md w-full h-auto object-cover max-h-[92px] max-sm:min-w-full max-sm:object-fill sm:max-w-[92px]"
+            />
           )}
 
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">

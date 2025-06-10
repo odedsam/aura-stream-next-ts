@@ -1,5 +1,5 @@
 'use client';
-import { BrowseContainer } from './components/sections/BrowseContainer';
+import { BrowseSection } from './components/sections/BrowseSection';
 import { GenreCarousel } from './components/sliders/carousels';
 import { OurGenres } from '@/config/categories';
 import { useRouter } from 'next/navigation';
@@ -21,7 +21,7 @@ export default function Page() {
   return (
     <main className="layout">
       <HomeHero />
-      <BrowseContainer className="p-4 rounded-lg">
+      <BrowseSection className="p-4 rounded-lg">
         <GenreCarousel
           title="Explore Movie Genres"
           className="mx-auto"
@@ -30,7 +30,7 @@ export default function Page() {
           onSlide={handleSlideChange}
           onClick={handleNavigate}
         />
-      </BrowseContainer>
+      </BrowseSection>
       <DeviceSection />
       <AuraStreamFAQs />
       <AuraStreamPricing />

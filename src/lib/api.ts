@@ -35,12 +35,14 @@ async function fetchApi<T>(path: string, params: Record<string, string> = {}): P
       next: { revalidate: 3600 },
     });
     if (!response.ok) {
-      console.error(`שגיאת API: ${response.status} ${response.statusText} עבור ${url.toString()}`);
+      console.error(
+        `HTTP EXCEPTION API: ${response.status} ${response.statusText} for  ${url.toString()}`,
+      );
       return null;
     }
     return response.json();
   } catch (error) {
-    console.error(`שגיאה בשליפת נתונים מ-API: ${error}`);
+    console.error(`Failed To Fetch API: ${error}`);
     return null;
   }
 }
@@ -56,9 +58,9 @@ export async function getTrendingShows(): Promise<Show[]> {
 }
 
 export async function getMovieById(id: string): Promise<Movie | null> {
-  return fetchApi<Movie>(`/movie/${id}`); // שנה לנקודת הקצה המתאימה
+  return fetchApi<Movie>(`/movie/${id}`);
 }
 
 export async function getShowById(id: string): Promise<Show | null> {
-  return fetchApi<Show>(`/tv/${id}`); // שנה לנקודת הקצה המתאימה
+  return fetchApi<Show>(`/tv/${id}`);
 }

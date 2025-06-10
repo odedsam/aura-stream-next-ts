@@ -1,7 +1,8 @@
 'use client';
 
-import { Bell, X, Check, Trash2 } from 'lucide-react';
 import { useEffect, useRef } from 'react';
+import { Bell, X, Check, Trash2 } from 'lucide-react';
+import { formatTime } from '@/utils';
 import {
   useNotifications,
   useUnreadCount,
@@ -10,7 +11,6 @@ import {
   useMarkAsRead,
 } from '@/app/store/uiStore';
 import AlertBadge from '@/app/components/ui/Badge';
-import { formatTime } from '@/utils';
 
 interface Notification {
   id: string;
@@ -45,6 +45,7 @@ const NotificationComponent = () => {
   const handleNotificationClick = (notificationId: string) => {
     markAsRead(notificationId);
   };
+
   const getNotificationIcon = (type: string) => {
     switch (type) {
       case 'success':
@@ -60,23 +61,14 @@ const NotificationComponent = () => {
 
   return (
     <div className="relative" ref={dropdownRef}>
-      {/* Notification Button */}
-
       <button
         onClick={toggleNotifications}
         className="cursor-pointer p-2 text-gray-300 hover:text-white transition-colors duration-200 relative"
         aria-label="Open notifications">
         <Bell className="w-5 h-5" />
-        {unreadCount > 0 && (
-          <span className="absolute top-1 right-1 w-2 h-2 bg-red-600 rounded-full"></span>
-        )}
-        {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center font-medium">
-            {unreadCount > 9 ? '9+' : unreadCount}
-          </span>
-        )}
+        {unreadCount > 0 && <AlertBadge count={unreadCount} maxCount={9} className="bg-red-def" />}
       </button>
-      {/* <AlertBadge count={2} className="bg-red-500" /> */}
+
       {/* Notifications Dropdown */}
       {isNotificationsOpen && (
         <div className="absolute right-0 top-full mt-2 w-80 bg-gray-900 border border-gray-700 rounded-lg shadow-xl z-50">

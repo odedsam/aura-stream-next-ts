@@ -2,17 +2,20 @@ import { FAQCardProps, FaqHeaderProps } from '@/types';
 import { Plus, Minus } from 'lucide-react';
 import { BoxTag } from '@/app/components/ui/Tags';
 import { Divider } from '@/app/components/ui/Divider'; // adjust path as needed
+import { Button } from '../ui/Buttons';
 
-export const FaqHeader: React.FC<FaqHeaderProps> = ({ title, subtitle, onAskQuestion = () => console.log('Ask a question clicked') }) => {
+export const FaqHeader: React.FC<FaqHeaderProps> = ({
+  title,
+  subtitle,
+  onAskQuestion = () => console.log('Ask a question clicked'),
+}) => {
   return (
-    <div className="mb-12">
-      <div className="flex items-start justify-between mb-6">
+    <div className="mb-2">
+      <div className="space-y-12 mb-6 flex-col justify-center items-center sm:flex-row sm:justify-between sm:items-start">
         <h2 className="text-white text-4xl font-bold leading-tight">{title}</h2>
-        <button
-          onClick={onAskQuestion}
-          className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 whitespace-nowrap ml-4">
+        <Button variant="red" className="mb-6" onClick={onAskQuestion}>
           Ask a Question
-        </button>
+        </Button>
       </div>
       <p className="text-gray-def text-lg leading-relaxed">{subtitle}</p>
     </div>
@@ -27,7 +30,9 @@ export const FAQCard: React.FC<FAQCardProps> = ({ question, answer, isOpen, onTo
         className="w-full flex items-center justify-between py-6 text-left hover:bg-teriary transition-colors duration-200 px-4">
         <div className="flex items-center gap-4">
           <BoxTag className="border-quaternary border-2 hover:bg-quinary px-1">
-            <span className="text-gray-def text-lg font-medium p-3">{String(number).padStart(2, '0')}</span>
+            <span className="text-gray-def text-lg font-medium p-3">
+              {String(number).padStart(2, '0')}
+            </span>
           </BoxTag>
 
           <h3 className="text-white text-lg font-medium">{question}</h3>
@@ -43,7 +48,6 @@ export const FAQCard: React.FC<FAQCardProps> = ({ question, answer, isOpen, onTo
         </div>
       )}
 
-      {/* Show divider only when collapsed */}
       {!isOpen && <Divider />}
     </div>
   );

@@ -112,7 +112,7 @@ export async function fetchMovieCredits(id: string) {
 
   if (!res.ok) throw new Error('Failed to fetch movie credits');
 
-  return res.json(); // contains { id, cast, crew }
+  return res.json();
 }
 export const fetchMovieCast = async (id: string): Promise<CastMember[]> => {
   const res = await fetch(`${BASE_URL}/movie/${id}/credits?language=en-US`, {
@@ -149,24 +149,6 @@ export const fetchMovieTrailers = async (movieId: string): Promise<Trailer[]> =>
 
 // _______________________________________________________________
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const fetchShowById = async (id: string): Promise<Movie> => {
   const res = await fetch(`${BASE_URL}/tv/${id}?language=en-US`, {
     headers,
@@ -177,8 +159,6 @@ export const fetchShowById = async (id: string): Promise<Movie> => {
 
   return res.json();
 };
-
-
 
 export const fetchShowTrailers = async (showId: string): Promise<Trailer[]> => {
   const res = await fetch(`${BASE_URL}/tv/${showId}/videos?language=en-US`, {

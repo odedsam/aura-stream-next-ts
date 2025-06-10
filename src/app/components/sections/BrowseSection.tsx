@@ -8,19 +8,19 @@ type BrowseProps = {
   showCategory?: boolean;
 };
 
-export const BrowseContainer = ({
+export const BrowseSection = ({
+  showCategory = false,
   categoryName,
   children,
   className,
   categoryClassName,
-  showCategory = false,
 }: BrowseProps) => {
   return (
     <div
       className={cn(
         `relative bg-primary w-[90%] my-24 mx-auto`,
         className,
-        !showCategory && categoryName ? 'border-2 border-quinary' : ''
+        showCategory && categoryName ? 'border-2 border-quinary' : '',
       )}>
       {showCategory && (
         <div
@@ -31,6 +31,7 @@ export const BrowseContainer = ({
           <p>{categoryName}</p>
         </div>
       )}
+
       <div className="relative z-0">{children}</div>
     </div>
   );

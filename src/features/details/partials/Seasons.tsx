@@ -1,7 +1,6 @@
 import { EpisodeCard } from '@/app/components/cards/EpisodeCard';
 import { SeasonsHeader } from '@/types/components';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-
 export const SeasonContainer = ({ season, isExpanded, onToggle, onEpisodePlay }: SeasonsHeader) => {
   return (
     <div className="space-y-4 font-manrope">

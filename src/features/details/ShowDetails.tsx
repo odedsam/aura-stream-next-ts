@@ -2,6 +2,7 @@
 import type { SeasonsEpisodesProps } from '@/types/components';
 import { useState } from 'react';
 import { SeasonContainer } from './partials/Seasons';
+import { toast } from '@/lib/toast';
 
 const SeasonsAndEpisodes = ({
   seasons,
@@ -27,6 +28,7 @@ const SeasonsAndEpisodes = ({
   const handleEpisodePlay = (seasonId: string, episodeId: string) => {
     console.log('Playing episode:', { seasonId, episodeId });
     onEpisodePlay?.(seasonId, episodeId);
+    toast.error('Episode trailers are currently unavailable. Please try again later.');
   };
 
   return (
