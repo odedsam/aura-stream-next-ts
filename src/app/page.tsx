@@ -26,7 +26,6 @@ export default function Page() {
           title="Explore Movie Genres"
           className="mx-auto"
           items={OurGenres}
-          itemsPerSlide={3}
           showControls={true}
           onSlide={handleSlideChange}
           onClick={handleNavigate}

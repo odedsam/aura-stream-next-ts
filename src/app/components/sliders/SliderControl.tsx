@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { NavigationBlock } from '../ui/Blocks';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { Button } from '../ui/Buttons';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 import { SliderIndicator } from './SliderIndicator';
 import { SliderControlProps } from '@/types';
 

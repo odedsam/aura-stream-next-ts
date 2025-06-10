@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReviewAuthor } from '../cards/ReviewCard';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 import { Plus } from 'lucide-react';
 import { Button, CarouselButton } from '../ui/Buttons';
 import { useSlider } from '@/hooks/useSlider';

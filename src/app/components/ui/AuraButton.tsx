@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { LucideIcon } from 'lucide-react';
 import { cva, VariantProps } from 'class-variance-authority';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 
 interface AuraButtonProps
   extends React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,

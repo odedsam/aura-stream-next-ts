@@ -9,6 +9,8 @@ import {
   useToggleNotifications,
   useMarkAsRead,
 } from '@/app/store/uiStore';
+import AlertBadge from '@/app/components/ui/Badge';
+import { formatTime } from '@/utils';
 
 interface Notification {
   id: string;
@@ -43,7 +45,6 @@ const NotificationComponent = () => {
   const handleNotificationClick = (notificationId: string) => {
     markAsRead(notificationId);
   };
-
   const getNotificationIcon = (type: string) => {
     switch (type) {
       case 'success':
@@ -57,28 +58,13 @@ const NotificationComponent = () => {
     }
   };
 
-  const formatTime = (timestamp: Date) => {
-    const now = new Date();
-    const diff = now.getTime() - timestamp.getTime();
-    const minutes = Math.floor(diff / 60000);
-    const hours = Math.floor(diff / 3600000);
-    const days = Math.floor(diff / 86400000);
-
-    if (minutes < 60) {
-      return `${minutes}m ago`;
-    } else if (hours < 24) {
-      return `${hours}h ago`;
-    } else {
-      return `${days}d ago`;
-    }
-  };
-
   return (
     <div className="relative" ref={dropdownRef}>
       {/* Notification Button */}
+
       <button
         onClick={toggleNotifications}
-        className="p-2 text-gray-300 hover:text-white transition-colors duration-200 relative"
+        className="cursor-pointer p-2 text-gray-300 hover:text-white transition-colors duration-200 relative"
         aria-label="Open notifications">
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
@@ -90,7 +76,7 @@ const NotificationComponent = () => {
           </span>
         )}
       </button>
-
+      {/* <AlertBadge count={2} className="bg-red-500" /> */}
       {/* Notifications Dropdown */}
       {isNotificationsOpen && (
         <div className="absolute right-0 top-full mt-2 w-80 bg-gray-900 border border-gray-700 rounded-lg shadow-xl z-50">

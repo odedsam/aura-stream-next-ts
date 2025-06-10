@@ -1,6 +1,6 @@
 import type { CastMember } from '@/types/tmdb';
 import { useSlider } from '@/hooks/useSlider';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 import { CarouselButton } from '@/app/components/ui/Buttons';
 import CastCard from '@/app/components/cards/CastCard';
 

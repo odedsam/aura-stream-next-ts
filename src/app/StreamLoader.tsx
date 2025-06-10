@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import StreamLoader from '@/app/components/loaders/AppLoader';
+import StreamingLoader from '@/app/components/loaders/AltAppLoader';
 
 interface StreamLoaderWrapperProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ export default function StreamLoaderWrapper({ children }: StreamLoaderWrapperPro
   }, []);
 
   if (!loaded) {
-    return <StreamLoader onLoadComplete={() => setLoaded(true)} />;
+    return <StreamingLoader onLoadComplete={() => setLoaded(true)} />;
   }
 
   return <>{children}</>;

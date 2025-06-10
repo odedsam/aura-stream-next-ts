@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useRef, useState } from 'react';
 
 const NUM_PARTICLES = 30;
@@ -10,8 +11,10 @@ interface Particle {
   speedY: number;
   alpha: number;
 }
-
-export default function AltAppLoader() {
+interface AltAppLoaderProps {
+  onLoadComplete?: () => void;
+}
+export default function AltAppLoader({ onLoadComplete }: AltAppLoaderProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
@@ -23,7 +26,7 @@ export default function AltAppLoader() {
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return;
 
     const resizeCanvas = () => {
@@ -77,10 +80,8 @@ export default function AltAppLoader() {
     const animate = () => {
       ctx.fillStyle = '#0a0000';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
       drawParticles();
       drawNoise();
-
       animationRef.current = requestAnimationFrame(animate);
     };
 
@@ -90,12 +91,7 @@ export default function AltAppLoader() {
       window.removeEventListener('resize', resizeCanvas);
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, []);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setIsVisible(false), 3000);
-    return () => clearTimeout(timeout);
-  }, []);
+  }, [onLoadComplete]);
 
   if (!isVisible) return null;
 
@@ -104,8 +100,8 @@ export default function AltAppLoader() {
       ref={containerRef}
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black text-red-500">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
-      <h1 className="relative text-3xl md:text-5xl font-bold tracking-widest z-10">
-        Enter the void of luxury.
+      <h1 className="text-lg lg:text-xl text-red-500 font-black uppercase drop-shadow-[0_0_10px_rgba(255,0,80,0.8)] animate-pulse">
+        Crafting your experience...
       </h1>
     </div>
   );

@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 import { ChevronRight } from 'lucide-react';
 import { GenreCardProps } from '@/types';
 import { Badge } from '@/app/components/ui/Badge';

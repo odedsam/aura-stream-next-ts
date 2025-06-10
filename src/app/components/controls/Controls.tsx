@@ -1,5 +1,5 @@
 import type { VolumeControlProps } from '@/types';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 import { Volume2, VolumeX } from 'lucide-react';
 
 export const VolumeControl: React.FC<VolumeControlProps> = ({

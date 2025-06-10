@@ -1,7 +1,7 @@
 'use client';
 
 import type { NavigationBlockComponentProps, NavigationBlockProps, RatingBlockProps } from '@/types/components';
-import { cn, formatRating } from '@/lib/utils';
+import { cn, formatRating } from '@/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/app/components/ui/Buttons';
 import { StarRating } from '@/app/components/common/StarRating';

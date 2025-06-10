@@ -1,7 +1,7 @@
 'use client';
 
 import type { CrewPerson, MovieLanguages, OptionalCrewMember, Persona } from '@/types/components';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 import { ReviewSection, CastSection } from '.';
 import DescriptionCard from '@/app/components/cards/DescriptionCard';
 import GenreCredits from '@/features/details/GenreCredits';

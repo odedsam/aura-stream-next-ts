@@ -36,7 +36,7 @@ const SearchComponent: React.FC = () => {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isSearchOpen, toggleSearch]);
 
-  // 🔍 Debounced search logic
+  // Debounced search logic
   useEffect(() => {
     if (debouncedSearchTerm.trim()) {
       console.log('Debounced search for:', debouncedSearchTerm);
@@ -69,7 +69,7 @@ const SearchComponent: React.FC = () => {
       {/* Search Button */}
       <button
         onClick={toggleSearch}
-        className="p-2 text-gray-300 hover:text-white transition-colors duration-200"
+        className="cursor-pointer p-2 text-gray-300 hover:text-white transition-colors duration-200"
         aria-label="Open search"
       >
         <Search className="w-5 h-5" />
@@ -99,13 +99,13 @@ const SearchComponent: React.FC = () => {
                         className="p-1 text-gray-def hover:text-white transition-colors"
                         aria-label="Clear search"
                       >
-                        <X className="w-4 h-4" />
+                        <X className="w-4 h-4 cursor-pointer " />
                       </button>
                     )}
                     <button
                       type="button"
                       onClick={handleClose}
-                      className="p-2 text-gray-def hover:text-white transition-colors"
+                      className="cursor-pointer p-2 text-gray-def hover:text-white transition-colors"
                       aria-label="Close search"
                     >
                       <X className="w-5 h-5" />

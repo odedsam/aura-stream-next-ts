@@ -1,8 +1,8 @@
 'use client';
 
-import { formatRating, formatShowMore } from '@/lib/utils';
-import { StarRating } from '../common/StarRating';
 import { useState } from 'react';
+import { formatRating, formatShowMore } from '@/utils';
+import { StarRating } from '@/app/components/common/StarRating';
 
 export type ReviewAuthor = {
   id: string;

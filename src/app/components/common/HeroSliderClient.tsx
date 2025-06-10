@@ -1,16 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
-import {
-  Play,
-  ChevronLeft,
-  ChevronRight,
-  X,
-  PlayCircle,
-  Bookmark,
-  Heart,
-  Pause,
-} from 'lucide-react';
-import { Button } from '../ui/Buttons';
+import { cn } from '@/utils';
+import { ChevronLeft, ChevronRight, X, PlayCircle, Bookmark, Heart } from 'lucide-react';
+import { Button } from '@/app/components/ui/Buttons';
+import { formatText } from '@/utils';
+import { toast } from '@/lib/toast';
 import Image from 'next/image';
 
 export interface Movie {
@@ -34,7 +28,7 @@ const HeroSliderClient: React.FC<HeroSliderProps> = ({
   onPlay,
   autoPlay = true,
   autoPlayInterval = 5000,
-  className = '',
+  className,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
@@ -57,6 +51,8 @@ const HeroSliderClient: React.FC<HeroSliderProps> = ({
   const playTrailer = () => {
     if (currentMovie.trailerKey) {
       setIsTrailerPlaying(true);
+    } else {
+      toast.error('Trailer Not Available to your region');
     }
   };
 
@@ -68,8 +64,8 @@ const HeroSliderClient: React.FC<HeroSliderProps> = ({
   const currentMovie = movies[currentSlide];
 
   return (
-    <div className={`relative w-full ${className}`}>
-      <div className="relative h-[60vh] sm:h-[70vh] lg:h-[80vh] xl:h-[90vh] overflow-hidden">
+    <div className={cn('relative w-full', className)}>
+      <div className="relative h-[100dvh] overflow-hidden">
         {isTrailerPlaying && currentMovie.trailerKey && (
           <div className="absolute inset-0 z-50 bg-black">
             <button
@@ -93,26 +89,28 @@ const HeroSliderClient: React.FC<HeroSliderProps> = ({
         </div>
 
         <div
-          className="relative h-full flex items-center"
+          className="relative h-full flex items-center justify-center"
           style={{ display: isTrailerPlaying ? 'none' : 'flex' }}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl lg:max-w-3xl space-y-6 text-white">
+            <div className="max-w-2xl lg:max-w-3xl mt-18 space-y-6 text-white">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 {currentMovie.title}
               </h1>
               <p className="text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
-                {currentMovie.description}
+                {formatText(currentMovie.description, 150)}
               </p>
               <div className="flex gap-2">
                 <Button
                   onClick={playTrailer}
                   variant="red"
+                  className="cursor-pointer"
                   icon={<PlayCircle className="w-5 h-5" />}>
                   Play Trailer
                 </Button>
                 <Button
                   variant={isSaved ? 'saved' : 'ghost'}
                   size="icon"
+                  className="cursor-pointer"
                   onClick={() => setIsSaved(!isSaved)}
                   icon={<Bookmark className="w-5 h-5" />}
                   disabled={!currentMovie.trailerKey}
@@ -120,6 +118,7 @@ const HeroSliderClient: React.FC<HeroSliderProps> = ({
                 <Button
                   variant={isFavorited ? 'favorite' : 'ghost'}
                   size="icon"
+                  className="cursor-pointer"
                   onClick={() => setIsFavorited(!isFavorited)}
                   icon={<Heart className="w-5 h-5" />}
                 />
@@ -129,42 +128,33 @@ const HeroSliderClient: React.FC<HeroSliderProps> = ({
         </div>
 
         {movies.length > 1 && !isTrailerPlaying && (
-          <>
+          <div className="absolute bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4">
             <button
               onClick={prevSlide}
-              className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm">
+              className="cursor-pointer w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm">
               <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
 
+            <div className="flex gap-2 overflow-x-auto max-w-[150px] lg:max-w-none scrollbar-none">
+              {movies.slice(0, 10).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`cursor-pointer w-2 h-2 lg:w-3 lg:h-3 rounded-lg transition-all duration-200 ${
+                    index === currentSlide
+                      ? 'bg-red-600 w-6 lg:w-8'
+                      : 'bg-white/50 hover:bg-white/70'
+                  }`}
+                />
+              ))}
+            </div>
+
             <button
               onClick={nextSlide}
-              className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm">
+              className="cursor-pointer w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200 backdrop-blur-sm">
               <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" />
             </button>
-          </>
-        )}
-
-        {movies.length > 1 && !isTrailerPlaying && (
-          <div className="absolute bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-            {movies.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2 h-2 lg:w-3 lg:h-3 rounded-lg transition-all duration-200 ${
-                  index === currentSlide ? 'bg-red-600 w-6 lg:w-8' : 'bg-white/50 hover:bg-white/70'
-                }`}
-              />
-            ))}
           </div>
-        )}
-
-        {movies.length > 1 && !isTrailerPlaying && (
-          <button
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="absolute bottom-6 right-4 lg:hidden w-10 h-10 bg-black/60 hover:bg-black/80 rounded-full flex items-center justify-center text-white transition-colors duration-200"
-            aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'}>
-            {isPlaying ? <Pause /> : <Play />}
-          </button>
         )}
       </div>
     </div>

@@ -1,40 +1,42 @@
 'use client';
 
 import type { GenreCarouselProps, GenreCardProps } from '@/types';
-import { useEffect } from 'react';
-import { cn } from '@/lib/utils';
-import { GenreCarouselHeader, GenreCarouselPanel, GenreCarouselFooter } from '@/app/components/sliders/carousels/Partials';
+import { useEffect, useMemo } from 'react';
+import { cn } from '@/utils';
+import { GenreCarouselHeader, GenreCarouselPanel, GenreCarouselFooter} from '@/app/components/sliders/carousels/Partials';
+
+
+
+
 import { GenreCard } from '@/app/components/cards/GenreCard';
 import { PaginationProvider, usePagination } from '@/providers/PaginationProvider';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 const GenreCarouselInner = ({
   title,
   items,
-  onSlide,
   itemsPerSlide = 3,
   className,
   titleClassName,
   itemClassName,
   showControls = true,
+  onSlide,
   onClick,
 }: GenreCarouselProps) => {
   const { currentIndex, setCurrentIndex, totalSlides, setTotalSlides } = usePagination();
+  const isMobile = useIsMobile(1024);
+  const effectiveItemsPerSlide = isMobile ? 1 : itemsPerSlide;
 
   useEffect(() => {
-    setTotalSlides(Math.ceil(items.length / itemsPerSlide));
-  }, [items.length, itemsPerSlide, setTotalSlides]);
-
-  useEffect(() => {
+    setTotalSlides(Math.ceil(items.length / effectiveItemsPerSlide));
     onSlide?.(currentIndex);
-  }, [currentIndex, onSlide]);
+  }, [items.length, effectiveItemsPerSlide, currentIndex, onSlide, setTotalSlides]);
 
-  const getCurrentSlideItems = () => {
-    const startIndex = currentIndex * itemsPerSlide;
-    const endIndex = startIndex + itemsPerSlide;
+  const currentItems = useMemo(() => {
+    const startIndex = currentIndex * effectiveItemsPerSlide;
+    const endIndex = startIndex + effectiveItemsPerSlide;
     return items.slice(startIndex, endIndex);
-  };
-
-  const currentItems = getCurrentSlideItems();
+  }, [currentIndex, items, effectiveItemsPerSlide]);
 
   return (
     <div className={cn('font-manrope', className)}>
@@ -48,11 +50,19 @@ const GenreCarouselInner = ({
 
       <GenreCarouselPanel className="grid" onClick={onClick}>
         {currentItems.map((item: GenreCardProps, index) => (
-          <GenreCard key={item.id || `item-${currentIndex}-${index}`} {...item} className={cn('grid gap-4', itemClassName)} />
+          <GenreCard
+            key={item.id || `item-${currentIndex}-${index}`}
+            {...item}
+            className={cn('grid gap-4', itemClassName)}
+          />
         ))}
       </GenreCarouselPanel>
 
-      <GenreCarouselFooter currentIndex={currentIndex} itemsPerSlide={itemsPerSlide} totalItems={items.length} />
+      <GenreCarouselFooter
+        currentIndex={currentIndex}
+        itemsPerSlide={effectiveItemsPerSlide}
+        totalItems={items.length}
+      />
     </div>
   );
 };

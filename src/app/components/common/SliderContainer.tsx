@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 
 interface ResponsiveSliderContainerProps {
   children: React.ReactNode[];

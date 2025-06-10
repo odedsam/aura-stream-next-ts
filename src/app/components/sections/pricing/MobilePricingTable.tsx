@@ -1,9 +1,9 @@
 'use client';
 import type { Plan } from '@/types/mock';
 import { featureRows, plans } from '@/config/mock';
-import React, { useState } from 'react';
-import ToggleGroup from '../../ui/ToggleGroup';
-import { Button } from '../../ui/Buttons';
+import { useState } from 'react';
+import { Button } from '@/app/components/ui/Buttons';
+import ToggleGroup from '@/app/components/ui/ToggleGroup';
 
 interface MobilePricingCardProps {
   plan: Plan;
@@ -111,7 +111,6 @@ export const MobilePricingTable: React.FC = () => {
   return (
     <div className="bg-primary text-white p-6 lg:p-12 font-manrope">
       <div className="max-w-7xl">
-        {/* Header */}
         <div className="mb-8 flex flex-col">
           <h1 className="text-2xl lg:text-4xl font-bold mb-4">Compare our plans and find the right one for you</h1>
           <p className="text-gray-def text-sm lg:text-base">

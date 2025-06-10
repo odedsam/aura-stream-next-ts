@@ -1,7 +1,7 @@
 'use client';
 
 import type { GenreCarouselHeaderProps, GenreCarouselFooterProps } from '@/types';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 import { SliderControl } from '@/app/components/sliders/SliderControl';
 import { ResultsSummary } from '@/app/components/common/ResultsSummary';
 
