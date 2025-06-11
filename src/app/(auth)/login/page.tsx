@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/store/useAuth';
 import { AuraButton } from '@/app/components/ui/AuraButton';
+import { ButtonFacebook, ButtonGoogle } from '@/app/components/ui/Buttons';
 import { toast } from '@/lib/toast';
 import Link from 'next/link';
 
@@ -17,25 +18,35 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    toast.error(
-      'Login functionality will be temporarily unavailable for the next two days. We apologize for the inconvenience.',
-    );
-
     try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.error || 'Invalid credentials. Please try again.');
+        return;
+      }
+
       await login(email, password);
       // router.push('/dashboard');
     } catch (err) {
-      setError('Invalid credentials. Please try again.');
+      setError('Something went wrong. Please try again.');
     }
   };
 
+  // Lucide does not have a Google icon, so we use a colored Circle as a placeholder
+
   return (
     <div className="h-screen flex items-center justify-center bg-primary mt-8 px-4 py-12">
-      <div className="w-full max-w-md space-y-8 content-block-gray rounded-none p-8  shadow-md ">
+      <div className="w-full max-w-md space-y-8 content-block-gray rounded-none p-8 shadow-md">
         <h2 className="text-center text-2xl aura-text">Sign In</h2>
         <form className="space-y-6" onSubmit={handleSubmit}>
           {error && (
-            <div className="bg-[var(--red-def)] text-white p-3  text-sm text-center">{error}</div>
+            <div className="bg-[var(--red-def)] text-white p-3 text-sm text-center">{error}</div>
           )}
 
           <div className="space-y-2">
@@ -48,7 +59,7 @@ export default function LoginPage() {
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)]  text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
+              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)] text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
               placeholder="you@example.com"
               required
             />
@@ -64,7 +75,7 @@ export default function LoginPage() {
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)]  text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
+              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)] text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
               placeholder="••••••••"
               required
             />
@@ -77,6 +88,11 @@ export default function LoginPage() {
             disabled={isLoading}>
             {isLoading ? 'Signing in...' : 'Sign In'}
           </AuraButton>
+
+          <div className="flex flex-col gap-3 mt-4">
+            <ButtonFacebook />
+            <ButtonGoogle />
+          </div>
         </form>
 
         <p className="mt-6 text-center text-sm text-[var(--gray-60)]">
@@ -89,3 +105,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+// toast.error('Login functionality will be temporarily unavailable for the next two days. We apologize for the inconvenience.');

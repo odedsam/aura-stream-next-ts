@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/lib/toast';
 import Link from 'next/link';
+import { ButtonFacebook, ButtonGoogle } from '@/app/components/ui/Buttons';
 
 const registerSchema = z
   .object({
@@ -131,6 +132,10 @@ export default function RegisterPage() {
             disabled={isLoading}>
             {isLoading ? 'Creating Account...' : 'Sign Up'}
           </AuraButton>
+          <div className="flex flex-col gap-3 mt-4">
+            <ButtonFacebook />
+            <ButtonGoogle />
+          </div>
         </form>
 
         <p className="mt-6 text-center text-sm text-[var(--gray-60)]">
