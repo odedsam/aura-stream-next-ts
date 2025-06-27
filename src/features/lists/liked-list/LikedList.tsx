@@ -12,7 +12,6 @@ export const LikedList: React.FC<LikedListProps> = ({
   onClearAllLiked,
 }) => {
   const isSaved = (item: ContentItem): boolean => savedItems.some((saved) => saved.id === item.id);
-
   const isLiked = (item: ContentItem): boolean => likedItems.some((liked) => liked.id === item.id);
 
   const groupedContent = {

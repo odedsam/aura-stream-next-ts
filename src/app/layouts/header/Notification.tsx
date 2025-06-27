@@ -3,15 +3,9 @@
 import { useEffect, useRef } from 'react';
 import { Bell, X, Check, Trash2 } from 'lucide-react';
 import { formatTime } from '@/utils';
-import {
-  useNotifications,
-  useUnreadCount,
-  useIsNotificationsOpen,
-  useToggleNotifications,
-  useMarkAsRead,
-  useClearAll,
-} from '@/app/store/notificationStore';
+import { useNotifications,useUnreadCount, useIsNotificationsOpen, useToggleNotifications, useMarkAsRead, useClearAll } from '@/app/store/notificationStore';
 import AlertBadge from '@/app/components/ui/Badge';
+import Link from 'next/link';
 
 interface Notification {
   id: string;
@@ -77,7 +71,13 @@ const NotificationComponent = () => {
             <div className="flex items-center justify-between">
               <h3 className="text-white font-semibold">Notifications</h3>
               {unreadCount > 0 && (
-                <span className="text-sm text-gray-def">{unreadCount} unread</span>
+                <div>
+                  <span className="text-sm text-gray-def">{unreadCount} unread</span>
+                  <div>
+                    <Link href="/watchlist" className='underline text-red-300 hover:text-red-def'>View Watch List</Link>
+                  </div>
+                </div>
+
               )}
             </div>
           </div>

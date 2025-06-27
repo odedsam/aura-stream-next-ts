@@ -10,7 +10,7 @@ export interface ContentItem {
   artist?: string;
 }
 
-export interface ContentSectionProps {
+export interface WatchlistSectionProps {
   title: string;
   items: ContentItem[];
   savedItems: ContentItem[];

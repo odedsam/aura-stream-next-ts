@@ -6,7 +6,9 @@ import { useAuth } from '@/app/store/useAuth';
 import { AuraButton } from '@/app/components/ui/AuraButton';
 import { ButtonFacebook, ButtonGoogle } from '@/app/components/ui/Buttons';
 import { toast } from '@/lib/toast';
+import { useDialogStore } from '@/app/store/useDialogStore';
 import Link from 'next/link';
+import MaintanceDialog from '@/app/components/feedback/Maintance';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -14,28 +16,31 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const { login, isLoading } = useAuth();
+  const {open,close} = useDialogStore()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
+    open();
+    return;
+    // try {
+    //   const res = await fetch('/api/auth/login', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ email, password }),
+    //   });
 
-      if (!res.ok) {
-        const data = await res.json();
-        setError(data.error || 'Invalid credentials. Please try again.');
-        return;
-      }
+    //   if (!res.ok) {
+    //     const data = await res.json();
+    //     setError(data.error || 'Invalid credentials. Please try again.');
+    //     return;
+    //   }
 
-      await login(email, password);
-      // router.push('/dashboard');
-    } catch (err) {
-      setError('Something went wrong. Please try again.');
-    }
+    //   await login(email, password);
+    //   // router.push('/dashboard');
+    // } catch (err) {
+    //   setError('Something went wrong. Please try again.');
+    // }
   };
 
   // Lucide does not have a Google icon, so we use a colored Circle as a placeholder
@@ -85,13 +90,14 @@ export default function LoginPage() {
             type="submit"
             variant="primary"
             className="w-full aura-text"
+            onClick={open}
             disabled={isLoading}>
             {isLoading ? 'Signing in...' : 'Sign In'}
           </AuraButton>
 
           <div className="flex flex-col gap-3 mt-4">
-            <ButtonFacebook />
-            <ButtonGoogle />
+            <ButtonFacebook onClick={open} />
+            <ButtonGoogle onClick={open} />
           </div>
         </form>
 
@@ -102,7 +108,11 @@ export default function LoginPage() {
           </Link>
         </p>
       </div>
+      <>
+      <MaintanceDialog  />
+      </>
     </div>
+
   );
 }
 

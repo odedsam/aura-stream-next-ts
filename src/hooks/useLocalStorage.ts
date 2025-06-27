@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { LocalStorageUtils } from '@/utils/localStorage';
 
-export function useLocalStorage<T extends { id: number }>(
-  key: string,
-  initialValue: T[] = [],
-): [T[], (item: T) => void, (itemId: number) => void, (item: T) => void] {
+export function useLocalStorage<T extends { id: number }>( key: string,initialValue: T[] = [],):
+ [T[], (item: T) => void, (itemId: number) => void, (item: T) => void] {
+
   const [items, setItems] = useState<T[]>(() => {
     const stored = LocalStorageUtils.getItem<T>(key);
     return stored.length > 0 ? stored : initialValue;

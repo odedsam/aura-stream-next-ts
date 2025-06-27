@@ -3,12 +3,12 @@ import { env } from '@/config/env';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-if (!env.IMDB_API_KEY || !env.IMDB_ACCESS_TOKEN) {
-  throw new Error('Missing required IMDB API keys in environment variables');
+if (!env.TMDB_API_KEY || !env.TMDB_ACCESS_TOKEN) {
+  throw new Error('Missing required TMDB API keys in environment variables');
 }
 
 const headers = {
-  Authorization: `Bearer ${env.IMDB_ACCESS_TOKEN}`,
+  Authorization: `Bearer ${env.TMDB_ACCESS_TOKEN}`,
 };
 
 export type Movie = {

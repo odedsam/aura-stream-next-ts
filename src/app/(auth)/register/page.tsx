@@ -1,14 +1,16 @@
 'use client';
 
+import { z } from 'zod';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/store/useAuth';
 import { AuraButton } from '@/app/components/ui/AuraButton';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/lib/toast';
-import Link from 'next/link';
 import { ButtonFacebook, ButtonGoogle } from '@/app/components/ui/Buttons';
+import Link from 'next/link';
+import { useDialogStore } from '@/app/store/useDialogStore';
+import MaintanceDialog from '@/app/components/feedback/Maintance';
 
 const registerSchema = z
   .object({
@@ -27,26 +29,22 @@ type RegisterFormData = z.infer<typeof registerSchema>;
 export default function RegisterPage() {
   const { register: registerUser, isLoading } = useAuth();
   const router = useRouter();
+  const { open } = useDialogStore();
+  const { register, handleSubmit, formState: { errors }, } = useForm<RegisterFormData>({ resolver: zodResolver(registerSchema),});
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<RegisterFormData>({
-    resolver: zodResolver(registerSchema),
-  });
+
 
   const onSubmit = async (data: RegisterFormData) => {
-    try {
-      await registerUser(data.email, data.password, data.name);
-      toast.error(
-        'Sign-Up functionality will be temporarily unavailable for the next two days. We apologize for the inconvenience.',
-      );
+    open();
+    return;
+    // try {
+    //   await registerUser(data.email, data.password, data.name);
+    //   toast.error('Sign-Up functionality will be temporarily unavailable for the next two days. We apologize for the inconvenience.');
 
-      // router.push('/dashboard');
-    } catch (err) {
-      console.error(err);
-    }
+    //   // router.push('/dashboard');
+    // } catch (err) {
+    //   console.error(err);
+    // }
   };
 
   return (
@@ -64,7 +62,7 @@ export default function RegisterPage() {
               type="text"
               autoComplete="name"
               {...register('name')}
-              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)]  text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
+              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)] text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
               placeholder="John Doe"
             />
             {errors.name && (
@@ -81,7 +79,7 @@ export default function RegisterPage() {
               id="email"
               autoComplete="email"
               {...register('email')}
-              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)]  text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
+              className="w-full px-4 py-2 bg-[var(--clr-sec)] border border-[var(--black-25)] text-white placeholder-[var(--gray-def)] focus:outline-none focus:ring-2 focus:ring-[var(--red-def)]"
               placeholder="you@example.com"
             />
             {errors.email && (
@@ -98,7 +96,7 @@ export default function RegisterPage() {
               id="password"
               autoComplete="new-password"
               {...register('password')}
-              className="w-full px-4 py-2 bg-sec border border-[var(--black-25)]  text-white placeholder-gray-def focus:outline-none focus:ring-2 focus:ring-red-def"
+              className="w-full px-4 py-2 bg-sec border border-[var(--black-25)] text-white placeholder-gray-def focus:outline-none focus:ring-2 focus:ring-red-def"
               placeholder="••••••••"
             />
             {errors.password && (
@@ -129,12 +127,14 @@ export default function RegisterPage() {
             type="submit"
             variant="primary"
             className="w-full aura-text"
+            onClick={open}
             disabled={isLoading}>
             {isLoading ? 'Creating Account...' : 'Sign Up'}
           </AuraButton>
+
           <div className="flex flex-col gap-3 mt-4">
-            <ButtonFacebook />
-            <ButtonGoogle />
+            <ButtonFacebook onClick={open} />
+            <ButtonGoogle onClick={open} />
           </div>
         </form>
 
@@ -145,6 +145,9 @@ export default function RegisterPage() {
           </Link>
         </p>
       </div>
+      <>
+        <MaintanceDialog />
+      </>
     </div>
   );
 }

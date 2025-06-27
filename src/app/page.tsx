@@ -14,9 +14,7 @@ export default function Page() {
   const handleNavigate = () => {
     return router.push('/browse');
   };
-  const handleSlideChange = (index: number) => {
-    console.log('Current slide index:', index);
-  };
+  const handleSlideChange = (index: number) => index
 
   return (
     <main className="layout">

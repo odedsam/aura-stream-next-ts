@@ -1,4 +1,4 @@
-export { default as StreamingLoader } from './AppLoader';
+export { default as StreamingLoader } from './Loader';
 
 export {
   Skeleton,

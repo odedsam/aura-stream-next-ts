@@ -136,7 +136,7 @@ export const CarouselButton = ({
   />
 );
 
-export const ButtonFacebook = () => {
+export const ButtonFacebook = ({ onClick }: { onClick?: () => void }) => {
   const FacebookIcon = () => (
     <img src="/icons/facebook-icon.svg" alt="Facebook" className="w-5 h-5" />
   );
@@ -144,14 +144,15 @@ export const ButtonFacebook = () => {
     <button
       type="button"
       className="font-manrope cursor-pointer w-full flex items-center justify-center gap-2 bg-[#1877F3] text-white rounded px-4 py-2 hover:bg-[#145db2] transition"
-      onClick={() => (window.location.href = '/api/auth/facebook')}>
+      // onClick={() => (window.location.href = '/api/auth/facebook')}
+      onClick={onClick}>
       <FacebookIcon />
       Continue with Facebook
     </button>
   );
 };
 
-export const ButtonGoogle = () => {
+export const ButtonGoogle = ({ onClick }: { onClick?: () => void }) => {
   const GoogleIcon = () => {
     return (
       <svg className="w-6 h-6" viewBox="0 0 48 48">
@@ -180,7 +181,8 @@ export const ButtonGoogle = () => {
     <button
       type="button"
       className="font-manrope cursor-pointer w-full flex items-center justify-center gap-2 bg-white hover:bg-gray-200 text-black border border-gray-300 rounded px-4 py-2  transition"
-      onClick={() => (window.location.href = '/api/auth/google')}>
+      // onClick={() => (window.location.href = '/api/auth/google')}>
+      onClick={onClick}>
       <GoogleIcon />
       Continue with Google
     </button>

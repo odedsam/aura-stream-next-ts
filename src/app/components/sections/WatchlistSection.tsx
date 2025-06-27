@@ -1,8 +1,7 @@
-import type { ContentSectionProps } from '@/types';
-import { ContentItem } from '@/types';
+import { ContentItem, WatchlistSectionProps } from '@/types';
 import { ContentCard } from '@/features/lists/ContentCard';
 
-export const ContentSection: React.FC<ContentSectionProps> = ({
+export const WatchlistSection: React.FC<WatchlistSectionProps> = ({
   title,
   items,
   savedItems,
@@ -12,7 +11,6 @@ export const ContentSection: React.FC<ContentSectionProps> = ({
   emptyMessage,
 }) => {
   const isSaved = (item: ContentItem): boolean => savedItems.some((saved) => saved.id === item.id);
-
   const isLiked = (item: ContentItem): boolean => likedItems.some((liked) => liked.id === item.id);
 
   if (items.length === 0 && emptyMessage) {
