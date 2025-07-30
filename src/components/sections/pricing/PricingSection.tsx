@@ -2,9 +2,9 @@
 
 import type { PricingPlan } from '@/types/mock';
 import { useState } from 'react';
-import { PricingCard } from '@/app/components/cards/PricingCard';
+import { PricingCard } from '@/components/cards/PricingCard';
 import { pricingPlans } from '@/config/mock';
-import ToggleGroup from '@/app/components/ui/ToggleGroup';
+import ToggleGroup from '@/components/ui/ToggleGroup';
 
 interface PricingSectionProps {
   title?: string;

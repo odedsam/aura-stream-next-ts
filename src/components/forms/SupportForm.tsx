@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { Input } from '@/app/components/ui/Input';
-import { Button } from '@/app/components/ui/Buttons';
+import { Input } from '@/components/ui/Input';
+import { Button } from '@/components/ui/Buttons';
 import { toast } from '@/lib/toast';
-import CountrySelector from '@/app/components/ui/CountrySelector';
+import CountrySelector from '@/components/ui/CountrySelector';
 
 interface FormData {
   firstName: string;

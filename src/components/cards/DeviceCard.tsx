@@ -1,5 +1,5 @@
 import { cn } from '@/utils';
-import { BoxTag } from '@/app/components/ui/Tags';
+import { BoxTag } from '@/components/ui/Tags';
 
 interface DeviceCardProps {
   icon?: React.ReactNode;

@@ -3,8 +3,8 @@
 import type { NavigationBlockComponentProps, NavigationBlockProps, RatingBlockProps } from '@/types/components';
 import { cn, formatRating } from '@/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/app/components/ui/Buttons';
-import { StarRating } from '@/app/components/common/StarRating';
+import { Button } from '@/components/ui/Buttons';
+import { StarRating } from '@/components/common/StarRating';
 
 export const RatingBlock = ({ platform, rating, maxRating = 5 }: RatingBlockProps) => {
   return (

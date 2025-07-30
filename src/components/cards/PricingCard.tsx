@@ -1,5 +1,5 @@
 import { PricingCardProps } from '@/types/mock';
-import { Button } from '@/app/components/ui/Buttons';
+import { Button } from '@/components/ui/Buttons';
 import { formatPrice } from '@/utils';
 
 export const PricingCard: React.FC<PricingCardProps> = ({ plan, billingPeriod, onChoosePlan, onStartFreeTrial }) => {

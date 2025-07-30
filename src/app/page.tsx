@@ -1,13 +1,14 @@
 'use client';
-import { BrowseSection } from './components/sections/BrowseSection';
-import { GenreCarousel } from './components/sliders/carousels';
-import { OurGenres } from '@/config/categories';
-import { useRouter } from 'next/navigation';
-import AuraStreamFAQs from './components/sections/FaqsSection';
-import AuraStreamPricing from './components/sections/pricing/PricingSection';
-import CallToAction from './layouts/CallToAction';
-import DeviceSection from './components/sections/DeviceSection';
-import HomeHero from './components/sections/hero/HomeHero';
+import { BrowseSection } from "@/components/sections/BrowseSection";
+import { GenreCarousel } from "@/components/sliders/carousels";
+import { OurGenres } from "@/config/categories";
+import { useRouter } from "next/navigation";
+import DeviceSection from "@/components/sections/DeviceSection";
+import AuraStreamFAQs from "@/components/sections/FaqsSection";
+import HomeHero from "@/components/sections/hero/HomeHero";
+import AuraStreamPricing from "@/components/sections/pricing/PricingSection";
+
+import CallToAction from "./layouts/CallToAction";
 
 export default function Page() {
   const router = useRouter();

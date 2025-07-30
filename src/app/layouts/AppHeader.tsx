@@ -2,7 +2,7 @@
 
 import { X, Menu } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Button } from '@/app/components/ui/Buttons';
+import { Button } from '@/components/ui/Buttons';
 import { useToggleMobileMenu, useMobileMenuOpen } from '@/app/store/uiStore';
 import Navbar from '@/app/layouts/header/Navbar';
 import MobileMenu from '@/app/layouts/header/MobileMenu';

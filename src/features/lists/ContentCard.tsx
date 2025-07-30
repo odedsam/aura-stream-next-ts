@@ -1,5 +1,5 @@
 import type { ContentCardProps } from '@/types';
-import { VolumeControl } from '@/app/components/controls/Controls';
+import { VolumeControl } from '@/components/controls/Controls';
 import { useVolumeControl } from '@/hooks/useVolumeControl';
 import { Play, Plus, Star, ThumbsUp } from 'lucide-react';
 

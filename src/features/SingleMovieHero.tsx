@@ -1,4 +1,4 @@
-import HeroSliderClient from '@/app/components/common/HeroSliderClient';
+import HeroSliderClient from '@/components/common/HeroSliderClient';
 
 type MovieClient = {
   id: number;

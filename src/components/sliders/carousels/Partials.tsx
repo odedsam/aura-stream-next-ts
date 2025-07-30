@@ -2,8 +2,8 @@
 
 import type { GenreCarouselHeaderProps, GenreCarouselFooterProps } from '@/types';
 import { cn } from '@/utils';
-import { SliderControl } from '@/app/components/sliders/SliderControl';
-import { ResultsSummary } from '@/app/components/common/ResultsSummary';
+import { SliderControl } from '@/components/sliders/SliderControl';
+import { ResultsSummary } from '@/components/common/ResultsSummary';
 
 export const GenreCarouselHeader = ({ title, totalSlides, onSlideChange, titleClassName }: GenreCarouselHeaderProps) => (
   <div className="flex items-center justify-between font-manrope my-10">

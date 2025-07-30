@@ -1,6 +1,6 @@
 import { fetchPopularMovies, fetchPopularShows } from '@/lib/tmdb';
-import { BrowseSection } from '../components/sections/BrowseSection';
-import HeroSliderServer from '@/app/components/common/HeroSliderServer';
+import { BrowseSection } from '@/components/sections/BrowseSection';
+import HeroSliderServer from '@/components/common/HeroSliderServer';
 import CallToAction from '@/app/layouts/CallToAction';
 import Link from 'next/link';
 import Image from 'next/image';

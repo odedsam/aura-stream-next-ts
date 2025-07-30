@@ -1,4 +1,4 @@
-import { QuickAction } from '@/app/components/common/QuickActions';
+import { QuickAction } from '@/components/common/QuickActions';
 import { LucideIcon } from 'lucide-react';
 
 export const addItemToArray = <T>(array: T[], newItem: T): T[] => {

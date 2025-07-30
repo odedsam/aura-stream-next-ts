@@ -1,7 +1,7 @@
 'use client';
 import type { EpisodeCardProps } from '@/types/components';
 import { Play, Clock } from 'lucide-react';
-import { Tag } from '@/app/components/ui/Tags';
+import { Tag } from '@/components/ui/Tags';
 import Image from 'next/image';
 
 export const EpisodeCard = ({ episode, seasonId, onPlay }: EpisodeCardProps) => {

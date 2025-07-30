@@ -7,8 +7,8 @@ import {
   DialogDescription,
   DialogFooter,
   DialogClose,
-} from '@/app/components/ui/Dialog';
-import { Button } from '@/app/components/ui/Buttons';
+} from '@/components/ui/Dialog';
+import { Button } from '@/components/ui/Buttons';
 import { useDialogStore } from '@/app/store/useDialogStore';
 
 export default function MaintanceDialog() {

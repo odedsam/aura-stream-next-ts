@@ -7,9 +7,9 @@ import {
   GenreCarouselHeader,
   GenreCarouselPanel,
   GenreCarouselFooter,
-} from '@/app/components/sliders/carousels/Partials';
+} from '@/components/sliders/carousels/Partials';
 
-import { GenreCard } from '@/app/components/cards/GenreCard';
+import { GenreCard } from '@/components/cards/GenreCard';
 import { PaginationProvider, usePagination } from '@/providers/PaginationProvider';
 import { useIsMobile } from '@/hooks/useIsMobile';
 

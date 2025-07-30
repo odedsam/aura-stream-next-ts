@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { Bell, X, Check, Trash2 } from 'lucide-react';
 import { formatTime } from '@/utils';
 import { useNotifications,useUnreadCount, useIsNotificationsOpen, useToggleNotifications, useMarkAsRead, useClearAll } from '@/app/store/notificationStore';
-import AlertBadge from '@/app/components/ui/Badge';
+import AlertBadge from '@/components/ui/Badge';
 import Link from 'next/link';
 
 interface Notification {

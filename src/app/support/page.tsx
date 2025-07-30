@@ -1,5 +1,5 @@
-import AuraStreamFAQs from '../components/sections/FaqsSection';
-import SupportHero from '../components/sections/hero/SupportHero';
+import AuraStreamFAQs from '@/components/sections/FaqsSection';
+import SupportHero from '@/components/sections/hero/SupportHero';
 import CallToAction from '../layouts/CallToAction';
 
 export default async function page() {

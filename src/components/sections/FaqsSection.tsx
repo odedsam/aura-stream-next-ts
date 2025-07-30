@@ -2,7 +2,7 @@
 import type { FAQItem } from '@/types';
 import { useState } from 'react';
 import { faqData } from '@/config/mock';
-import { FaqHeader, FAQCard } from '@/app/components/cards/FaqCard';
+import { FaqHeader, FAQCard } from '@/components/cards/FaqCard';
 import { cn } from '@/utils';
 
 interface FAQSectionProps {

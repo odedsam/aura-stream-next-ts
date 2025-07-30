@@ -3,14 +3,14 @@
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/store/useAuth';
-import { AuraButton } from '@/app/components/ui/AuraButton';
+import { AuraButton } from '@/components/ui/AuraButton';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/lib/toast';
-import { ButtonFacebook, ButtonGoogle } from '@/app/components/ui/Buttons';
+import { ButtonFacebook, ButtonGoogle } from '@/components/ui/Buttons';
 import Link from 'next/link';
 import { useDialogStore } from '@/app/store/useDialogStore';
-import MaintanceDialog from '@/app/components/feedback/Maintance';
+import MaintanceDialog from '@/components/feedback/Maintance';
 
 const registerSchema = z
   .object({

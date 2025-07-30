@@ -5,9 +5,9 @@ import { ContentItem, SectionType } from '@/types';
 import { SHOWS, MOVIES, STORAGE_KEYS } from '@/data/content';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useVolumeControl } from '@/hooks/useVolumeControl';
-import { Navigation } from '@/app/components/navigation/Navigation';
-import { WatchlistSection } from '@/app/components/sections/WatchlistSection';
-import { GlobalVolumeControl } from '@/app/components/controls/GlobalControlVolume';
+import { Navigation } from '@/components/navigation/Navigation';
+import { WatchlistSection } from '@/components/sections/WatchlistSection';
+import { GlobalVolumeControl } from '@/components/controls/GlobalControlVolume';
 import { LikedList } from './liked-list/LikedList';
 
 const FullList: React.FC = () => {

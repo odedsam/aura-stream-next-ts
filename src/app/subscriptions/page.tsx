@@ -1,5 +1,5 @@
-import AuraStreamPricing from '@/app/components/sections/pricing/PricingSection';
-import PricingTable from '@/app/components/sections/pricing/PricingTable';
+import AuraStreamPricing from '@/components/sections/pricing/PricingSection';
+import PricingTable from '@/components/sections/pricing/PricingTable';
 import CallToAction from '@/app/layouts/CallToAction';
 
 export default async function Page() {

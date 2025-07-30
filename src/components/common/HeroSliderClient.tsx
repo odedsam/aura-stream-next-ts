@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/utils';
 import { ChevronLeft, ChevronRight, X, PlayCircle, Bookmark, Heart } from 'lucide-react';
-import { Button } from '@/app/components/ui/Buttons';
+import { Button } from '@/components/ui/Buttons';
 import { formatText } from '@/utils';
 import { toast } from '@/lib/toast';
 import Image from 'next/image';

@@ -1,4 +1,4 @@
-import { Button } from '@/app/components/ui/Buttons';
+import { Button } from '@/components/ui/Buttons';
 
 export default function CallToAction() {
   return (

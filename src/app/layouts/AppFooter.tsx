@@ -3,18 +3,20 @@ import Link from 'next/link';
 
 const AppFooter = () => {
   return (
-    <footer className="bg-sec text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="hidden md:grid md:grid-cols-6 gap-8">
+    <footer className="text-white bg-sec">
+      <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="hidden gap-8 md:grid md:grid-cols-6">
           {footerData.map((section, index) => (
             <div key={index}>
-              <h3 className="text-white font-semibold text-lg mb-6">{section.title}</h3>
+              <h3 className="mb-6 text-lg font-semibold text-white">{section.title}</h3>
               <ul className="space-y-4">
+                <div className="flex text-white border-b border-red-def rounded-md" />
+
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <Link
                       href={link.href}
-                      className="text-gray-def hover:text-white transition-colors">
+                      className="transition-colors text-gray-def hover:text-white">
                       {link.name}
                     </Link>
                   </li>
@@ -24,13 +26,13 @@ const AppFooter = () => {
           ))}
 
           <div>
-            <h3 className="text-white font-semibold text-lg mb-6">Connect With Us</h3>
+            <h3 className="mb-6 text-lg font-semibold text-white">Connect With Us</h3>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <Link
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 bg-quaternary rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors border border-quinary"
+                  className="flex items-center justify-center w-10 h-10 transition-colors border rounded-lg bg-quaternary hover:bg-gray-700 border-quinary"
                   aria-label={social.name}>
                   <img src={social.icon} alt={social.name} className="w-6 h-6" />
                 </Link>
@@ -39,17 +41,17 @@ const AppFooter = () => {
           </div>
         </div>
 
-        <div className="md:hidden grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-8 md:hidden">
           <div className="space-y-8">
             {[footerData[0], footerData[2], footerData[4]].map((section, index) => (
               <div key={index}>
-                <h3 className="text-white font-semibold text-lg mb-4">{section.title}</h3>
+                <h3 className="mb-4 text-lg font-semibold text-white">{section.title}</h3>
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
                       <Link
                         href={link.href}
-                        className="text-gray-def hover:text-white transition-colors">
+                        className="transition-colors text-gray-def hover:text-white">
                         {link.name}
                       </Link>
                     </li>
@@ -62,13 +64,13 @@ const AppFooter = () => {
           <div className="space-y-8">
             {[footerData[1], footerData[3]].map((section, index) => (
               <div key={index}>
-                <h3 className="text-white font-semibold text-lg mb-4">{section.title}</h3>
+                <h3 className="mb-4 text-lg font-semibold text-white">{section.title}</h3>
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
                       <Link
                         href={link.href}
-                        className="text-gray-def hover:text-white transition-colors">
+                        className="transition-colors text-gray-def hover:text-white">
                         {link.name}
                       </Link>
                     </li>
@@ -78,13 +80,13 @@ const AppFooter = () => {
             ))}
 
             <div>
-              <h3 className="text-white font-semibold text-lg mb-4">Connect With Us</h3>
+              <h3 className="mb-4 text-lg font-semibold text-white">Connect With Us</h3>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
                   <Link
                     key={index}
                     href={social.href}
-                    className="w-10 h-10 content-block-gray rounded-lg flex items-center justify-center hover:bg-gray-600 transition-colors"
+                    className="flex items-center justify-center w-10 h-10 transition-colors rounded-lg content-block-gray hover:bg-gray-600"
                     aria-label={social.name}>
                     <img src={social.icon} className="w-5 h-5 " alt={social.name} />
                   </Link>
@@ -97,9 +99,9 @@ const AppFooter = () => {
 
       {/* Bottom Section */}
       <div className="border-t border-quinary font-manrope">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p  className='text-xs text-gray-200'>
+        <div className="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
+            <p className="text-xs text-gray-200">
               This site uses information from{' '}
               <a
                 href="https://www.imdb.com/"
@@ -109,14 +111,16 @@ const AppFooter = () => {
                 IMDb
               </a>{' '}
               for educational & entertainment purposes only.
+             <strong className="ml-2 text-white text-center">Built by Oded</strong>
+
             </p>
 
-            <div className="flex flex-wrap justify-center md:justify-end space-x-6 text-sm">
+            <div className="flex flex-wrap justify-center space-x-6 text-sm md:justify-end">
               {legalLinks.map((link, index) => (
                 <Link
                   key={index}
                   href={link.href}
-                  className="text-gray-def hover:text-white transition-colors">
+                  className="transition-colors text-gray-def hover:text-white">
                   {link.name}
                 </Link>
               ))}

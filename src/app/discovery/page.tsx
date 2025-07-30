@@ -1,4 +1,4 @@
-import GenreGrid from '@/app/components/ui/GenreGrid';
+import GenreGrid from '@/components/ui/GenreGrid';
 
 export default async function DiscoverPage() {
   const genreIds = [

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import AppLoader from '@/app/components/loaders/AppLoader';
+import AppLoader from '@/components/loaders/AppLoader';
 
 interface AppLoaderWrapperProps {
   children: React.ReactNode;

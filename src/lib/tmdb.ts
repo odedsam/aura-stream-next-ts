@@ -1,4 +1,4 @@
-import { CastMember } from '@/app/components/cards/CastCard';
+import { CastMember } from '@/components/cards/CastCard';
 import { env } from '@/config/env';
 
 const BASE_URL = 'https://api.themoviedb.org/3';

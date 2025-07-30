@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/store/useAuth';
-import { AuraButton } from '@/app/components/ui/AuraButton';
-import { ButtonFacebook, ButtonGoogle } from '@/app/components/ui/Buttons';
+import { AuraButton } from '@/components/ui/AuraButton';
+import { ButtonFacebook, ButtonGoogle } from '@/components/ui/Buttons';
 import { toast } from '@/lib/toast';
 import { useDialogStore } from '@/app/store/useDialogStore';
 import Link from 'next/link';
-import MaintanceDialog from '@/app/components/feedback/Maintance';
+import MaintanceDialog from '@/components/feedback/Maintance';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');

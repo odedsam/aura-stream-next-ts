@@ -1,7 +1,7 @@
 import { FAQCardProps, FaqHeaderProps } from '@/types';
 import { Plus, Minus } from 'lucide-react';
-import { BoxTag } from '@/app/components/ui/Tags';
-import { Divider } from '@/app/components/ui/Divider'; // adjust path as needed
+import { BoxTag } from '@/components/ui/Tags';
+import { Divider } from '@/components/ui/Divider'; // adjust path as needed
 import { Button } from '../ui/Buttons';
 
 export const FaqHeader: React.FC<FaqHeaderProps> = ({

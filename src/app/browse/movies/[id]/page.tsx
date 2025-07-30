@@ -1,4 +1,4 @@
-import MovieReview from '@/app/components/sections/MovieReview';
+import MovieReview from '@/components/sections/MovieReview';
 import SingleMovieHero from '@/features/SingleMovieHero';
 import {
   fetchMovieById,

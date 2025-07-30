@@ -1,4 +1,4 @@
-import type { QuickAction } from '@/app/components/common/QuickActions';
+import type { QuickAction } from '@/components/common/QuickActions';
 
 export interface RatingBlockProps extends RatingData {}
 

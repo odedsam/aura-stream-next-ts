@@ -1,6 +1,6 @@
 import type { PlanFeatures } from '@/types';
 import { featureRows, plans } from '@/config/mock';
-import { Button } from '@/app/components/ui/Buttons';
+import { Button } from '@/components/ui/Buttons';
 
 export const DesktopPricingTable: React.FC = () => {
   return (

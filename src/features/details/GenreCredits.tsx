@@ -1,8 +1,8 @@
 import { Calendar, Globe, Star, Grid2X2 } from 'lucide-react';
-import { Tag } from '@/app/components/ui/Tags';
-import { IconLabel } from '@/app/components/ui/Labels';
-import { RatingBlock } from '@/app/components/ui/Blocks';
-import { PersonaCard } from '@/app/components/cards/PersonaCard';
+import { Tag } from '@/components/ui/Tags';
+import { IconLabel } from '@/components/ui/Labels';
+import { RatingBlock } from '@/components/ui/Blocks';
+import { PersonaCard } from '@/components/cards/PersonaCard';
 import { Persona } from '@/types/components';
 
 export type MovieGenres = {

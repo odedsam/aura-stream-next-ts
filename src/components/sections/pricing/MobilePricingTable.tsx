@@ -2,8 +2,8 @@
 import type { Plan } from '@/types/mock';
 import { featureRows, plans } from '@/config/mock';
 import { useState } from 'react';
-import { Button } from '@/app/components/ui/Buttons';
-import ToggleGroup from '@/app/components/ui/ToggleGroup';
+import { Button } from '@/components/ui/Buttons';
+import ToggleGroup from '@/components/ui/ToggleGroup';
 
 interface MobilePricingCardProps {
   plan: Plan;

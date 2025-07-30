@@ -1,14 +1,14 @@
 'use client';
 
 import { Search, X } from 'lucide-react';
-import { useState, useRef, useEffect } from 'react';
-import {
-  useSearchTerm,
-  useSetSearchTerm,
-  useIsSearchOpen,
-  useToggleSearch,
-} from '@/app/store/uiStore';
-import { useDebouncedValue } from '@/hooks/useDebounceValue';
+import { useRef, useEffect } from 'react';
+import { useDebounce } from '@/hooks/useDebounce';
+import { useSearchTerm, useSetSearchTerm, useIsSearchOpen, useToggleSearch } from '@/app/store/uiStore';
+
+
+
+
+
 
 const SearchComponent: React.FC = () => {
   const searchTerm = useSearchTerm();
@@ -17,7 +17,7 @@ const SearchComponent: React.FC = () => {
   const toggleSearch = useToggleSearch();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const debouncedSearchTerm = useDebouncedValue(searchTerm, 400);
+  const debouncedSearchTerm = useDebounce(searchTerm, 400);
 
   useEffect(() => {
     if (isSearchOpen && inputRef.current) {
@@ -70,8 +70,7 @@ const SearchComponent: React.FC = () => {
       <button
         onClick={toggleSearch}
         className="cursor-pointer p-2 text-gray-300 hover:text-white transition-colors duration-200"
-        aria-label="Open search"
-      >
+        aria-label="Open search">
         <Search className="w-5 h-5" />
       </button>
 
@@ -97,8 +96,7 @@ const SearchComponent: React.FC = () => {
                         type="button"
                         onClick={handleClear}
                         className="p-1 text-gray-def hover:text-white transition-colors"
-                        aria-label="Clear search"
-                      >
+                        aria-label="Clear search">
                         <X className="w-4 h-4 cursor-pointer " />
                       </button>
                     )}
@@ -106,8 +104,7 @@ const SearchComponent: React.FC = () => {
                       type="button"
                       onClick={handleClose}
                       className="cursor-pointer p-2 text-gray-def hover:text-white transition-colors"
-                      aria-label="Close search"
-                    >
+                      aria-label="Close search">
                       <X className="w-5 h-5" />
                     </button>
                   </div>

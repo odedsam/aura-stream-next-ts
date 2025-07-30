@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { formatRating, formatShowMore } from '@/utils';
-import { StarRating } from '@/app/components/common/StarRating';
+import { StarRating } from '@/components/common/StarRating';
 
 export type ReviewAuthor = {
   id: string;

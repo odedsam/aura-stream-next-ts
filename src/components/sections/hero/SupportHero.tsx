@@ -1,4 +1,4 @@
-import SupportForm from '@/app/components/forms/SupportForm';
+import SupportForm from '@/components/forms/SupportForm';
 
 export default function SupportHero() {
   return (
